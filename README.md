@@ -1,2 +1,2 @@
 # noahschuette.github.io
-Github Pages Repo
+Github Pages Repo. Adding content soon...

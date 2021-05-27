@@ -456,6 +456,7 @@ Cookies
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  opacity: 0;
 }
 
 .cookies:active {

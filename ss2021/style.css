@@ -1,0 +1,95 @@
+body {
+  background-color: #444444;
+  font-family: 'Barlow', sans-serif;
+}
+
+.rubrik {
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.rubrik p {
+  color: white;
+  font-size: 20px;
+}
+
+.rubrik a {
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.rubrik a:hover {
+  color: black;
+  background-color: white;
+}
+
+.zoom {
+  background-color: #4287f5;
+}
+
+.panopto {
+  background-color: #23a12e;
+}
+
+.lernraum {
+  background-color: #f55742;
+}
+
+.plus {
+  background-color: #ff8000;
+}
+
+.gather {
+  background-color: #cc34eb;
+}
+
+#note {
+  color: #aaaaaa;
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.legende {
+  position: fixed;
+  left : 40px;
+  bottom: 40px;
+  color: white;
+  font-size: 12px;
+}
+
+.legende p {
+  outline: solid;
+  outline-width: thin;
+  display: inline;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+#lernraum {
+  color: #f55742;
+  outline-color: #f55742;
+}
+
+#plus {
+  color: #ff8000;
+  outline-color: #ff8000;
+}
+
+#gather {
+  color: #cc34eb;
+  outline-color: #cc34eb;
+}
+
+#panopto {
+  color: #23a12e;
+  outline-color: #23a12e;
+}
+
+#zoom {
+  color: #4287f5;
+  outline-color: #4287f5;
+}

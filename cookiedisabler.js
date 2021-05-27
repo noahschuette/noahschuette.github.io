@@ -6,7 +6,11 @@ function loadCookie(){
     if (alreadyChecked == 'true'){
       var x = document.getElementById("cookieElem");
       x.remove();
+      console.log("np!");
     }
+  }
+  else {
+    document.getElementById("cookieElem").style.opacity = 1;
   }
 }
 

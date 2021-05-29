@@ -1,0 +1,89 @@
+body {
+  background-color: #222222;
+  font-family: 'Barlow', sans-serif;
+  color: #bbbbbb;
+}
+
+a {
+  text-decoration: none;
+}
+
+.title {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 100px;
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
+
+.subtitle {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 30px;
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
+
+.funnyInfo {
+  font-weight: 300;
+  font-style: italic;
+  font-size: 20px;
+  margin: 0px;
+}
+
+.info {
+  color: #999999;
+  font-weight: 300;
+  font-size: 20px;
+  margin: 0px;
+  margin-top: 5px;
+}
+
+.gitHub{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.gitHubTxt{
+  color: #999999;
+  font-weight: 300;
+  font-size: 15px;
+  margin: 0px;
+}
+
+.status {
+  color: #dddddd;
+  font-weight: 300;
+  font-size: 15px;
+  margin: 0px;
+  text-decoration: none;
+}
+
+.dash {
+  color: #777777;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  margin: 15px;
+  width: 50px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}

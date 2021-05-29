@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Noah's Online Text Editor</title>
+  <meta name="description" content="free browser based text-file editor">
+  <meta name="keywords" content="textbox, editor, text editor, text, txt, word, open office, libre office, office, edit, file, file editor">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=DotGothic16&family=Indie+Flower&family=Newsreader&family=Roboto&family=Roboto+Mono&family=Seaweed+Script&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/038f795198.js" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+  <!--<script src="reader.js"></script>-->
+  <script src="warning.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="notes.png">
+
+</head>
+<body>
+
+  <div id="textfield">
+    <div id="titleImg"></div>
+    <label class="trenner"></label>
+    <button class="btn" type="button" onclick="download()"><i class="fa fa-save"></i></button>
+    <!--<button type="button" onclick="load()"><i class="fa fa-upload"></i></button>-->
+    <input id="myFile" onchange="fileType()" type="file"/>
+    <label class="btn" id="fileLabel" for="myFile"><i class="fa fa-upload"></i></label>
+    <label class="trenner"></label>
+    <div id="fontSize"><i class="fas fa-text-height"></i><p id="fontSizeTxt">36</p>
+      <div id="fontSizeSub">
+        <button id="btnUp" onclick="changeSizeUp()"><i class="fas fa-chevron-up"></i></button>
+        <button id="btnDown" onclick="changeSizeDown()"><i class="fas fa-chevron-down"></i></button>
+      </div>
+    </div>
+    <button id="fontTxt" type="button" onclick="changeFont()"><i class="fas fa-font"></i><p id="fontName">Roboto Mono</p></button>
+    <!--<button type="button" onclick="setFile('myFile')"><i class="fa fa-upload"></i></button> -->
+  </div>
+  <div id="boxes">
+    <input id="title" placeholder="Title" autocomplete="off" spellcheck="false">
+    <textarea id="my-textarea" spellcheck="false" placeholder="Write something..."></textarea>
+  </div>
+
+  <footer>
+    <div id="foot">
+      <ul>
+        <li>
+          <p>&copy; 2021 noahschuette.github.io </p>
+        </li>
+        <li>
+          <!--<a href="https://noahschuette.de/about/impressum.html"><p>ABOUT</p></a>-->
+        </li>
+      </ul>
+    </div>
+
+  </footer>
+
+
+  <!-- <p id="info">free text-file editor v0.2</p>-->
+
+</body>
+</html>

@@ -20,7 +20,7 @@ a {
 }
 
 #textfield {
-  width: 100%;
+  width: 100vw;
   height: auto;
   display: flex;
   flex-direction: row;
@@ -137,6 +137,22 @@ textarea {
   font-size: var(--size);
   font-family: var(--font);
   font-weight: 500;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  resize: none;
+}
+
+textarea::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+textarea::-webkit-scrollbar-thumb {
+  background: #646464;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #fff;
 }
 
 #info {

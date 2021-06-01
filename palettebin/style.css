@@ -35,6 +35,7 @@ body {
   font-family: 'Dimitri';
   cursor: pointer;
   text-shadow: solid 2px white;
+  text-decoration: none;
 }
 
 .palettes {
@@ -285,4 +286,63 @@ body {
   25% {opacity: 100%}
   75% {opacity: 100%}
   100% {opacity: 0%}
+}
+
+/*
+
+LIBRARY
+
+*/
+
+#library {
+  min-height: 58vh;
+  width: 90vw;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 5vw;
+  padding-top: 15vh;
+  padding-right: 5vw;
+}
+
+.libEntry {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.libTitle {
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+  margin-right: 20px;
+}
+
+.libAuthor {
+  color: #8b9bb4;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0;
+  margin-right: 20px;
+}
+
+.libColor {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+#libSubtitle {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  margin-left: 10px;
 }

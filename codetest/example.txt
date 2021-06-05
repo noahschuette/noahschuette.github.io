@@ -1,4 +1,4 @@
-Beispiel **C# Code** *CODE*:
+*Bei*spiel **CSS Code**:
 Dies macht *spaß*!
 
 ```CSS
@@ -9,3 +9,9 @@ Dies macht *spaß*!
     //margin: 0;
 }
 ```
+Weiterer **CSS *CODE* LUL**
+
+```CSS
+#roflcopter baum {
+    background-color: white;
+}```

@@ -26,6 +26,10 @@ body {
   background-color: white;
 }
 
+.general {
+  background-color: #666;
+}
+
 .zoom {
   background-color: #4287f5;
 }

@@ -1,6 +1,6 @@
 *Bei*spiel **CSS Code**:
 Dies macht *spaß*!
-#*color=#FF00FF;|Pinker Text*#
+##color=#FF00FF;|Pinker Text##
 Oneline-CSS: `margin: 0;`
 
 ```CSS

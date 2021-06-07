@@ -1,7 +1,7 @@
 var index = 0;
 var coloramount = 0;
 var addBtn = '\n<a href="#" onclick="enableAddColor()" id="addColor"><i class="fas fa-plus"></i></a>';
-var addInput = '<a href="#" id="inputPalette"><span class="tagspan" id="tagWhite">#</span><input class="colorInput" id="colorInput" type="text" placeholder="000000" autocomplete="off" maxLength=6><i id="submitColor" onclick="addColor()" class="fas fa-check"></i></a>'
+var addInput = '<a href="#" id="inputPalette"><span class="tagspan" id="tagWhite">#</span><input class="colorInput" id="colorInput" type="text" placeholder="000000" autocomplete="off" maxLength=6></a>'
 var newPalette = '\n<p onclick="enableAddColor()" id="newPalette">START BY ADDING A FRESH COLOR</p>'
 var copyTA = '<textarea id="copyTA" rows="1" cols="1"></textarea>';
 var resp = '<p id="responseTrue">COPIED!</p>';
@@ -68,7 +68,14 @@ function showColor(id, color){
   var s = Math.round(hsl[1]) + "%";
   var l = Math.round(hsl[2]) + "%";
   var identifier = id.id;
-  document.getElementById("colorInfo").innerHTML ='<p class="colorPreview" style="background-color:#'+color+'"></p><p class="color" onclick="copyRGBHSL(\'RGB\')">RGB: <span id="RGB" class="subColor">'+ r +', '+ g +', '+ b +'</span></p><p class="color" onclick="copyRGBHSL(\'HSL\')">HSL: <span class="subColor" id="HSL">'+h+', '+s+', '+l+'</span></p><p class="colorBtn" onclick="copyColor(\''+color+'\')" id="colorCopy" ><i class="fas fa-clipboard"></i></p><p class="colorBtn" onclick="deleteColor('+identifier+')" id="colorDel"><i class="fas fa-trash"></i></p>'
+  var inner = '<p class="colorPreview" style="background-color:#'+color+'"></p>';
+  var currentNTC = ntc.name(color);
+  var colorname = currentNTC[1].toUpperCase();
+  inner += '<p class="color">"<span class="subColor">'+colorname+'</span>"</p>';
+  inner += '<p class="color" onclick="copyRGBHSL(\'RGB\')">RGB: <span id="RGB" class="subColor">'+ r +', '+ g +', '+ b +'</span></p><p class="color" onclick="copyRGBHSL(\'HSL\')">HSL: <span class="subColor" id="HSL">'+h+', '+s+', '+l+'</span></p><p class="colorBtn" onclick="copyColor(\''+color+'\')" id="colorCopy" ><i class="fas fa-clipboard"></i></p><p class="colorBtn" onclick="deleteColor('+identifier+')" id="colorDel"><i class="fas fa-trash"></i></p>';
+  document.getElementById("colorInfo").innerHTML = inner;
+
+  //document.getElementById("colorInfo").innerHTML ='<p class="colorPreview" style="background-color:#'+color+'"></p><p class="nameColor">'+colorname+'</p><p class="color" onclick="copyRGBHSL(\'RGB\')">RGB: <span id="RGB" class="subColor">'+ r +', '+ g +', '+ b +'</span></p><p class="color" onclick="copyRGBHSL(\'HSL\')">HSL: <span class="subColor" id="HSL">'+h+', '+s+', '+l+'</span></p><p class="colorBtn" onclick="copyColor(\''+color+'\')" id="colorCopy" ><i class="fas fa-clipboard"></i></p><p class="colorBtn" onclick="deleteColor('+identifier+')" id="colorDel"><i class="fas fa-trash"></i></p>'
 }
 
 function enableAddColor(){
@@ -79,6 +86,13 @@ function enableAddColor(){
   if (coloramount == 0){
     document.getElementById("newPalette").remove();
   }
+  document.getElementById("colorInput")
+      .addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+          addColor();
+      }
+  });
 }
 
 function addColor(){

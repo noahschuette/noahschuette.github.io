@@ -426,9 +426,12 @@ Projects-Allgemein
   background-image: url(images/prototype.png);
 }
 
-
 #proj3 {
   background-image: url(images/smashteroid.png);
+}
+
+#proj4 {
+  background-image: url(images/palettebin.png);
 }
 
 /*

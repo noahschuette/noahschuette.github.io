@@ -18,23 +18,24 @@
     display: none;
   }
 }*/
-/* Mindest-Space benötigt um Title zu zeigen: */
-@media (max-width: 796px){
-  .txtTitle {
-    color: purple;
-  }
-}
 
 /* Alles darunter tablet? */
 @media (max-width: 1024px) {
   .txtTitle {
     color: green;
   }
+  .line {
+    display: none;
+  }
 }
 
 /* Mobile */
+/* Mindest-Space benötigt um Title zu zeigen ist 300, wird also von mobile abgedeckt */
 @media (max-width: 480px) {
   .txtTitle {
     color: red;
+  }
+  .line {
+    display: none;
   }
 }

@@ -1,0 +1,20 @@
+@media (max-width: 50vh){
+  html, body {
+    overflow-x: hidden;
+  }
+
+  body {
+    width: 100%;
+  }
+
+  .txtTitle {
+    font-weight: 700;
+    font-size: 100px;
+    margin: 0px;
+    letter-spacing: 4px;
+  }
+
+  .line {
+    display: none;
+  }
+}

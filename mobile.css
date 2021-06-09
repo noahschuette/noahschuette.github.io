@@ -1,4 +1,4 @@
-@media (max-width: 50vh){
+/*@media (max-width: 50vh){
   html, body {
     overflow-x: hidden;
   }
@@ -16,5 +16,16 @@
 
   .line {
     display: none;
+  }
+}*/
+@media (max-width: 1024px) {
+  .txtTitle {
+    color: green;
+  }
+}
+
+@media (max-width: 480px) {
+  .txtTitle {
+    color: red;
   }
 }

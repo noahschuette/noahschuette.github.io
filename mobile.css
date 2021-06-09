@@ -19,23 +19,23 @@
   }
 }*/
 
-/* Alles darunter tablet? */
+/* Tablet & Mobile */
 @media (max-width: 1024px) {
   .txtTitle {
     color: green;
   }
-  .line {
+  .line, .scroll, #scene {
     display: none;
+  }
+  .secHead {
+    height: 100vh;
   }
 }
 
-/* Mobile */
+/* Mobile only */
 /* Mindest-Space benötigt um Title zu zeigen ist 300, wird also von mobile abgedeckt */
 @media (max-width: 480px) {
   .txtTitle {
     color: red;
-  }
-  .line {
-    display: none;
   }
 }

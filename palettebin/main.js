@@ -1,7 +1,7 @@
 var index = 0;
 var coloramount = 0;
-var addBtn = '\n<a href="#" onclick="enableAddColor()" id="addColor"><i class="fas fa-plus"></i></a>';
-var addInput = '<a href="#" id="inputPalette"><span class="tagspan" id="tagWhite">#</span><input class="colorInput" id="colorInput" type="text" placeholder="000000" autocomplete="off" maxLength=6></a>'
+var addBtn = '\n<a onclick="enableAddColor()" id="addColor"><i class="fas fa-plus"></i></a>';
+var addInput = '<a id="inputPalette"><span class="tagspan" id="tagWhite">#</span><input class="colorInput" id="colorInput" type="text" placeholder="000000" autocomplete="off" maxLength=6></a>'
 var newPalette = '\n<p onclick="enableAddColor()" id="newPalette">START BY ADDING A FRESH COLOR</p>'
 var copyTA = '<textarea id="copyTA" rows="1" cols="1"></textarea>';
 var resp = '<p id="responseTrue">COPIED!</p>';

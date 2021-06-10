@@ -11,6 +11,10 @@ body {
   /* Source: https://www.dafont.com/de/dimitri.font */
 }
 
+.mobiletitle {
+  display: none;
+}
+
 .fullscreen {
   min-height: 58vh;
   width: 60vw;
@@ -123,8 +127,7 @@ body {
 
 #addColor {
   width: auto;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin: 10px;
   color: white;
 }
 

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://noahschuette.github.io/scripts/essentials.css">
     <script src="https://kit.fontawesome.com/038f795198.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
     <script src="ntc.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </head>
@@ -20,11 +21,13 @@
     </div>
 
     <section class="fullscreen">
+      <p class="mobiletitle" onclick="reset()">Palettebin</p>
+      <p onclick="copyURL()" id="copyURL">COPY URL</p>
       <p class="paletteTitle" id="title"> <span class="mark">"</span>Black N' White<span class="mark">"</span></p>
       <p class="author" id="author">Example</p>
       <div class="palettes" id="palettes">
         <!--<a href="#" id="inputPalette"><span class="tagspan" id="tagWhite">#</span><input class="colorInput" id="colorInput" type="text" placeholder="000000" autocomplete="off" maxLength=6><i id="submitColor" onclick="addColor()" class="fas fa-check"></i></a>-->
-        <a href="#" onclick="enableAddColor()" id="addColor"><i class="fas fa-plus"></i></a>
+        <a onclick="enableAddColor()" id="addColor"><i class="fas fa-plus"></i></a>
         <p onclick="enableAddColor()" id="newPalette">START BY ADDING A FRESH COLOR</p>
       </div>
       <div class="colorInfo" id="colorInfo">
@@ -34,7 +37,6 @@
         <p class="colorBtn" id="colorCopy">COPY</p>
         <p class="colorBtn" id="colorDel">REMOVE</p>-->
       </div>
-      <p onclick="copyURL()" id="copyURL">COPY URL</p>
     </section>
     <div class="copyright" style="position: fixed; right: 30px; bottom: 30px;">
       <a href="https://noahschuette.de" id="n0j0logo"><script onload="replaceLogo('n0j0logo','#8b9bb4')" src="https://noahschuette.github.io/scripts/essentials.js"></script></a>

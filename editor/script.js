@@ -136,3 +136,9 @@ function load(){
   };
   reader.readAsText(file);
 }
+
+/* new */
+
+function hide(){
+  document.getElementById("newTooltip").style.display = "none";
+}

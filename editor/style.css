@@ -303,3 +303,43 @@ footer {
 li {
   list-style-type: none;
 }
+
+/* new */
+
+.newTooltip {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #262B44;
+  border: solid 2px #181425;
+}
+
+.newTooltip a {
+  font-family: "Inconsolata", monospace;
+  color: #8B9BB4;
+  text-decoration: none;
+}
+
+.newTooltip a:hover {
+  color: white;
+}
+
+.newTooltip button {
+  color: #8B9BB4;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.newTooltip button:hover {
+  color: white;
+}

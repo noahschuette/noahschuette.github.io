@@ -1,0 +1,204 @@
+:root {
+  --background: #10141F;
+  --mid: #202E37;
+  --front: #394A50;
+  --number: #577277;
+  --text: #fff;
+  --fieldtext: #fff;
+
+  /* In-Editor */
+  --font: "Roboto Mono", monospace;
+  --size: 24px;
+  --weight: 100;
+}
+
+html, body {
+  /*Basics */
+  background-color: var(--background);
+  margin: 0;
+  overflow: hidden;
+}
+
+a, p, input {
+  /*Basics*/
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--text);
+  margin: 0;
+  font-family: 'Barlow', sans-serif;
+  weight: 300;
+}
+
+.upperLine {
+  background-color: transparent;
+  margin: 0;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.leftLogo {
+  position: fixed;
+  z-index: 2;
+  background-color: var(--front);
+  width: 100px;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 0 0 10px 0;
+  height: 30px;
+}
+
+#leftLogo_Icon {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
+
+#leftLogo_Title{
+  font-weight: 700;
+  font-size: 18px;
+  display: inline-block;
+}
+
+.nav {
+  position: fixed;
+  z-index: 1;
+  height: 30px;
+  background-color: var(--mid);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 5px 5px 115px;
+  width: calc(100vw - 115px - 5px);
+}
+
+.centernav {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.centernav input {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  margin: 0 5px 0 5px;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.centernav input::placeholder {
+  color: var(--front);
+}
+
+
+.navBtn {
+  height: 25px;
+  width: 25px;
+  /*Basics*/
+  border: none;
+  text-decoration: none;
+  margin: 0 5px 0 5px;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--text);
+}
+
+.navBtn i {
+  font-size: 25px;
+}
+
+#myFile {
+  width: 0;
+  height: 0;
+}
+
+.textAreaHandler {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  width: calc(100vw - 20px);
+  height: calc(100vh - 60px);
+}
+
+
+textarea {
+  padding: 0;
+  margin: 0;
+  flex-grow: 2;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: var(--fieldtext);
+  font-size: var(--size);
+  font-family: var(--font);
+  font-weight: var(--weight);
+  resize: none;
+  box-sizing:border-box;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+textarea::placeholder {
+  color: var(--front);
+}
+
+textarea::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+
+textarea::-webkit-scrollbar-thumb {
+  background: var(--front);
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--text);
+}
+
+.lineViewDiv {
+  width: auto;
+  margin: 0;
+  margin-right: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  text-align: right;
+}
+
+.lineViewDiv::-webkit-scrollbar {
+  width: 0px;
+}
+
+#lineView {
+  font-size: var(--size);
+  font-family: var(--font);
+  font-weight: var(--weight);
+  color: var(--number);
+  width: auto;
+  height: auto;
+}
+
+.darkerLine {
+  color: var(--front);
+}

@@ -3,7 +3,7 @@ function loadCookie(){
   var alreadyChecked = false;
   if (localStorage && 'alreadyChecked' in localStorage) {
     alreadyChecked = localStorage.alreadyChecked;
-    if (alreadyChecked == 'true'){
+    if (alreadyChecked === 'true'){
       var x = document.getElementById("cookieElem");
       x.remove();
       console.log("np!");

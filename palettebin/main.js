@@ -269,6 +269,30 @@ function setauthor(){
   document.getElementById("title").innerHTML = '<span class="mark">"</span>'+author+'<span class="mark">"';
 }
 
+function getScheme(){
+  var schemetype = "analogic";
+  var variation = "soft";
+  var distance = 0.5;
+  var getComp = true;
+
+  // Pretty much the same exact syntax!
+  /* Scheme types: mono, contrast, triade, tetrade, analogic - variations: default, soft, pastel, light, hard, pale*/
+  var s = new ColorScheme;
+  var colors = s.scheme(schemetype)
+    .variation(variation)
+    .distance(distance)
+    .add_complement(true)
+    .colors();
+
+  for (color in colors){
+    enableAddColor();
+    document.getElementById("colorInput").value = colors[color];
+    addColor();
+  }
+
+}
+
+
 /*
 function setTitleColors(){
   var count = 0;

@@ -23,10 +23,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-left: 20vw;
-  padding-right: 20vw;
-  padding-top: 20vh;
-  padding-bottom: 20vh;
+  padding: 20vh 20vw;
 }
 
 .titlediv {
@@ -37,13 +34,12 @@ body {
 
 .title {
   font-size: 40px;
-  margin: 0;
   color: #8b9bb4;
   font-family: 'Dimitri';
   cursor: pointer;
-  text-shadow: solid 2px white;
+  text-shadow: solid white 2px;
   text-decoration: none;
-  margin-bottom: 15px;
+  margin: 0 0 15px;
 }
 
 .library {
@@ -121,8 +117,7 @@ body {
 
 .tagspan {
   font-weight: 300;
-  margin: 0;
-  margin-right: 5px;
+  margin: 0 5px 0 0;
 }
 
 #addColor {
@@ -164,7 +159,6 @@ body {
 }
 
 #closeColor {
-  color: white;
   font-size: 15px;
   margin-left: 5px;
   margin-right: 10px;
@@ -205,13 +199,12 @@ body {
 }
 
 .colorBtn {
-  margin: 10px;
   width: 35px;
   height: 35px;
   color: #8b9bb4;
   border: solid 2px #8b9bb4;
   font-weight: 700;
-  margin-left: 5px;
+  margin: 10px 10px 10px 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -230,8 +223,7 @@ body {
 }
 
 #colorCopy {
-  margin: 0;
-  margin-left: 20px;
+  margin: 0 0 0 20px;
 }
 
 #colorDel:hover {
@@ -267,17 +259,16 @@ body {
   position: fixed;
   top: 50px;
   right: 50px;
-  margin: 10px;
   height: 35px;
   color: #8b9bb4;
   font-weight: 700;
-  margin-left: 5px;
+  margin: 10px 10px 10px 5px;
   display: flex;
   padding: 2px 10px 2px 10px;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  border: solid 2px #8b9bb4no;
+  border: 2px solid #8b9bb4;
 }
 
 #copyURL:hover {
@@ -345,16 +336,14 @@ LIBRARY
   color: white;
   font-size: 20px;
   font-weight: 400;
-  margin: 0;
-  margin-right: 20px;
+  margin: 0 20px 0 0;
 }
 
 .libAuthor {
   color: #8b9bb4;
   font-size: 20px;
   font-weight: 300;
-  margin: 0;
-  margin-right: 20px;
+  margin: 0 20px 0 0;
 }
 
 .libColor {

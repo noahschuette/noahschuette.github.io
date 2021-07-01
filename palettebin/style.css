@@ -30,6 +30,9 @@ body {
   position: fixed;
   top: 50px;
   left: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .title {
@@ -40,9 +43,20 @@ body {
   text-shadow: solid white 2px;
   text-decoration: none;
   margin: 0 0 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.titleIcon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  margin-bottom: 6px;
 }
 
 .library {
+  margin-bottom: 5px;
   font-size: 15px;
   text-decoration: none;
   font-weight: 700;
@@ -53,10 +67,13 @@ body {
   margin-right: 10px;
 }
 
+.generator {
+  color : #262B44;
+}
+
 .palettes {
   margin-top: 50px;
   margin-bottom: 50px;
-  display: inline;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

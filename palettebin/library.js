@@ -9,9 +9,9 @@ function setLibrary(){
   	content = data.split('\n');
     console.log(content);
     var inner = "";
-    for (line in content){
-      if (line.startsWith('#')){
-        break;
+    for (let line in content){
+      if (content[line].startsWith('#')){
+        continue;
       }
       var tempinner = "";
       var temp = content[line].split(',');

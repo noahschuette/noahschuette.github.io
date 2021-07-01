@@ -10,6 +10,9 @@ function setLibrary(){
     console.log(content);
     var inner = "";
     for (line in content){
+      if (line.startsWith('#')){
+        break;
+      }
       var tempinner = "";
       var temp = content[line].split(',');
       temp[0] = temp[0].trim();

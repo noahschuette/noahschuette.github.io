@@ -10,9 +10,10 @@
 /* Allgmein */
 body {
   margin: 0px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   color: #ffffff;
   overflow-x: hidden;
+  overflow-y: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
   /*Amimation*/
@@ -92,6 +93,7 @@ Header
   justify-content: flex-start;
   align-self: center;
   flex-grow: 2;
+  z-index: 3;
 }
 
 .logotxt {
@@ -110,7 +112,7 @@ Header
 
 .txtTitle {
   font-weight: 700;
-  font-size: 60px;
+  font-size: 70px;
   margin: 0px;
   letter-spacing: 4px;
 }
@@ -154,8 +156,8 @@ Header: Social-Media
 }
 
 @-webkit-keyframes blackWhite {
-  0% {color: var(--light)};
-  100% (color: var(--white));
+  0% {color: var(--light);}
+  100% {color: var(--white);}
 }
 
 .divSocials a:hover {
@@ -188,7 +190,7 @@ About & Project allg
   padding-top: 5vh;
   padding-bottom: 5vh;
   height: 90vh;
-  background-image: url(images/prog.png);
+  /*background-image: url(images/prog.png);*/
   background-size: cover;
   display: flex;
   flex-wrap: wrap;
@@ -581,4 +583,14 @@ Parallax
 #img-4{
   z-index: -4;
   opacity: 60%;
+}
+
+/* blend in effect */
+
+#blendIn{
+  z-index: 2;
+  background-color: black;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
 }

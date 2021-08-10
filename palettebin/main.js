@@ -43,7 +43,7 @@ function setPalette(){
 
   const ptitle = urlParams.get('t');
   if (ptitle == null){
-    document.getElementById("title").innerHTML = "Empty Palette";
+    document.getElementById("title").innerHTML = "Unnamed Palette";
   } else {
     document.getElementById("title").innerHTML = '<span class="mark">"</span>'+ ptitle +'<span class="mark">"</span>';
     title = ptitle;
@@ -267,6 +267,11 @@ function setauthor(){
   var pauthor = "test";
   author = pauthor;
   document.getElementById("title").innerHTML = '<span class="mark">"</span>'+author+'<span class="mark">"';
+}
+
+function delPalette(){
+  let palettes = document.getElementById("palettes");
+  palettes.innerHTML = addBtn + newPalette;
 }
 
 function getScheme(){

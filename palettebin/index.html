@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="mobile.css">
     <script src="ntc.js"></script>
     <script src="colorscheme.js"></script>
+    <script src="colorschemeNew.js"></script>
     <script type="text/javascript" src="main.js"></script>
     <script>
       (function(h,o,t,j,a,r){
@@ -30,12 +31,35 @@
     <div class="titlediv">
       <p class="title" onclick="reset()"><img class="titleIcon" src="iconNewRound.png" alt="">Palettebin</p>
       <a href="library.html" class="library"><i class="fas fa-stream"></i>DISCOVER PALETTES</a>
-      <a href="#" class="library generator"><i class="fas fa-cog"></i>PALETTE GENERATOR (SOON)</a>
-      <!--onclick="getScheme()"-->
+      <a href="#" onclick="openGenerator()" class="library"><i class="fas fa-cog"></i>PALETTE GENERATOR</a>
+      <!---->
     </div>
 
     <section class="fullscreen">
       <p class="mobiletitle" onclick="reset()">Palettebin</p>
+      <div class="gen" id="gen"><!--
+        <div class="slidersub">
+          <p class="slidertxt">HUE</p>
+          <input onclick="changeTxt()" type="range" min="0" max="360" value="0" class="slider" id="hueRange">
+          <p class="slidertxtSub" id="hueAmt">0</p>
+        </div>
+        <div class="slidersub">
+          <p class="slidertxt">DEPTH</p>
+          <input onclick="changeTxt()" type="range" min="1" max="7" value="4" class="slider" id="varRange">
+          <p class="slidertxtSub" id="varAmt">4</p>
+        </div>
+        <div class="slidersub">
+          <p class="slidertxt">COLORS</p>
+          <input onclick="changeTxt()" type="range" min="0" max="6" value="3" class="slider" id="amtRange">
+          <p class="slidertxtSub" id="amtAmt">7</p>
+        </div>
+        <div class="slidersub">
+          <p class="slidertxt">LIGHT</p>
+          <input onclick="changeTxt()" type="range" min="-10" max="10" value="0" class="slider" id="lightRange">
+          <p class="slidertxtSub" id="lightAmt">0</p>
+        </div>
+        <button id="genBtn" onclick="setScheme()">Generate</button>-->
+      </div>
       <p onclick="copyURL()" id="copyURL">COPY URL</p>
       <p class="paletteTitle" id="title"> <span class="mark">"</span>Black N' White<span class="mark">"</span></p>
       <p class="author" id="author">Example</p>

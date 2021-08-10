@@ -67,10 +67,6 @@ body {
   margin-right: 10px;
 }
 
-.generator {
-  color : #262B44;
-}
-
 .palettes {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -375,4 +371,90 @@ LIBRARY
   font-weight: 700;
   font-size: 30px;
   margin-left: 10px;
+}
+
+/*
+
+GENERATOR
+
+ */
+
+.gen {
+  position: fixed;
+  left: 50vw;
+  transform: translateX(-50%);
+  top: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.slidersub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slidertxt {
+  margin-bottom: 5px;
+}
+
+.slidertxtSub {
+  margin-top: 5px;
+  color: #8b9bb4;
+}
+
+/* The slider itself */
+.slider {
+  margin-left: 10px;
+  margin-right: 10px;
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  height: 25px; /* Specified height */
+  background: #262B44; /* Grey background */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  border-radius: 10px;
+  width: 5vw;
+}
+
+#hueRange {
+  background: linear-gradient(to right, red, yellow, green, cyan, blue, magenta, red);
+  width: 20vw;
+}
+
+#genBtn {
+  border-radius: 10px;
+  background: #262B44;
+  height: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  outline: none;
+  color: white;
+  border: none;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: white; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 15px;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
 }

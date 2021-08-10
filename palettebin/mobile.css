@@ -71,6 +71,10 @@
   .copyright {
     display: none;
   }
+
+  #gen {
+    display: none;
+  }
 }
 
 /* Mobile only */

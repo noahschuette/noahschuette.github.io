@@ -8,7 +8,7 @@ My new homepage. Redirected from {noahschuette.de}[https://noahschuette.de]
 * Variety of design changes
 
 ## Page Overview
-* `index.html` - landing page
-* `palettebin` - palette viewer & creator
-* `minitxt` - online text editor
-* `tcwquotes` - "the clone wars" quote generator
+* [index.html](https://noahschuette.de) - landing page
+* [Palette Bin](https://noahschuette.de/palettebin) - palette viewer & creator
+* [Minitxt](https://noahschuette.de/minitxt) - online text editor
+* [TCWquotes](https://noahschuette.de/tcwquotes) - "The Clone Wars" quote generator

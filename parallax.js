@@ -1,6 +1,7 @@
 let scene = document.getElementById('scene');
 let parallaxInstance = new Parallax(scene);
 
+/*
 window.onload = setTimeout(function blendOut(){
     let blend = document.getElementById("blendIn");
     var fadeEffect = setInterval(function () {
@@ -16,3 +17,4 @@ window.onload = setTimeout(function blendOut(){
         }
     }, 20);
 }, 100);
+*/

@@ -14,9 +14,8 @@
     <link rel="stylesheet" href="mobile.css">
     <script src="ntc.js"></script>
     <script src="colorscheme.js"></script>
-    <script src="colorschemeNew.js"></script>
     <script type="text/javascript" src="main.js"></script>
-    <script>
+    <!--<script>
       (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:2536315,hjsv:6};
@@ -25,7 +24,7 @@
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
       })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>
+    </script>-->
   </head>
   <body onload="setPalette()">
     <!--<p class="title" onclick="reset()"><span id="x1">P</span><span id="x2">a</span><span id="x3">l</span><span id="x4">e</span><span id="x5">t</span><span id="x6">t</span><span id="x7">E</span>bin</p>-->
@@ -62,8 +61,8 @@
         <button id="genBtn" onclick="setScheme()">Generate</button>-->
       </div>
       <p onclick="copyURL()" id="copyURL">COPY URL</p>
-      <p class="paletteTitle" id="title"> <span class="mark">"</span>Black N' White<span class="mark">"</span></p>
-      <p class="author" id="author">Example</p>
+      <p class="paletteTitle" id="title"> <span class="mark">"</span><span class="mark">"</span></p>
+      <p class="author" id="author"></p>
       <div class="palettes" id="palettes">
         <!--<a href="#" id="inputPalette"><span class="tagspan" id="tagWhite">#</span><input class="colorInput" id="colorInput" type="text" placeholder="000000" autocomplete="off" maxLength=6><i id="submitColor" onclick="addColor()" class="fas fa-check"></i></a>-->
         <a onclick="enableAddColor()" id="addColor"><i class="fas fa-plus"></i></a>

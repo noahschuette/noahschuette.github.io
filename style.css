@@ -7,13 +7,38 @@
   --grey: rgba(1,1,1,0.6);
 }
 
+/*
+@font-face {
+  font-family: "Nostromo Heavy";
+  src: url("fonts/nostromoHeavy.otf");
+}
+
+@font-face {
+  font-family: "Nostromo Bold";
+  src: url("fonts/nostromoBold.otf");
+}
+
+@font-face {
+  font-family: "Nostromo Medium";
+  src: url("fonts/nostromoMedium.otf");
+}
+
+@font-face {
+  font-family: "Nostromo Light";
+  src: url("fonts/nostromoLight.otf");
+}
+
+@font-face {
+  font-family: "Nostromo Outline";
+  src: url("fonts/nostromoOutline.otf");
+}*/
+
 /* Allgmein */
 body {
   margin: 0px;
   font-family: 'Chakra Petch', sans-serif;
   color: #ffffff;
   overflow-x: hidden;
-  overflow-y: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
   /*Amimation*/

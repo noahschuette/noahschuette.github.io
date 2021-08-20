@@ -15,26 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/038f795198.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- scroll anim -->
     <script src="script.js"></script>
-    <script src="cookiedisabler.js"></script>
-    <!-- Hotjar Tracking Code for noahschuette.de -->
-    <!--<script>
-      (function(h,o,t,j,a,r){
-          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-          h._hjSettings={hjid:2387120,hjsv:6};
-          a=o.getElementsByTagName('head')[0];
-          r=o.createElement('script');r.async=1;
-          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-          a.appendChild(r);
-      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>-->
+    <!--<script src="cookiedisabler.js"></script>-->
 
 
   </head>
-  <body onload="loadCookie()">
-
-    <!--<div id="blendIn"></div>-->
+  <body> <!--onload="loadCookie()"-->
 
     <section id="header" class="secHead">
       <div class="divLogo">
@@ -127,11 +113,12 @@
 
     <!-- Cookies -->
 
-    <button onclick="disable()" id="cookieElem" class="cookies">
-      <p class="cookiesBefore">THIS PAGE USES COOKIES</p>
-      <p class="cookiesTxt"></p>
+    <!--<div id="cookieElem" class="cookiesDiv">
+      <p>THIS PAGE USES COOKIES</p>
+      <button onclick="changeCookie(true)" class="cookiesBtn" id="btnAccept">ACCEPT</button>
+      <button onclick="changeCookie(false)" class="cookiesBtn" id="btnDeny">DENY</button>
       <i class="fas fa-cookie"></i>
-    </button>
+    </div>-->
 
     <!-- Parallax -->
 

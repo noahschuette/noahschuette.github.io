@@ -467,6 +467,51 @@ Cookies
 
 */
 
+.cookiesDiv {
+  position: fixed;
+  right: 50px;
+  top: 50px;
+  display: inline;
+  padding: 10px;
+  margin: 0;
+  background: none;
+}
+
+.cookiesDiv:hover i:before {
+  content : "\f564";
+}
+
+.cookiesDiv p {
+  display: inline;
+  margin: 0;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.cookiesDiv:hover p {
+  display: none;
+}
+
+.cookiesDiv:hover button{
+  display: inline;
+}
+
+.cookiesDiv button {
+  display: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+.cookiesDiv button:hover {
+  text-decoration: underline;
+}
+
 .cookies {
   position: fixed;
   right: 50px;

@@ -218,7 +218,7 @@ About & Project allg
   /*background-image: url(images/prog.png);*/
   background-size: cover;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -355,9 +355,15 @@ h4 b {
   margin-top: 100px;
 }
 
-.bottom a {
+.bottom a, .bottom p {
   font-size: 15px;
   font-weight: 300;
+  display: inline;
+}
+
+.bottom i {
+  font-size: 15px;
+  margin: 2px;
 }
 
 /*

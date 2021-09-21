@@ -1,0 +1,21 @@
+:root {
+    --background: black;
+    --text: white;
+}
+
+html, body {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+a, p, h1 {
+    color: var(--text);
+    margin: 0;
+}
+
+button, input, a {
+    outline: none;
+    border: none;
+    text-decoration: none;
+    margin: 0;
+}

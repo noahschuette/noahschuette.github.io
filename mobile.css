@@ -69,8 +69,15 @@
     display: none;
   }
 
+  .secHead {
+    align-items: center;
+    justify-content: center;
+  }
+
   .divLogo {
     text-align: center;
+    flex-grow: 0;
+    margin-bottom: 50px;
   }
 
   .txtTitle {
@@ -86,7 +93,7 @@
   }
 
   .divSocials i {
-    font-size: 10vw;
+    font-size: 15vw;
   }
 
 }

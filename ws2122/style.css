@@ -4,6 +4,9 @@
   --light: #5E8CA7;
   --mid: #1C2C35;
   --dark: #111A20;
+  --ok: #3E8948;
+  --notok: #A22633;
+  --notok2: #E43B44;
 }
 
 body {
@@ -14,6 +17,22 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+button {
+  outline: none;
+  text-decoration: none;
+  background-color: var(--mid);
+  color: var(--light);
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+button:hover {
+  color: var(--white);
 }
 
 .table {
@@ -154,6 +173,32 @@ Fächer
 
 #ekvv { margin: 0; }
 
+.points {
+  margin: 40px 40px 0 40px;
+  align-items: center;
+}
+
+.scala {
+  margin: 10px;
+  padding: 5px;
+  background-color: var(--mid);
+  display: flex;
+  align-items: center;
+}
+
+.scalaPercentage {
+  color: var(--white);
+  margin: 0 10px 0 0;
+  font-weight: 700;
+}
+
+.scalaTitle {
+  color: var(--white);
+  margin: 0 10px 0 10px;
+  font-weight: 300;
+  flex-grow: 1;
+}
+
 /*
 Mobile
  */
@@ -194,6 +239,18 @@ Mobile
   .leftRow {
     display: none;
   }
+
+  .moduleLink {
+    padding: 8px;
+    display: inline-block;
+    margin: 3px;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+
+  .moduleTitle {
+    margin: 3px;
+  }
 }
 
 /*
@@ -230,4 +287,28 @@ Fächerzuordnung
 
 .video {
   background-color: #33984b;
+}
+
+/* JSON-Edit */
+
+.jsonDiv {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#jsonInput {
+  width: 90vw;
+  height: 90vh;
+  font-size: 16px;
+  background-color: transparent;
+  color: var(--white);
+  margin: 5px;
+}
+
+#jsonButton {
+  width: 100px;
+  padding: 5px;
+  margin: 5px;
 }

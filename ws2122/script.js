@@ -1,7 +1,7 @@
 var binurl = "https://api.jsonbin.io/v3/b/615251b39548541c29b9a663";
 var apikey = "$2b$10$xnvjY70FJ/3AkP6TgMxOYOpcTWr/12FGKcvzBP5znTq2JoAW5qJO2";
 
-function read_request(doRefresh){
+function readRequest(doRefresh){
 
     let storage = localStorage['jsonbin'];
     if (storage != null && !doRefresh){
@@ -10,7 +10,7 @@ function read_request(doRefresh){
         return;
     }
 
-    document.getElementById("points").innerHTML = `<button onclick="read_request(true)">Refresh</button>`;
+    document.getElementById("points").innerHTML = "";
 
     let req = new XMLHttpRequest();
 
@@ -29,6 +29,9 @@ function read_request(doRefresh){
     req.send();
 }
 
+function help(){
+    return "getJSON() returns JSON, use setJSON(`jsonstring`) to update JSON";
+}
 
 function checkJSON(obj){
     if (returnsError(obj)){
@@ -60,8 +63,7 @@ function checkJSON(obj){
             percentage = 0;
         }
 
-        console.log(`${percentage} und ${required}`);
-        pointsObj.innerHTML += `<div class="scala" id="scala${count}"> <p class="scalaTitle">${title}</p> <p class="scalaPercentage">${percentage*100}%</p> </div>`;
+        pointsObj.innerHTML += `<div class="scala" id="scala${count}"> <p class="scalaTitle">${title}</p> <p class="scalaPercentage">${(percentage*100).toFixed(0)}%</p> </div>`;
         let tempScala = document.getElementById(`scala${count}`);
         if (required <= percentage){
             tempScala.style.backgroundImage = `linear-gradient(to right, var(--ok) 0%, var(--ok) ${percentage*100}%, var(--mid) ${percentage*100+0.1}%)`
@@ -72,6 +74,37 @@ function checkJSON(obj){
     }
 }
 
+function getJSON() {
+    let req = new XMLHttpRequest();
+    req.onreadystatechange = () => {
+        if (req.readyState === XMLHttpRequest.DONE) {
+            let json = req.responseText;
+            let obj = JSON.parse(json);
+            if (returnsError(obj)){
+                console.log("error");
+                return;
+            }
+            let record = getValue(obj,"record");
+            console.log(JSON.stringify(record));
+        }
+    };
+    req.open("GET", binurl + "/latest", true);
+    req.setRequestHeader("X-Master-Key", apikey);
+    req.send();
+}
+
+function setJSON(string){
+    let req = new XMLHttpRequest();
+    req.onreadystatechange = () => {
+        if (req.readyState === XMLHttpRequest.DONE) {
+            console.log(req.responseText);
+        }
+    };
+    req.open("PUT", binurl, true);
+    req.setRequestHeader("Content-Type", "application/json");
+    req.setRequestHeader("X-Master-Key", apikey);
+    req.send(string);
+}
 
 function returnsError(obj){
     for (var k in obj){

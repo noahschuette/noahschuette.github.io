@@ -75,7 +75,7 @@ button:hover {
 }
 
 .leftItem {
-  height: 160px;
+  height: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,7 +84,7 @@ button:hover {
 }
 
 .item {
-  min-height: 160px;
+  min-height: 140px;
   height: auto;
   width: 100%;
   outline: solid var(--mid) 1px;

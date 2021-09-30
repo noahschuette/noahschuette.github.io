@@ -11,7 +11,7 @@
   <script src="script.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body onload="read_request(false)">
+<body onload="readRequest(false)">
   <!--"Stundenplan"-->
   <div class="table">
     <div class="leftRow">
@@ -21,6 +21,7 @@
       <div class="leftItem"><p>12:15-13:45</p></div>
       <div class="leftItem"><p>14:15-15:45</p></div>
       <div class="leftItem"><p>16:15-17:45</p></div>
+      <div class="leftItem"><p>18:15-19:45</p></div>
     </div>
     <div class="row">
       <div class="headerItem"><p>Montag</p></div>
@@ -28,7 +29,8 @@
       <div class="item"><p class="placeholderTxt">Ü SE</p></div>
       <div class="item"><p class="placeholderTxt">Ü ML / SE Pr</p></div>
       <div class="item"><p class="placeholderTxt">Ü KOG / Ü ML* / Ü SE</p></div>
-      <div class="item mathe"><p class="moduleTxt">Vertiefung Mathe</p><p class="subTxt">Tutorium</p><a class="zoomIcon" href="#"><i class="fas fa-video"></i></a></div>
+      <div class="item"><p class="placeholderTxt">Ü M* (2)</p></div>
+      <div class="item"><p class="placeholderTxt">Ü M* (3)</p></div>
     </div>
     <div class="row">
       <div class="headerItem"><p>Dienstag</p></div>
@@ -37,14 +39,16 @@
       <div class="item gml"><p class="moduleTxt">Maschinelles Lernen</p><p class="subTxt">Vorlesung</p><a class="zoomIcon" href="#"><i class="fas fa-video"></i></a></div>
       <div class="item"><p class="placeholderTxt">SE Pr</p></div>
       <div class="item"></div>
+      <div class="item"></div>
     </div>
     <div class="row">
       <div class="headerItem"><p>Mittwoch</p></div>
       <div class="item"><p class="placeholderTxt">SE Pr</p></div>
-      <div class="item"></div>
-      <div class="item"><p class="placeholderTxt">Ü SE / SE Pr*</p></div>
+      <div class="item"><p class="placeholderTxt">Ü M* (1)</p></div>
+      <div class="item"><p class="placeholderTxt">Ü M* (4) / Ü SE / SE Pr*</p></div>
       <div class="item mathe"><p class="moduleTxt">Vertiefung Mathe</p><p class="subTxt">Vorlesung</p><a class="zoomIcon" href="#"><i class="fas fa-video"></i></a></div>
       <div class="item"><p class="placeholderTxt">Ü KOG</p></div>
+      <div class="item"></div>
     </div>
     <div class="row">
       <div class="headerItem"><p>Donnerstag</p></div>
@@ -52,13 +56,16 @@
       <div class="item gkk"><p class="moduleTxt">Künstliche Kognition</p><p class="subTxt">Vorlesung</p><p class="locationTxt">CITEC</p></div>
       <div class="item softw"><p class="moduleTxt">Software Engineering</p><p class="subTxt">Vorlesung</p><p class="locationTxt">H4, ONLINE</p><a class="zoomIcon" href="#"><i class="fas fa-video"></i></a></div>
       <div class="item datab"><p class="moduleTxt">Datenbanken</p><p class="subTxt">Vorlesung</p><a class="zoomIcon" href="#"><i class="fas fa-video"></i></a></div>
-      <div class="item"></div>
+      <div class="item"><p class="placeholderTxt">Ü M* (5)</p></div>
+      <div class="item"><p class="placeholderTxt">Ü M* (6)</p></div>
     </div>
     <div class="row">
       <div class="headerItem"><p>Freitag</p></div>
       <div class="item"></div><div class="item"></div>
       <div class="item"><p class="placeholderTxt">Ü DB* / Ü KOG / Ü SE</p></div>
-      <div class="item"></div><div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
     </div>
   </div>
 
@@ -98,7 +105,7 @@
     </div>
     <!--Punkte-->
     <div class="points" id="points">
-      <button onclick="read_request(true)"><i class="fas fa-sync-alt"></i></button>
+      <button onclick="readRequest(true)"><i class="fas fa-sync-alt"></i></button>
       <!--<div class="scala">
         <p class="scalaTitle">template</p>
         <p class="scalaPercentage">50%</p>

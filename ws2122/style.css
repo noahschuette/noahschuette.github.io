@@ -5,8 +5,8 @@
   --mid: #1C2C35;
   --dark: #111A20;
   --ok: #3E8948;
-  --notok: #A22633;
-  --notok2: #E43B44;
+  --notok: #2c4554;
+  --notok2: #A22633;
 }
 
 body {
@@ -133,6 +133,15 @@ button:hover {
 .zoomIcon:hover {
   background-color: var(--white);
   color: var(--blue);
+}
+
+.zoomIconDisabled {
+  border: solid white 2px;
+  background-color: var(--light);
+  color: var(--white);
+  padding: 8px;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 /*

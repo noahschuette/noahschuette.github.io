@@ -6,6 +6,8 @@
 html, body {
     background-color: var(--background);
     color: var(--text);
+    margin: 0;
+    font-family: 'Barlow', sans-serif;
 }
 
 a, p, h1 {

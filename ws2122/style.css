@@ -286,8 +286,16 @@ Fächerzuordnung
   background-color: #0098dc;
 }
 
+.ra {
+  background-color: #E43B44;
+}
+
 .lr {
   background-color: #ea323c;
+}
+
+.techfak {
+  background-color: #BC4A9B;
 }
 
 .lrplus {

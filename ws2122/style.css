@@ -35,6 +35,13 @@ button:hover {
   color: var(--white);
 }
 
+.info {
+  position: fixed;
+  right: 50px;
+  bottom: 10px;
+  background-color: black;
+}
+
 .table {
   width: 1000px;
   /*outline: solid green 1px;*/
@@ -94,6 +101,26 @@ button:hover {
   justify-content: center;
   flex-wrap: wrap;
   text-align: center;
+}
+
+.redMarked {
+  outline: solid red 2px;
+  outline-offset: -5px;
+}
+
+.greenMarked {
+  outline: solid green 2px;
+  outline-offset: -5px;
+}
+
+.dotMarked {
+  outline: dotted red 2px;
+  outline-offset: -5px;
+}
+
+.dotGreenMarked {
+  outline: dotted green 2px;
+  outline-offset: -5px;
 }
 
 .placeholderTxt {

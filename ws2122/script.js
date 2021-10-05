@@ -1,6 +1,7 @@
 var binurl = "https://api.jsonbin.io/v3/b/615251b39548541c29b9a663";
 var apikey = "$2b$10$xnvjY70FJ/3AkP6TgMxOYOpcTWr/12FGKcvzBP5znTq2JoAW5qJO2";
 
+
 function readRequest(doRefresh){
 
     let storage = localStorage['jsonbin'];

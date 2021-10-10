@@ -31,7 +31,7 @@ function readRequest(doRefresh){
 }
 
 function help(){
-    return "getJSON() returns JSON, use setJSON(`jsonstring`) to update JSON";
+    return "getJSON() | setJSON(`JSONSTRING`) | addPoints(INDEX,POINTS,MAXPOINTS)";
 }
 
 function checkJSON(obj){
@@ -73,6 +73,11 @@ function checkJSON(obj){
         }
         count++;
     }
+
+    let notes = document.getElementById("notes");
+    let noteVal = getValue(obj,"notes");
+    noteVal.replaceAll('\n','<br>');
+    notes.innerHTML = noteVal;
 }
 
 function getJSON() {
@@ -133,4 +138,65 @@ function getValue(obj, key) {
         }
     }
     return "undefined";
+}
+
+function replaceKey(obj, key, replaceString) {
+    for(var k in obj){
+        if (k === key){
+            obj[k] = JSON.parse(replaceString);
+            return;
+        }
+        if(obj[k] instanceof Object) {
+            if (k !== "metadata"){
+                return replaceKey(obj[k], key, replaceString);
+            }
+        }
+    }
+    console.log("err while replacing");
+}
+
+function addPoints(nr, points, maximum){
+    if (points > maximum){
+        console.log("Points must be smaller equals max points");
+        return;
+    }
+
+    let req = new XMLHttpRequest();
+    req.onreadystatechange = () => {
+        if (req.readyState === XMLHttpRequest.DONE) {
+            let json = req.responseText;
+            let obj = JSON.parse(json);
+
+            if (returnsError(obj)){
+                console.log("error");
+                return;
+            }
+
+            let entries = getValue(obj,"entries");
+            let entry = entries[nr];
+
+            let values = JSON.stringify(getValue(entry, "values"));
+            let maxvalues = JSON.stringify(getValue(entry, "max_values"));
+            if (values === "[]")
+                values = "[" + points + "]";
+            else
+                values = values.substring(0,values.length-1) + "," + points + "]";
+
+            if (maxvalues === "[]")
+                maxvalues = "[" + maximum + "]";
+            else
+                maxvalues = maxvalues.substring(0,maxvalues.length-1) + "," + maximum + "]";
+
+            let titel = getValue(entry, "titel");
+            let required = getValue(entry, "requiredpercentage");
+            entries[nr] = JSON.parse(`{"titel":${JSON.stringify(titel)},"requiredpercentage":${JSON.stringify(required)},"max_values":${maxvalues},"values":${values}}`);
+            replaceKey(obj,"entries",JSON.stringify(entries));
+
+            let record = getValue(obj,"record");
+            setJSON(JSON.stringify(record));
+        }
+    };
+    req.open("GET", binurl + "/latest", true);
+    req.setRequestHeader("X-Master-Key", apikey);
+    req.send();
 }

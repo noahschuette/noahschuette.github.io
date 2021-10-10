@@ -17,6 +17,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 button {
@@ -33,13 +34,6 @@ button {
 
 button:hover {
   color: var(--white);
-}
-
-.info {
-  position: fixed;
-  right: 50px;
-  bottom: 10px;
-  background-color: black;
 }
 
 .table {
@@ -103,6 +97,7 @@ button:hover {
   text-align: center;
 }
 
+/*
 .redMarked {
   outline: solid red 2px;
   outline-offset: -5px;
@@ -121,7 +116,7 @@ button:hover {
 .dotGreenMarked {
   outline: dotted green 2px;
   outline-offset: -5px;
-}
+}*/
 
 .placeholderTxt {
   color: var(--light);
@@ -215,6 +210,7 @@ Fächer
 }
 
 .scala {
+  max-width: 300px;
   margin: 10px;
   padding: 5px;
   background-color: var(--mid);
@@ -233,6 +229,14 @@ Fächer
   margin: 0 10px 0 10px;
   font-weight: 300;
   flex-grow: 1;
+}
+
+.notes {
+  max-width: 600px;
+  margin: 50px;
+  padding: 10px;
+  outline: dotted var(--mid) 2px;
+  color: var(--light);
 }
 
 /*

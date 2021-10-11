@@ -249,14 +249,15 @@ Mobile
     width: 100%;
   }
 
+  /*
   .moduleTxt {
-    font-size: calc(14px + 6 * ((100vw - 320px) / 680));
+    font-size: calc(14px + 2 * ((100vw - 320px) / 680));
   }
 
   .locationTxt, .subTxt, .headerItem p {
-    font-size: calc(12px + 6 * ((100vw - 320px) / 680));
+    font-size: calc(12px + 2 * ((100vw - 320px) / 680));
   }
-
+*/
   .modules {
     margin-top: 20px;
   }
@@ -291,34 +292,70 @@ Mobile
   .moduleTitle {
     margin: 3px;
   }
+
 }
 
 /*
 Fächerzuordnung
  */
 
+.tut {
+  outline-offset: -5px;
+}
+
 .mathe {
   background-color: #0069aa;
+}
+
+.matheTut {
+  background-color: transparent;
+  outline: solid #0069aa 5px;
 }
 
 .gml {
   background-color: #33984b;
 }
 
+.gmlTut {
+  background-color: transparent;
+  outline: solid #33984b 5px;
+}
+
 .gkk {
   background-color: #93388f;
+}
+
+.gkkTut {
+  background-color: transparent;
+  outline: solid #93388f 5px;
 }
 
 .datab {
   background-color: #ed7614;
 }
 
+.databTut {
+  background-color: transparent;
+  outline: solid #ed7614 5px;
+}
+
 .softw {
   background-color: #0098dc;
 }
 
+.softwTut {
+  background-color: transparent;
+  outline: solid #0098dc 5px;
+}
+
+
 .ra {
   background-color: #E43B44;
+}
+
+.raTut {
+  background-color: transparent;
+  outline: solid #E43B44 5px;
 }
 
 .lr {
@@ -335,28 +372,4 @@ Fächerzuordnung
 
 .video {
   background-color: #33984b;
-}
-
-/* JSON-Edit */
-
-.jsonDiv {
-  width: 100vw;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-#jsonInput {
-  width: 90vw;
-  height: 90vh;
-  font-size: 16px;
-  background-color: transparent;
-  color: var(--white);
-  margin: 5px;
-}
-
-#jsonButton {
-  width: 100px;
-  padding: 5px;
-  margin: 5px;
 }

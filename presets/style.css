@@ -21,3 +21,21 @@ button, input, a {
     text-decoration: none;
     margin: 0;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(0deg, var(--text), #db0000);
+    background: var(--background);
+    background-size: 400% 100%;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+}

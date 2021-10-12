@@ -222,6 +222,15 @@ Fächer
   color: var(--light);
 }
 
+.kalenderwoche {
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  color: var(--light);
+  padding: 5px;
+  outline: solid var(--light) 1px;
+}
+
 /*
 Mobile
  */

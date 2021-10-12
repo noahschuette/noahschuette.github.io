@@ -4,6 +4,8 @@ var apikey = "$2b$10$xnvjY70FJ/3AkP6TgMxOYOpcTWr/12FGKcvzBP5znTq2JoAW5qJO2";
 
 function readRequest(doRefresh){
 
+    getNumberOfWeek();
+
     let storage = localStorage['jsonbin'];
     if (storage != null && !doRefresh){
         checkJSON(JSON.parse(storage));
@@ -199,4 +201,12 @@ function addPoints(nr, points, maximum){
     req.open("GET", binurl + "/latest", true);
     req.setRequestHeader("X-Master-Key", apikey);
     req.send();
+}
+
+function getNumberOfWeek() {
+    const today = new Date();
+    const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+    const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
+    const numOfweek = Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7)-1;
+    document.getElementById("kw").innerHTML = "KW " + numOfweek;
 }

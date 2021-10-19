@@ -38,12 +38,9 @@ function help(){
 
 function checkJSON(obj){
     if (returnsError(obj)){
-        console.log("error");
         return;
     }
 
-
-    ///......
     let pointsObj = document.getElementById("points");
 
     let entries = getValue(obj,"entries");
@@ -76,6 +73,10 @@ function checkJSON(obj){
         count++;
     }
 
+    //TASK CHECK
+    setTasks(getValue(obj,"tasks"));
+
+    // NOTE CHECK
     let notes = document.getElementById("notes");
     let noteVal = getValue(obj,"notes");
     noteVal.replaceAll('\n','<br>');
@@ -89,7 +90,6 @@ function getJSON() {
             let json = req.responseText;
             let obj = JSON.parse(json);
             if (returnsError(obj)){
-                console.log("error");
                 return;
             }
             let record = getValue(obj,"record");
@@ -106,6 +106,9 @@ function setJSON(string){
     req.onreadystatechange = () => {
         if (req.readyState === XMLHttpRequest.DONE) {
             console.log(req.responseText);
+            localStorage['jsonbin'] = req.responseText;
+            clear();
+            checkJSON(JSON.parse(req.responseText));
         }
     };
     req.open("PUT", binurl, true);
@@ -114,9 +117,17 @@ function setJSON(string){
     req.send(string);
 }
 
+function clear(){
+    document.getElementById('points').innerHTML = "";
+    document.getElementById('tasks').innerHTML = "";
+    document.getElementById('notes').innerHTML = "";
+}
+
 function returnsError(obj){
     for (var k in obj){
         if (k === "message"){
+            alert('Error: Checking JSON failed');
+            console.log("Error: Checking JSON failed");
             return true;
         }
         else {
@@ -142,7 +153,7 @@ function getValue(obj, key) {
     return "undefined";
 }
 
-function replaceKey(obj, key, replaceString) {
+/*function replaceKey(obj, key, replaceString) {
     for(var k in obj){
         if (k === key){
             obj[k] = JSON.parse(replaceString);
@@ -155,6 +166,22 @@ function replaceKey(obj, key, replaceString) {
         }
     }
     console.log("err while replacing");
+}*/
+
+function replaceKey(obj, key, replaceString) {
+    for(var k in obj){
+        if (k === key){
+            obj[k] = JSON.parse(replaceString);
+            //console.log("replaced");
+            return;
+        }
+        if(obj[k] instanceof Object) {
+            if (k !== "metadata"){
+                replaceKey(obj[k], key, replaceString);
+            }
+        }
+    }
+    //console.log("err while replacing");
 }
 
 function addPoints(nr, points, maximum){
@@ -170,7 +197,6 @@ function addPoints(nr, points, maximum){
             let obj = JSON.parse(json);
 
             if (returnsError(obj)){
-                console.log("error");
                 return;
             }
 
@@ -209,4 +235,96 @@ function getNumberOfWeek() {
     const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
     const numOfweek = Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7)-1;
     document.getElementById("kw").innerHTML = "KW " + numOfweek;
+}
+
+function removeTask(nr){
+    let req = new XMLHttpRequest();
+    req.onreadystatechange = () => {
+        if (req.readyState === XMLHttpRequest.DONE) {
+            let json = req.responseText;
+            let obj = JSON.parse(json);
+
+            if (returnsError(obj)){
+                return;
+            }
+
+            let tasks = getValue(obj,"tasks");
+            let task = tasks[nr];
+
+            if (nr > -1) {
+                tasks.splice(nr, 1);
+            }
+
+            replaceKey(obj,"tasks",JSON.stringify(tasks));
+            let record = getValue(obj,"record");
+            setJSON(JSON.stringify(record));
+        }
+    };
+    req.open("GET", binurl + "/latest", true);
+    req.setRequestHeader("X-Master-Key", apikey);
+    req.send();
+}
+
+function addTask(){
+    let title = document.getElementById("titleInput").value;
+    if (title === "")
+        return;
+
+    let date = document.getElementById("dateInput").value;
+    let regex = /^[0-9]{1,2}\/[0-9]{1,2}$/
+    let re = date.match(regex);
+    if (re === null)
+        return;
+
+    let req = new XMLHttpRequest();
+    req.onreadystatechange = () => {
+        if (req.readyState === XMLHttpRequest.DONE) {
+            let json = req.responseText;
+            let obj = JSON.parse(json);
+
+            if (returnsError(obj)){
+                return;
+            }
+
+            let tasks = getValue(obj,"tasks");
+            let newTask = `{"title":"${title}","date":"${date}"}`;
+
+            let tString = JSON.stringify(tasks);
+            if (tString === "[]")
+                tString = "[" + newTask + "]";
+            else
+                tString = tString.substring(0,tString.length-1) + "," + newTask + "]";
+
+            replaceKey(obj,"tasks",tString);
+            let record = getValue(obj,"record");
+            setJSON(JSON.stringify(record));
+        }
+    };
+    req.open("GET", binurl + "/latest", true);
+    req.setRequestHeader("X-Master-Key", apikey);
+    req.send();
+}
+
+function setTasks(taskObj){
+    let upper = document.getElementById("tasks");
+    upper.innerHTML = "";
+
+    for (let k in taskObj){
+        let title = getValue(taskObj[k],"title");
+        let date = getValue(taskObj[k],"date");
+        let day = date.split('/')[0];
+        let month = date.split('/')[1];
+
+        let added = `<div id="task${k}" class="task"><button onclick="removeTask(${k})"><i class="fas fa-check"></i></button><p class="taskTitle">${title}</p><p class="taskDate">${day}.${month}.</p></div>`
+        upper.innerHTML += added;
+    }
+
+    if (JSON.stringify(taskObj) === "[]")
+        upper.innerHTML += '<p class="noTasks">Wir haben alles erledigt :)</p>';
+
+    upper.innerHTML += `<div class="taskInput">
+        <input id="titleInput" type="text" placeholder="New Task">
+        <input id="dateInput" type="text" placeholder="DD/MM" maxlength="5">
+        <button class="submit" onclick="addTask()"><i class="fas fa-arrow-right"></i></button>
+      </div>`;
 }

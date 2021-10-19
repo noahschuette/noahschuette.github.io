@@ -296,6 +296,7 @@ Task
 .taskTitle {
   margin: 0 5px;
   font-weight: 500;
+  flex-grow: 1;
 }
 
 .taskDate {
@@ -329,6 +330,11 @@ Task
 
 .taskInput input::placeholder {
   color: var(--light);
+}
+
+.noTasks {
+  color: var(--ok);
+  margin-left: 10px;
 }
 
 option {

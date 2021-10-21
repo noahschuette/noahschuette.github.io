@@ -563,3 +563,12 @@ Fächerzuordnung
 .matrix {
   background-color: #1ABC9C;
 }
+
+.redmine {
+  background-color: #FF77A8;
+  color: black;
+}
+
+.jenkins {
+  background-color: #1D2B53;
+}

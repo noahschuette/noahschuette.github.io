@@ -11,7 +11,7 @@
   <script src="script.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body onload="readRequest(false)">
+<body onload="onloaded()">
   <!--"Stundenplan"-->
   <div class="table">
     <div class="leftRow">
@@ -45,7 +45,7 @@
       <div class="headerItem"><p>Mittwoch</p></div>
       <div class="item"></div>
       <div class="item"></div>
-      <div class="item tut raTut"><p class="moduleTime">12:15-13:45</p><p class="moduleTxt">Rechnerarchitektur</p><p class="subTxt">Tutorium</p><a class="zoomIconDisabled" href=""><i class="fas fa-video"></i></a></div>
+      <div class="item tut raTut"><p class="moduleTime">12:15-13:45</p><p class="moduleTxt">Rechnerarchitektur</p><p class="subTxt">Tutorium</p><a class="zoomIcon" href="https://uni-bielefeld.zoom.us/j/92461656102?pwd=MUN4d2FINWNRN1JHN3pnMHVscUxSdz09"><i class="fas fa-video"></i></a></div>
       <div class="item mathe"><p class="moduleTime">14:15-15:45</p><p class="moduleTxt">Vertiefung Mathe</p><p class="subTxt">Vorlesung</p><a class="zoomIcon" href="https://uni-bielefeld.zoom.us/j/99590266069?pwd=clVPQ1R0RFFpZjFTLy9QWXlVenRJQT09"><i class="fas fa-video"></i></a></div>
       <div class="item"></div>
       <div class="item"></div>
@@ -62,7 +62,7 @@
     <div class="row">
       <div class="headerItem"><p>Freitag</p></div>
       <div class="item"></div><div class="item"></div>
-      <div class="item tut databTut"><p class="moduleTime">12:15-13:45</p><p class="moduleTxt">Datenbanken</p><p class="subTxt">Tutorium</p><p class="locationTxt">V7-140</p></div>
+      <div class="item tut databTut"><p class="moduleTime">12:15-13:45</p><p class="moduleTxt">Datenbanken</p><p class="subTxt">Tutorium</p><a class="zoomIcon" href="https://uni-bielefeld.zoom.us/j/98173678171?pwd=TnRlTDN2NXFSUzBoTHdWZHpFNjhCQT09"><i class="fas fa-video"></i></a></div>
       <div class="item tut softwTut"><p class="moduleTime">14:15-15:45</p><p class="moduleTxt">Software Engineering</p><p class="subTxt">Tutorium</p><p class="locationTxt">V2-221/222</p><a class="zoomIcon" href="https://lernraumplus.uni-bielefeld.de/mod/url/view.php?id=492040"><i class="fas fa-video"></i></a></div>
       <div class="item"></div>
       <div class="item"></div>
@@ -115,8 +115,10 @@
         <a class="moduleLink" href="https://lernraumplus.uni-bielefeld.de/pluginfile.php/582471/mod_resource/content/1/course_overview.pdf">Course Overview</a>
       </div>
     </div>
-    <!--Task -->
-    <p class="title">TO-DO</p>
+
+    <button id="showJSONpart" onclick="showJSONpart()" class="showJSONpart">TODO & Tabelle anzeigen</button>
+
+    <!--<p class="title">TO-DO</p>
     <div id="tasks" class="tasks">
       <div class="taskInput">
         <input id="titleInput" type="text" placeholder="New Task">
@@ -124,24 +126,18 @@
         <button class="submit" onclick="addTask()"><i class="fas fa-arrow-right"></i></button>
       </div>
     </div>
-    <!--Punkte-->
     <p class="title">Punktetabelle</p>
     <div class="points" id="points">
-      <!--<div class="scala">
-        <p class="scalaTitle">template</p>
-        <p class="scalaPercentage">50%</p>
-      </div>-->
     </div>
     <p class="title">Notizen</p>
-    <!--Notes-->
     <div class="notes" id="notes">
       Fehler beim Laden der Notizen!
     </div>
-  </section>
+  </section>-->
 
   <!--KW-->
   <p class="kalenderwoche" id="kw">KW 187</p>
-  <button id="refresh" onclick="readRequest(true)"><i class="fas fa-sync-alt"></i></button>
+  <!--<button id="refresh" onclick="readRequest(true)"><i class="fas fa-sync-alt"></i></button>-->
 
 
 </body>

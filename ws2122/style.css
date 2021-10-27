@@ -304,12 +304,27 @@ Task
   color: var(--light);
 }
 
-.outdatedBtn {
-  border: solid var(--notok2) 2px;
+.outdatedDate {
+  color: var(--notok2);
 }
 
 .outdated {
   color: var(--red);
+}
+
+.showJSONpart {
+  background-color: transparent;
+  border-radius: 0;
+  border: solid var(--light) 3px;
+  padding: 10px;
+  margin: 50px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.showJSONpart:hover {
+  border: solid white 3px;
+  color: white;
 }
 
 .taskInput {

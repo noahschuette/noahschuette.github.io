@@ -230,12 +230,13 @@ Fächer
 
 .kalenderwoche {
   position: fixed;
-  right: 50px;
+  right: 10px;
   top: 10px;
   color: var(--light);
   padding: 5px;
   outline: solid var(--light) 1px;
   margin: 10px;
+  background-color: var(--dark);
 }
 
 #refresh {
@@ -323,6 +324,7 @@ Task
 }
 
 .showJSONpart:hover {
+  border: solid white 3px;
   border: solid white 3px;
   color: white;
 }

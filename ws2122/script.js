@@ -18,12 +18,11 @@ let jsonpart = `    <!--Task -->
         <p class="scalaPercentage">50%</p>
       </div>-->
     </div>
-    <p class="title">Notizen</p>
+    <p class="title">Notizen <button id="notesBtn" onclick="showNotes()">ANZEIGEN</button></p>
     <!--Notes-->
     <div class="notes" id="notes">
       Fehler beim Laden der Notizen!
-    </div>
-  </section>`
+    </div>`
 
 function onloaded(){
     getNumberOfWeek();
@@ -32,9 +31,8 @@ function onloaded(){
 function showJSONpart(){
     let rightpart = document.getElementById('rightPart');
     rightpart.innerHTML += jsonpart;
-
     readRequest(true);
-
+    showNotes(); //Hiding notes
     document.getElementById('showJSONpart').remove();
 }
 
@@ -136,6 +134,11 @@ function getJSON() {
 }
 
 function setJSON(string){
+    if (string === ""){
+        console.log("empty string!");
+        return;
+    }
+
     let req = new XMLHttpRequest();
     req.onreadystatechange = () => {
         if (req.readyState === XMLHttpRequest.DONE) {
@@ -264,11 +267,17 @@ function addPoints(nr, points, maximum){
 }
 
 function getNumberOfWeek() {
-    const today = new Date();
+    /*const today = new Date();
     const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
     const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
     const numOfweek = Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7)-1;
-    document.getElementById("kw").innerHTML = "KW " + numOfweek;
+    document.getElementById("kw").innerHTML = "KW " + numOfweek;*/
+    let date = new Date();
+    let currentThursday = new Date(date.getTime() +(3-((date.getDay()+6) % 7)) * 86400000);
+    let yearOfThursday = currentThursday.getFullYear();
+    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(3-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) * 86400000);
+    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
+    document.getElementById("kw").innerHTML = "KW " + weekNumber;
 }
 
 function removeTask(nr){
@@ -305,11 +314,21 @@ function addTask(){
         return;
 
     let date = document.getElementById("dateInput").value;
+    date = date.replace(',','/');
     date = date.replace('.','/');
     let regex = /^[0-9]{1,2}\/[0-9]{1,2}$/
     let re = date.match(regex);
     if (re === null)
         return;
+
+    //console.log(date.split('/')[1]);
+    //console.log(new Date().getMonth()+1);
+    if (date.split('/')[1] < new Date().getMonth()+1)
+        date += '/' + (new Date().getFullYear()+1);
+    else
+        date += '/' + new Date().getFullYear();
+
+    //console.log(date);
 
     let req = new XMLHttpRequest();
     req.onreadystatechange = () => {
@@ -344,63 +363,71 @@ function setTasks(taskObj){
     let upper = document.getElementById("tasks");
     upper.innerHTML = "";
     let names = [];
-    let dates = [];
-    let now = Date.now();
+    let years = [];
+    let months = [];
+    let days = [];
+    let tasknr = [];
+    let now = new Date();
+    now.setHours(0,0,0,0);
 
     for (let k in taskObj){
         let title = getValue(taskObj[k],"title");
         let rawdate = getValue(taskObj[k],"date");
-        let day = rawdate.split('/')[0];
-        let month = rawdate.split('/')[1];
-        let date = new Date();
-        if (month < new Date().getMonth())
-            date.setFullYear(date.getFullYear()+1);
-        date.setMonth(month-1);
-        date.setDate(day);
+        let splitted = rawdate.split('/');
+        let day = parseInt(splitted[0]);
+        let month = parseInt(splitted[1]);
+        let year = new Date().getFullYear();
+        if (splitted.length === 3)
+            year = parseInt(splitted[2]);
+
+        //console.log(`>> ${title}, ${day},${month},${year}`);
 
         let inserted = false;
-
-        let maintime = Math.ceil(Math.abs(now - date.getTime()) / (1000 * 60 * 60 * 24));
-
         for (let j in names){
-
-            let temptime = Math.ceil(Math.abs(now - dates[j].getTime()) / (1000 * 60 * 60 * 24));
-            if (maintime > temptime){
-                if (j === 0){
-                    names.push(title);
-                    dates.push(date);
-                } else {
-                    names.splice(j, 0, title);
-                    dates.splice(j, 0, date);
-                }
+            //console.log(`${year}:${years[j]}, ${month}:${months[j]}, ${day}:${parseInt(days[j])}`);
+            if (year < years[j] || year === years[j] && month < months[j] || year === years[j] && month === months[j] && day < days[j]){
+                //console.log("> adding before " + names[j]);
+                names.splice(j, 0, title);
+                days.splice(j, 0, day);
+                months.splice(j, 0, month);
+                years.splice(j, 0, year);
+                tasknr.splice(j, 0, k);
                 inserted = true;
                 break;
             }
         }
         if (!inserted){
+            console.log("> adding below");
             names.push(title);
-            dates.push(date);
+            days.push(day);
+            months.push(month);
+            years.push(year);
+            tasknr.push(k);
         }
     }
 
-    for (let i= (names.length-1); i >= 0; i--){
+    console.log(names);
+    console.log(tasknr);
+
+    for (let i in names){
         let title = names[i];
-        let date = dates[i];
-        let day = date.getDate();
-        let month = date.getMonth()+1;
+        //console.log("new" + title);
+        let year = years[i];
+        let month = months[i];
+        let day = days[i];
 
         if (day.length === 1)
-            day = '0' + day;
+            day = '0' + day.toString();
         if (month.length === 1)
-            month = '0' + month;
+            month = '0' + month.toString();
 
-        let datediff = Math.ceil(Math.ceil(now - date.getTime()) / (1000 * 60 * 60 * 24));
+        let datediff = calcDateDiff(now, new Date(year,month-1,day,0,0,0,0));
 
         let added = "";
         if (datediff <= 0)
-            added = `<div id="task${i}" class="task"><button onclick="removeTask(${i})"><i class="fas fa-check"></i></button><p class="taskTitle">${title}</p><p class="taskDate">${day}.${month}.</p></div>`;
+            added = `<div id="task${tasknr[i]}" class="task"><button onclick="removeTask(${tasknr[i]})"><i class="fas fa-check"></i></button><p class="taskTitle">${title}</p><p class="taskDate">${day}.${month}.${year}</p></div>`;
         else
-            added = `<div id="task${i}" class="task outdated"><button onclick="removeTask(${i})"><i class="fas fa-check"></i></button><p class="taskTitle">${title}</p><p class="taskDate outdatedDate">${day}.${month}. - Seit ${datediff} Tagen überfällig</p></div>`;
+            added = `<div id="task${tasknr[i]}" class="task outdated"><button onclick="removeTask(${tasknr[i]})"><i class="fas fa-check"></i></button><p class="taskTitle">${title}</p><p class="taskDate outdatedDate">${day}.${month}.${year} - Seit ${datediff} Tagen überfällig</p></div>`;
         upper.innerHTML += added;
     }
 
@@ -412,4 +439,21 @@ function setTasks(taskObj){
         <input id="dateInput" type="text" placeholder="DD/MM" maxlength="5">
         <button class="submit" onclick="addTask()"><i class="fas fa-arrow-right"></i></button>
       </div>`;
+}
+
+function calcDateDiff(date1, date2){
+    console.log(date1 + "-" + date2 + "=" + Math.ceil(Math.ceil(date1 - date2) / (1000 * 60 * 60 * 24)));
+    return Math.ceil(Math.ceil(date1 - date2) / (1000 * 60 * 60 * 24));
+}
+
+let notesActive = true;
+function showNotes(){
+    if (notesActive){
+        document.getElementById('notes').style.display = "none";
+        document.getElementById('notesBtn').innerHTML = "ANZEIGEN";
+    } else {
+        document.getElementById('notes').style.display = "block";
+        document.getElementById('notesBtn').innerHTML = "AUSBLENDEN";
+    }
+    notesActive = !notesActive;
 }

@@ -231,6 +231,7 @@ About & Project allg
   align-items: center;
   justify-content: center;
   flex-grow: 2;
+  margin: 0 30px
 }
 
 .secProjectsTitle {
@@ -246,12 +247,13 @@ About & Project allg
   flex-grow: 2;
   /*background-color: var(--grey);*/
   color: var(--white);
+  margin: 0 30px;
 }
 
 .line {
   width: 2px;
   height: 80vh;
-  background-color: var(--white);
+  background-color: var(--light);
   border-radius: 5px;
 }
 
@@ -260,6 +262,75 @@ About & Project allg
 About
 
 */
+
+.newAboutHeader {
+  margin: 0 0 30px 0;
+  padding: 15px;
+  border: solid 2px var(--light);
+  border-radius: 10px;
+}
+
+.newAboutHeader p {
+  font-size: 18px;
+  font-weight: 300;
+  margin: 15px;
+}
+
+.newAboutCode {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.newCodeSegment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  padding: 15px;
+  border: solid 2px var(--light);
+  border-radius: 10px;
+}
+
+@-webkit-keyframes blackWhiteBorder {
+  0% {border: solid 2px var(--light);}
+  100% {color: solid 2px var(--white);}
+}
+
+.newCodeSegment:hover, .newAboutHeader:hover {
+  border: solid 2px var(--white);
+  -webkit-animation-name: blackWhiteBorder;
+  -webkit-animation-duration: 1s;
+}
+
+.newCodeSegment p {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.codeIcons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.newCodeSegment i {
+  font-size: 40px;
+  margin: 0 7px;
+  color: var(--light);
+}
+
+.newCodeSegment i:hover {
+  color: white;
+  -webkit-animation-name: blackWhite;
+  -webkit-animation-duration: 0.5s;
+}
 
 .aboutText {
   font-weight: 300;
@@ -356,9 +427,18 @@ h4 b {
 }
 
 .bottom a, .bottom p {
+  color: var(--light);
   font-size: 15px;
   font-weight: 300;
   display: inline;
+}
+
+.bottom a:hover {
+  color: var(--white);
+}
+
+.bottom a {
+  font-weight: 500;
 }
 
 .bottom i {
@@ -674,3 +754,4 @@ Parallax
   width: 100vw;
   height: 100vh;
 }
+

@@ -59,15 +59,24 @@
     margin: 30px 0 30px 0;
   }
 
+  .newAboutCode {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .newCodeSegment {
+    margin: 10px 0;
+  }
+
 }
 
 /* Mobile only */
 /* Mindest-Space benötigt um Title zu zeigen ist 300, wird also von mobile abgedeckt */
 @media (max-width: 515px) {
 
-  .secAbout {
+  /*.secAbout {
     display: none;
-  }
+  }*/
 
   .secHead {
     align-items: center;

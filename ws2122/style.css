@@ -201,23 +201,46 @@ Fächer
 .scala {
   max-width: 300px;
   margin: 10px;
+  outline: solid 2px var(--mid);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scalaMain {
+  width: calc(100% - 10px);
   padding: 5px;
   background-color: var(--mid);
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .scalaPercentage {
   color: var(--white);
-  margin: 0 10px 0 0;
+  margin: 0 5px 0 0;
   font-weight: 700;
 }
 
 .scalaTitle {
   color: var(--white);
-  margin: 0 10px 0 10px;
+  margin: 0 5px;
   font-weight: 300;
   flex-grow: 1;
+}
+
+.scalaSub {
+  margin: 8px 10px 8px 0;
+  width: calc(100% - 10px);
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.scalaPoints {
+  width: 100%;
+  margin: 2px 0;
+  text-align: right;
 }
 
 .notes {
@@ -255,6 +278,40 @@ Fächer
 #refresh:hover {
   background-color: var(--red);
   border: none;
+}
+
+/*
+Tests
+ */
+
+.tests {
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin: 0 50px 0 50px;
+}
+
+.testsColumn {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.testsHeader {
+  width: 100px;
+  margin:0;
+  font-weight: 500;
+  color: var(--light);
+}
+
+.testsColumn p {
+  width: calc(100% - 10px);
+  padding: 5px;
+  margin:0;
+  border: solid 1px var(--mid);
 }
 
 /*

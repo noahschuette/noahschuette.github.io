@@ -14,10 +14,19 @@ let jsonpart = `    <!--Task -->
     <p class="title">Punktetabelle</p>
     <div class="points" id="points">
       <!--<div class="scala">
-        <p class="scalaTitle">template</p>
-        <p class="scalaPercentage">50%</p>
+        <div class="scalaMain">
+          <p class="scalaTitle">template</p>
+          <p class="scalaPercentage">50%</p>
+        </div>
+        <div class="scalaSub">
+          <p class="scalaPoints">5/10</p>
+          <p class="scalaPoints"><b>= 5/10</b></p>
+        </div>
       </div>-->
     </div>
+    <!--Tests-->
+    <p class="title">Klausurtermine</p>
+    <div class="tests" id="tests"></div>
     <p class="title">Notizen <button id="notesBtn" onclick="showNotes()">ANZEIGEN</button></p>
     <!--Notes-->
     <div class="notes" id="notes">
@@ -95,15 +104,44 @@ function checkJSON(obj){
             percentage = 0;
         }
 
-        pointsObj.innerHTML += `<div class="scala" id="scala${count}"> <p class="scalaTitle">${title}</p> <p class="scalaPercentage">${(percentage*100).toFixed(0)}%</p> </div>`;
+        let scala = "";
+        //pointsObj.innerHTML += `<div class="scala" id="scala${count}"> <p class="scalaTitle">${title}</p> <p class="scalaPercentage">${(percentage*100).toFixed(0)}%</p> </div>`;
+        scala += `<div class="scala" onclick="extendPoints(${count})"><div class="scalaMain" id="scala${count}"><p class="scalaTitle">${title}</p><p class="scalaPercentage">${(percentage*100).toFixed(0)}%</p></div>
+        <div class="scalaSub" id="scalaSub${count}">`;
+        for (let m in values){
+            scala += `<p class="scalaPoints">${values[m]}/${maxvalues[m]}</p>`;
+        }
+        scala += `<p class="scalaPoints"><b>${valSum}/${maxSum}</b></p></div></div>`;
+        pointsObj.innerHTML += scala;
+
         let tempScala = document.getElementById(`scala${count}`);
         if (required <= percentage){
             tempScala.style.backgroundImage = `linear-gradient(to right, var(--ok) 0%, var(--ok) ${percentage*100}%, var(--mid) ${percentage*100+0.1}%)`
         } else {
             tempScala.style.backgroundImage = `linear-gradient(to right, var(--notok2) 0%, var(--notok2) ${percentage*100}%, var(--notok) ${percentage*100+0.1}%, var(--notok) ${required*100}%, var(--mid) ${required*100+0.1}%)`
         }
+        extendPoints(count);
         count++;
     }
+
+    //TESTS CHECK
+    let tests = getValue(obj,"tests");
+
+    let testsObj = document.getElementById("tests");
+
+    let fachCol = `<div class="testsColumn"><p class="testsHeader">Fach</p>`;
+    let firstCol = `<div class="testsColumn"><p class="testsHeader">Erstklausur</p>`;
+    let sndCol = `<div class="testsColumn"><p class="testsHeader">Zweitklausur</p>`;
+
+    for (let i in tests){
+        fachCol += `<p>${getValue(tests[i],"title")}</p>`;
+        firstCol += `<p>${getValue(tests[i],"first")}</p>`;
+        sndCol += `<p>${getValue(tests[i],"second")}</p>`;
+    }
+
+    fachCol += `</div>`; firstCol += `</div>`; sndCol += `</div>`;
+
+    testsObj.innerHTML = fachCol + firstCol + sndCol;
 
     //TASK CHECK
     setTasks(getValue(obj,"tasks"));
@@ -456,4 +494,13 @@ function showNotes(){
         document.getElementById('notesBtn').innerHTML = "AUSBLENDEN";
     }
     notesActive = !notesActive;
+}
+
+function extendPoints(number) {
+    const extendedPart = document.getElementById('scalaSub'+number);
+    if (extendedPart.style.display === "none") {
+        extendedPart.style.display = "flex";
+    } else {
+        extendedPart.style.display = "none";
+    }
 }

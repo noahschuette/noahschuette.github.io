@@ -13,22 +13,12 @@ let jsonpart = `    <!--Task -->
     <!--Punkte-->
     <p class="title">Punktetabelle</p>
     <div class="points" id="points">
-      <!--<div class="scala">
-        <div class="scalaMain">
-          <p class="scalaTitle">template</p>
-          <p class="scalaPercentage">50%</p>
-        </div>
-        <div class="scalaSub">
-          <p class="scalaPoints">5/10</p>
-          <p class="scalaPoints"><b>= 5/10</b></p>
-        </div>
-      </div>-->
     </div>
     <!--Tests-->
-    <p class="title">Klausurtermine</p>
-    <div class="tests" id="tests"></div>
-    <p class="title">Notizen <button id="notesBtn" onclick="showNotes()">ANZEIGEN</button></p>
+    <!--<p class="title">Klausurtermine</p>
+    <div class="tests" id="tests"></div>-->
     <!--Notes-->
+    <p class="title">Notizen <button id="notesBtn" onclick="showNotes()">ANZEIGEN</button></p>
     <div class="notes" id="notes">
       Fehler beim Laden der Notizen!
     </div>`
@@ -106,13 +96,21 @@ function checkJSON(obj){
 
         let scala = "";
         //pointsObj.innerHTML += `<div class="scala" id="scala${count}"> <p class="scalaTitle">${title}</p> <p class="scalaPercentage">${(percentage*100).toFixed(0)}%</p> </div>`;
-        scala += `<div class="scala" onclick="extendPoints(${count})"><div class="scalaMain" id="scala${count}"><p class="scalaTitle">${title}</p><p class="scalaPercentage">${(percentage*100).toFixed(0)}%</p></div>
+        scala += `<div class="scala"><div class="scalaMain" id="scala${count}"><p class="scalaTitle" onclick="extendPoints(${count})">${title}</p><p class="scalaPercentage">${(percentage*100).toFixed(0)}%</p></div>
         <div class="scalaSub" id="scalaSub${count}">`;
         for (let m in values){
             scala += `<p class="scalaPoints">${values[m]}/${maxvalues[m]}</p>`;
         }
-        scala += `<p class="scalaPoints"><b>${valSum}/${maxSum}</b></p></div></div>`;
+        scala += `<p class="scalaPoints"><b>${valSum}/${maxSum}</b></p>`;
+
+        scala += `<div class="taskInput">
+            <input id="scalaPointInput${count}" class="scalaInput" type="text" placeholder="Punkte" maxlength="3">
+            <input id="scalaMaxInput${count}" class="scalaInput" type="text" placeholder="Max" maxlength="3">
+            <button class="submit" onclick="addPointsViaFun(${count})"><i class="fas fa-plus"></i></button>
+            </div>`
         pointsObj.innerHTML += scala;
+
+        scala += "</div></div>";
 
         let tempScala = document.getElementById(`scala${count}`);
         if (required <= percentage){
@@ -125,6 +123,7 @@ function checkJSON(obj){
     }
 
     //TESTS CHECK
+    /*
     let tests = getValue(obj,"tests");
 
     let testsObj = document.getElementById("tests");
@@ -142,7 +141,7 @@ function checkJSON(obj){
     fachCol += `</div>`; firstCol += `</div>`; sndCol += `</div>`;
 
     testsObj.innerHTML = fachCol + firstCol + sndCol;
-
+    */
     //TASK CHECK
     setTasks(getValue(obj,"tasks"));
 
@@ -228,21 +227,6 @@ function getValue(obj, key) {
     return "undefined";
 }
 
-/*function replaceKey(obj, key, replaceString) {
-    for(var k in obj){
-        if (k === key){
-            obj[k] = JSON.parse(replaceString);
-            return;
-        }
-        if(obj[k] instanceof Object) {
-            if (k !== "metadata"){
-                return replaceKey(obj[k], key, replaceString);
-            }
-        }
-    }
-    console.log("err while replacing");
-}*/
-
 function replaceKey(obj, key, replaceString) {
     for(var k in obj){
         if (k === key){
@@ -259,11 +243,13 @@ function replaceKey(obj, key, replaceString) {
     //console.log("err while replacing");
 }
 
+function addPointsViaFun(nr) {
+    let pointScala = document.getElementById("scalaPointInput" + nr).value;
+    let maxScala = document.getElementById("scalaMaxInput" + nr).value;
+    addPoints(nr,pointScala,maxScala);
+}
+
 function addPoints(nr, points, maximum){
-    if (points > maximum){
-        console.log("Points must be smaller equals max points");
-        return;
-    }
 
     let req = new XMLHttpRequest();
     req.onreadystatechange = () => {
@@ -305,11 +291,6 @@ function addPoints(nr, points, maximum){
 }
 
 function getNumberOfWeek() {
-    /*const today = new Date();
-    const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
-    const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
-    const numOfweek = Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7)-1;
-    document.getElementById("kw").innerHTML = "KW " + numOfweek;*/
     let date = new Date();
     let currentThursday = new Date(date.getTime() +(3-((date.getDay()+6) % 7)) * 86400000);
     let yearOfThursday = currentThursday.getFullYear();
@@ -359,8 +340,6 @@ function addTask(){
     if (re === null)
         return;
 
-    //console.log(date.split('/')[1]);
-    //console.log(new Date().getMonth()+1);
     if (date.split('/')[1] < new Date().getMonth()+1)
         date += '/' + (new Date().getFullYear()+1);
     else
@@ -435,7 +414,6 @@ function setTasks(taskObj){
             }
         }
         if (!inserted){
-            console.log("> adding below");
             names.push(title);
             days.push(day);
             months.push(month);
@@ -443,9 +421,6 @@ function setTasks(taskObj){
             tasknr.push(k);
         }
     }
-
-    console.log(names);
-    console.log(tasknr);
 
     for (let i in names){
         let title = names[i];
@@ -480,7 +455,6 @@ function setTasks(taskObj){
 }
 
 function calcDateDiff(date1, date2){
-    console.log(date1 + "-" + date2 + "=" + Math.ceil(Math.ceil(date1 - date2) / (1000 * 60 * 60 * 24)));
     return Math.ceil(Math.ceil(date1 - date2) / (1000 * 60 * 60 * 24));
 }
 

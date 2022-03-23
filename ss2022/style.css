@@ -251,6 +251,19 @@ Fächer
   color: var(--light);
 }
 
+.sommersemester {
+  position: fixed;
+  right: 80px;
+  top: 10px;
+  background-color: var(--light);
+  padding: 5px;
+  color: white;
+  margin: 10px;
+  outline: solid var(--light) 1px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .kalenderwoche {
   position: fixed;
   right: 10px;
@@ -424,6 +437,11 @@ option {
   text-align: center;
   margin-left: 5px;
 }
+
+.scalaInput {
+  width: 50px;
+}
+
 
 .title {
   margin: 40px 0 30px 50px;

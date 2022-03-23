@@ -1,0 +1,69 @@
+{
+  "entries": [
+    {
+      "titel": "Mathe IV",
+      "requiredpercentage": 0.5,
+      "max_values": [],
+      "values": []
+    },
+    {
+      "titel": "SGP",
+      "requiredpercentage": 0.5,
+      "max_values": [],
+      "values": []
+    },
+    {
+      "titel": "Betriebssysteme",
+      "requiredpercentage": 0.5,
+      "max_values": [],
+      "values": []
+    },
+    {
+      "titel": "GSI",
+      "requiredpercentage": 0.5,
+      "max_values": [],
+      "values": []
+    },
+    {
+      "titel": "GNN",
+      "requiredpercentage": 0.5,
+      "max_values": [],
+      "values": []
+    },
+    {
+      "titel": "Digitalelektronik",
+      "requiredpercentage": 0.5,
+      "max_values": [],
+      "values": []
+    },
+    {
+      "titel": "Mathe IV Manu",
+      "requiredpercentage": 0.5,
+      "max_values": [],
+      "values": []
+    }
+  ],
+  "tests": [],
+  "tasks": [
+    {
+      "title": "- Beginn SoSe 2022 -",
+      "date": "4/4/2022"
+    },
+    {
+      "title": "SGP LR+ Fragebogen Teamzuteilung",
+      "date": "23/03/2022"
+    },
+    {
+      "title": "so bald wie möglich! SGP Fragebogen Gruppeneinteilung",
+      "date": "29/03/2022"
+    },
+    {
+      "title": "Start Blockwoche SGP",
+      "date": "28/03/2022"
+    },
+    {
+      "title": "SGP 1 online 14:00",
+      "date": "28/3/2022"
+    }
+  ],
+  "notes": "omegalulw" }

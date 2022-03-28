@@ -586,50 +586,49 @@ Fächerzuordnung
   outline: solid #0069aa 5px;
 }
 
-.gml {
+.gsi {
   background-color: #33984b;
 }
 
-.gmlTut {
+.gsiTut {
   background-color: transparent;
   outline: solid #33984b 5px;
 }
 
-.gkk {
+.gnn {
   background-color: #93388f;
 }
 
-.gkkTut {
+.gnnTut {
   background-color: transparent;
   outline: solid #93388f 5px;
 }
 
-.datab {
-  background-color: #ed7614;
-}
-
-.databTut {
-  background-color: transparent;
-  outline: solid #ed7614 5px;
-}
-
-.softw {
+.sgp {
   background-color: #0098dc;
 }
 
-.softwTut {
+.sgpTut {
   background-color: transparent;
   outline: solid #0098dc 5px;
 }
 
-
-.ra {
-  background-color: #E43B44;
+.de {
+  background-color: #cc4125;
 }
 
-.raTut {
+.deTut {
   background-color: transparent;
-  outline: solid #E43B44 5px;
+  outline: solid #cc4125 5px;
+}
+
+.bs {
+  background-color: #e69138;
+}
+
+.bsTut {
+  background-color: transparent;
+  outline: solid #e69138 5px;
 }
 
 .lr {

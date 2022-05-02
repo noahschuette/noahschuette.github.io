@@ -94,6 +94,14 @@ button:hover {
   /*outline: solid var(--mid) 1px;*/
 }
 
+.itemLarge {
+  min-height: 210px !important;
+}
+
+.itemSmall {
+  min-height: 70px !important;
+}
+
 .item {
   border: solid var(--mid) 1px;
   min-height: 140px;
@@ -497,9 +505,13 @@ Mobile
     flex-wrap: wrap;
   }
 
-  .item {
+  .item, .itemLarge, .itemSmall {
     padding: 8px 0;
-    min-height: 0;
+    min-height: 0 !important;
+  }
+
+  .empty {
+    padding: 0 !important;
   }
 
   .leftRow {
@@ -579,6 +591,15 @@ Fächerzuordnung
 
 .tut {
   outline-offset: -5px;
+}
+
+.matheZwei {
+  background-color: #143464;
+}
+
+.matheZweiTut {
+  background-color: transparent;
+  outline: solid #143464 5px;
 }
 
 .mathe {

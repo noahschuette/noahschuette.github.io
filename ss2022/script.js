@@ -25,6 +25,7 @@ let jsonpart = `    <!--Task -->
 
 function onloaded(){
     getNumberOfWeek();
+    switchToDefaultPlan();
 }
 
 function showJSONpart(){
@@ -476,5 +477,43 @@ function extendPoints(number) {
         extendedPart.style.display = "flex";
     } else {
         extendedPart.style.display = "none";
+    }
+}
+
+function switchToDefaultPlan() {
+    let name = localStorage.getItem('userName');
+    if (name === undefined)
+        name = "manonoah";
+    switchPlan(name);
+}
+
+function switchPlan(name) {
+    const manonoahBtn = document.getElementById("manonoahBtn");
+    const manuBtn = document.getElementById("manuBtn");
+    localStorage.setItem('userName',name);
+    let itemsToShow;
+    let itemsToHide;
+    if (name === "manonoah") {
+        itemsToShow = document.getElementsByClassName("manonoah");
+        itemsToHide = document.getElementsByClassName("manu");
+        manonoahBtn.style.background = "var(--white)";
+        manonoahBtn.style.color = "var(--dark)";
+        manuBtn.style.background = "var(--mid)"
+        manuBtn.style.color = "var(--light)"
+    } else {
+        itemsToHide = document.getElementsByClassName("manonoah");
+        itemsToShow = document.getElementsByClassName("manu");
+        manuBtn.style.background = "var(--white)";
+        manuBtn.style.color = "var(--dark)";
+        manonoahBtn.style.background = "var(--mid)"
+        manonoahBtn.style.color = "var(--light)"
+    }
+    for (let m = 0; m < itemsToShow.length; m++) {
+        console.log(m, itemsToShow[m]);
+        itemsToShow[m].style.display = "flex";
+    }
+    for (let m = 0; m < itemsToHide.length; m++) {
+        console.log(m, itemsToHide[m]);
+        itemsToHide[m].style.display = "none";
     }
 }

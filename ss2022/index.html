@@ -12,6 +12,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body onload="onloaded()">
+
+  <div id="userBtnDiv">
+    <button id="manonoahBtn" onclick="switchPlan('manonoah')">Manoel/Noah</button>
+    <button id="manuBtn" onclick="switchPlan('manu')">Manuel</button>
+  </div>
   <!--"Stundenplan"-->
   <div class="table">
     <div class="leftRow">
@@ -27,40 +32,51 @@
     <div class="row">
       <div class="headerItem"><p>Montag</p></div>
       <div class="item bs"><p class="moduleTime">8:15-9:45</p><p class="moduleTxt">Betriebssysteme</p><p class="subTxt">Q&A</p><a class="zoomIcon" href="https://uni-bielefeld.zoom.us/j/98278914859?pwd=VVNHbGZHVHpFNEN3VUk4Vy9EWDNzdz09"><i class="fas fa-video"></i></a></div>
-      <div class="item de"><p class="moduleTime">10:15-11:45</p><p class="moduleTxt">Digitalelektronik</p><p class="subTxt">Vorlesung</p><p class="locationTxt">CITEC</p></div>
-      <div class="item tut deTut itemLarge"><p class="moduleTime">12:15-14:45</p><p class="moduleTxt">Digitalelektronik</p><p class="subTxt">Tutorium</p><p class="locationTxt">V2-235</p><p class="locationTxt">3-STÜNDIG</p></div>
-      <div class="item empty itemSmall"></div>
+      <div class="item de manonoah"><p class="moduleTime">10:15-11:45</p><p class="moduleTxt">Digitalelektronik</p><p class="subTxt">Vorlesung</p><p class="locationTxt">CITEC</p></div>
+      <div class="item empty manu"></div>
+      <div class="item tut deTut itemLarge manonoah"><p class="moduleTime">12:15-14:45</p><p class="moduleTxt">Digitalelektronik</p><p class="subTxt">Tutorium</p><p class="locationTxt">V2-235</p><p class="locationTxt">3-STÜNDIG</p></div>
+      <div class="item tut bsTut manu"><p class="moduleTime">12:15-13:45</p><p class="moduleTxt">Betriebssysteme</p><p class="subTxt">Tutorium</p><p class="locationTxt">ONLINE</p></div>
+      <div class="item empty itemSmall manonoah"></div>
+      <div class="item empty manu"></div>
       <div class="item empty"></div>
     </div>
     <div class="row">
       <div class="headerItem"><p>Dienstag</p></div>
       <div class="item empty"></div>
       <div class="item gnn"><p class="moduleTime">10:15-11:45</p><p class="moduleTxt">Neuronale Netze</p><p class="subTxt">Vorlesung</p><p class="locationTxt">CITEC</p></div>
-      <div class="item tut matheTut"><p class="moduleTime">12:15-13:45</p><p class="moduleTxt">Mathe IV</p><p class="subTxt">Tutorium</p><p class="locationTxt">V2-216</p></div>
+      <div class="item tut matheTut manonoah"><p class="moduleTime">12:15-13:45</p><p class="moduleTxt">Mathe IV</p><p class="subTxt">Tutorium</p><p class="locationTxt">V2-216</p></div>
+      <div class="item empty manu"></div>
       <div class="item tut gsiTut"><p class="moduleTime">14:15-15:45</p><p class="moduleTxt">Sprachliche Interaktionen</p><p class="subTxt">Tutorium</p><p class="locationTxt">CITEC 1.204</p></div>
       <div class="item empty"></div>
     </div>
     <div class="row">
       <div class="headerItem"><p>Mittwoch</p></div>
       <div class="item mathe"><p class="moduleTime">8:15-9:45</p><p class="moduleTxt">Mathe IV</p><p class="subTxt">Vorlesung</p><p class="locationTxt">H7</p></div>
-      <div class="item matheZwei"><p class="moduleTime">10:15-11:45</p><p class="moduleTxt">Mathe II</p><p class="subTxt">Vorlesung</p><p class="locationTxt">H1</p></div>
-      <div class="item empty"></div>
-      <div class="item tut bsTut"><p class="moduleTime">14:15-15:45</p><p class="moduleTxt">Betriebssysteme</p><p class="subTxt">Tutorium</p><a class="zoomIcon" href="https://uni-bielefeld.zoom.us/j/67342223463?pwd=dGs1VzAySzNZLzZDR1Nob2pNZnlqdz09"><i class="fas fa-video"></i></a></div>
+      <div class="item matheZwei manu"><p class="moduleTime">10:15-11:45</p><p class="moduleTxt">Mathe II</p><p class="subTxt">Vorlesung</p><p class="locationTxt">H1</p></div>
+      <div class="item empty manonoah"></div>
+      <div class="item tut matheTut manu"><p class="moduleTime">12:15-13:45</p><p class="moduleTxt">Mathe IV</p><p class="subTxt">Tutorium</p><p class="locationTxt">V2-216</p></div>
+      <div class="item empty manonoah"></div>
+      <div class="item tut bsTut manonoah"><p class="moduleTime">14:15-15:45</p><p class="moduleTxt">Betriebssysteme</p><p class="subTxt">Tutorium</p><a class="zoomIcon" href="https://uni-bielefeld.zoom.us/j/67342223463?pwd=dGs1VzAySzNZLzZDR1Nob2pNZnlqdz09"><i class="fas fa-video"></i></a></div>
+      <div class="item empty manu"></div>
       <div class="item empty"></div>
     </div>
     <div class="row">
       <div class="headerItem"><p>Donnerstag</p></div>
       <div class="item empty"></div>
-      <div class="item empty"></div>
-      <div class="item tut sgpTut"><p class="moduleTime">12:15-13:45</p><p class="moduleTxt">Software-Gruppenprojekt</p><p class="subTxt">Tutorium</p><p class="locationTxt">V2-234</p></div>
+      <div class="item empty manonoah"></div>
+      <div class="item tut matheZweiTut itemLarge manu"><p class="moduleTime">10:15-12:45</p><p class="moduleTxt">Mathe II</p><p class="subTxt">Tutorium</p><p class="locationTxt">V4-112</p><p class="locationTxt">3-STÜNDIG</p></div>
+      <div class="item tut sgpTut manonoah"><p class="moduleTime">12:15-13:45</p><p class="moduleTxt">Software-Gruppenprojekt</p><p class="subTxt">Tutorium</p><p class="locationTxt">V2-234</p></div>
+      <div class="item empty itemSmall manu"></div>
       <div class="item empty"></div>
       <div class="item empty"></div>
     </div>
     <div class="row">
       <div class="headerItem"><p>Freitag</p></div>
       <div class="item empty"></div>
-      <div class="item empty"></div>
-      <div class="item matheZwei"><p class="moduleTime">12:15-14:45</p><p class="moduleTxt">Mathe II</p><p class="subTxt">Vorlesung</p><p class="locationTxt">H12</p></div>
+      <div class="item empty manonoah"></div>
+      <div class="item tut sgpTut manu"><p class="moduleTime">10:15-11:45</p><p class="moduleTxt">Software-Gruppenprojekt</p><p class="subTxt">Tutorium</p></div>
+      <div class="item matheZwei manu"><p class="moduleTime">12:15-14:45</p><p class="moduleTxt">Mathe II</p><p class="subTxt">Vorlesung</p><p class="locationTxt">H12</p></div>
+      <div class="item empty manonoah"></div>
       <div class="item gsi"><p class="moduleTime">14:15-15:45</p><p class="moduleTxt">Sprachliche Interaktionen</p><p class="subTxt">Vorlesung</p><p class="locationTxt">CITEC</p></div>
       <div class="item tut gnnTut"><p class="moduleTime">16:15-17:45</p><p class="moduleTxt">Neuronale Netze</p><p class="subTxt">Tutorium</p><p class="locationTxt">X-E0-200</p></div>
     </div>
@@ -108,7 +124,8 @@
       </div>
       <div class="moduleItem">
         <p class="moduleTitle">Mathe II</p>
-        <a class="moduleLink" href="">Lernraum+</a>
+        <a class="moduleLink lr" href="https://bis.uni-bielefeld.de/sites/45527/Start.aspx">LR Vorlesung</a>
+        <a class="moduleLink lrplus" href="https://lernraumplus.uni-bielefeld.de/course/view.php?id=13884">LR+ Übungen</a>
       </div>
     </div>
 

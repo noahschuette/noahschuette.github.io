@@ -41,6 +41,12 @@ button:hover {
   color: var(--white);
 }
 
+#userBtnDiv {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  margin: 10px;
+}
 
 .table {
   width: 1000px;
@@ -49,7 +55,7 @@ button:hover {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 0;
+  margin: 50px 0 0;
   padding: 0;
 }
 

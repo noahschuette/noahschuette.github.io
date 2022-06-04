@@ -1,0 +1,138 @@
+:root {
+    --background: black;
+    --text: white;
+    --blue: #9db3c7;
+    --darkblue: #4f7598;
+}
+
+html, body {
+    /*background-image: url("https://static.qobuz.com/images/covers/46/74/0060252747446_600.jpg");
+    background-size: 100%;*/
+    background-color: var(--blue);
+    color: var(--text);
+    margin: 0;
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+}
+
+a, p, h1 {
+    color: var(--text);
+    margin: 0;
+}
+
+button, input, a {
+    outline: none;
+    border: none;
+    text-decoration: none;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(0deg, var(--text), #db0000);
+    background: var(--background);
+    background-size: 400% 100%;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+}
+
+#div404 {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#div404 a:hover {
+    color: white;
+}
+
+#div404 p {
+    font-weight: 500;
+    color: var(--darkblue);
+}
+
+#div404 a {
+    font-weight: 700;
+    color: var(--darkblue);
+}
+
+#logo {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+#logo img {
+    width: 250px;
+    margin: 50px;
+}
+
+#ratings {
+    width: calc(100vw - 100px);
+    margin: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.album {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.albumOverlay:hover {
+    opacity: 100%;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.albumOverlay {
+    opacity: 0;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: #00000099;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.albumOverlay p {
+    font-weight: 700;
+    margin: 20px;
+}
+
+.album img {
+    width: 100%;
+    height: 100%;
+}
+
+
+@media (max-width: 900px) {
+
+
+}

@@ -1,40 +1,38 @@
+
+
 function loadMainPage() {
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange=function() {
-        console.log(xmlhttp.responseText);
-        console.log(xmlhttp.status);
-        if (xmlhttp.status === 200) {
-            const json = JSON.parse(xmlhttp.responseText);
-            console.log(json);
-            const albums = json.albums;
-            for (let k in albums) {
-                addAlbumToMain(albums[k]);
-            }
+    request("GET", `https://raw.githubusercontent.com/n0j0games/ratings/main/router.json`, function (status, err, resp) {
+        console.log(status);
+        if (err) {
+            console.log(err);
+            return;
         }
-    }
-    xmlhttp.open("GET", `https://raw.githubusercontent.com/n0j0games/ratings/main/router.json`, false);
-    xmlhttp.send();
+        const json = JSON.parse(resp);
+        console.log(json);
+        const albums = json.albums;
+        for (let k in albums) {
+            addAlbumToMain(albums[k]);
+        }
+    });
 }
 
 function addAlbumToMain(albumString) {
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange=function() {
-        console.log(xmlhttp.responseText);
-        console.log(xmlhttp.status);
-        if (xmlhttp.status === 200) {
-            const json = JSON.parse(xmlhttp.responseText);
-            console.log(json);
-            document.getElementById("ratings").innerHTML +=
-                `<a href="rating.html?v=${albumString}" class="album">
+    request("GET", `https://raw.githubusercontent.com/n0j0games/ratings/main/${albumString}.json`, function (status, err, resp) {
+        console.log(status);
+        if (err) {
+            console.log(err);
+            return;
+        }
+        const json = JSON.parse(resp);
+        console.log(json);
+        document.getElementById("ratings").innerHTML +=
+            `<a href="rating.html?v=${albumString}" class="album">
                     <div class="albumOverlay">
                         <p>${json.title}</p>
                     </div>
                     <img src="${json.image}" alt="">
                  </a>`
-        }
-    }
-    xmlhttp.open("GET", `https://raw.githubusercontent.com/n0j0games/ratings/main/${albumString}.json`, false);
-    xmlhttp.send();
+    });
 }
 
 function loadReviewPage() {
@@ -42,26 +40,23 @@ function loadReviewPage() {
     const urlParams = new URLSearchParams(queryString);
     const albumURL = urlParams.get('v');
     if (albumURL == null || albumURL === "router") {
-        console.log("geht nicht lol");
+        window.location.href = '404.html';
         return 0;
     }
 
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange=function() {
-        console.log(xmlhttp.responseText);
-        console.log(xmlhttp.status);
-        if (xmlhttp.status === 200) {
-            const json = JSON.parse(xmlhttp.responseText);
-            console.log(json);
-            buildReview(json);
-        } else if (xmlhttp.status === 404) {
-            window.location.href = '404.html'; //one level up
+    request("GET", `https://raw.githubusercontent.com/n0j0games/ratings/main/${albumURL}.json`, function (status, err, resp) {
+        if (status === 404) {
+            window.location.href = '404.html';
         }
-    }
-    xmlhttp.open("GET", `https://raw.githubusercontent.com/n0j0games/ratings/main/${albumURL}.json`, false);
-    xmlhttp.send();
+        if (err) {
+            console.log(err);
+            return;
+        }
+        const json = JSON.parse(resp);
+        console.log(json);
+        buildReview(json);
+    });
 }
-
 
 function buildReview(json) {
     const albumTitleObj = document.getElementById("albumTitle");
@@ -97,7 +92,7 @@ function buildReview(json) {
             paragraph += `<br>${artist}`;
         }
         if (feature != null) {
-            paragraph += `<br>(ft. ${feature})`;
+            paragraph += `<br>(feat. ${feature})`;
         }
 
         paragraph += `</p><p class="songRating">${rating}</p></div>`;
@@ -105,3 +100,28 @@ function buildReview(json) {
     }
     actualRating.innerHTML = newHtml;
 }
+
+function request(method, url, done) {
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.onload = function () {
+        done(xhr.status, null, xhr.response);
+    };
+    xhr.onerror = function () {
+        done(xhr.status, xhr.response);
+    };
+    xhr.send();
+}
+
+/*async function request(header) {
+    console.log("req");
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState === 4) {
+            console.log(xmlhttp.status);
+            return { "response" : xmlhttp.responseText, "status" : xmlhttp.status};
+        }
+    }
+    xmlhttp.open("GET", header);
+    xmlhttp.send();
+}*/

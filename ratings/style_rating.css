@@ -125,8 +125,33 @@ button, input, a {
     align-items: flex-start;
 }
 
+.tag {
+    margin: 30px 7px 15px 7px;
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag hr {
+    flex-grow: 2;
+    height: 0;
+    background-color: #aaa;
+    color: #aaa;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.tag p {
+    margin: 5px;
+    color: #aaa;
+}
+
 .song {
-    margin: 7px;
+    margin: 15px 7px;
     font-size: 15px;
     font-weight: 100;
     display: flex;

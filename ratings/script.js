@@ -79,24 +79,47 @@ function buildReview(json) {
     let newHtml = "";
     const songs = json.songs;
 
+    let tags = [];
+
     for (let i=0; i<songs.length; i++) {
         let paragraph = "";
         const artist = songs[i].artist;
         const name = songs[i].name;
         const rating = songs[i].rating;
         const feature = songs[i].ft;
+        const tag = songs[i].tag;
 
         paragraph += `<div class="song"><p class="songCredits"><b class="songName">${name}</b>`
 
-        if (artist != null) {
+        if (artist != null && feature != null) {
+            paragraph += `<br>${artist} (feat. ${feature})`;
+        } else if (artist != null) {
             paragraph += `<br>${artist}`;
-        }
-        if (feature != null) {
+        } else if (feature != null) {
             paragraph += `<br>(feat. ${feature})`;
         }
 
         paragraph += `</p><p class="songRating">${rating}</p></div>`;
-        newHtml += `<p class="song">${paragraph}</p>`;
+        //paragraph = `<p class="songName">${paragraph}</p>`;
+        let foundTag = false;
+        for (let j in tags) {
+            if (tags[j].tag === tag) {
+                tags[j].content += paragraph;
+                foundTag = true;
+                break;
+            }
+        }
+        if (!foundTag) {
+            tags.push({"tag" : tag, "content" : paragraph});
+        }
+    }
+    
+    for (let j in tags) {
+        if (tags[j].tag == null) {
+            newHtml += `${tags[j].content}`
+        } else {
+            newHtml += `<div class="tag"><hr><p>${tags[j].tag}</p><hr></div> ${tags[j].content}`
+        }
     }
     actualRating.innerHTML = newHtml;
 }

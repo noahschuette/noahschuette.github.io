@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Title & Icon -->
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://noahschuette.github.io/images/logo.png">
+    <!-- Meta -->
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Fonts : Barlow -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/038f795198.js" crossorigin="anonymous"></script>
+    <!-- Scripts -->
+    <script src="test.js" type="module"></script>
+    <style>
+        body {
+            font-family: arial, sans-serif;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body onload="onPageLoad()">
+<div id="authorize">
+    <button onclick="requestAuthorization()">Auth</button>
+</div>
+<div id="app">
+    <input type="text" placeholder="Enter Artist Name" id="search">
+    <button onclick="findArtist()">Search</button>
+    <p id="artistInfo">Enter Artist To Search</p>
+    <p id="counter"></p>
+    <p>Albums/Singles:</p>
+    <table class="sortable" id="collection">
+    </table>
+    <p>Featured on:</p>
+    <table class="sortable" id="collectionFeat">
+    </table>
+    <p>Featured in Compilations / Albums by Various Artists:</p>
+    <table class="sortable" id="collectionsVarious">
+    </table>
+</div>
+</body>
+</html>

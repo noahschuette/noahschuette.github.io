@@ -1,4 +1,4 @@
-
+let sections = [ { "type" : "default" , "contentTag" : "default" , "label" : "Alle Reviews" , "content" : ""} ];
 
 function loadMainPage() {
     request("GET", `https://raw.githubusercontent.com/n0j0games/ratings/main/router.json`, function (status, err, resp) {
@@ -9,6 +9,13 @@ function loadMainPage() {
         }
         const json = JSON.parse(resp);
         console.log(json);
+
+        const structure = json.structure;
+
+        for (let i in structure) {
+            sections.push({ "type" : structure[i].type , "contentTag" : structure[i].content , "label" : structure[i].label , "content" : ""});
+        }
+
         const albums = json.albums;
         for (let k in albums) {
             addAlbumToMain(albums[k]);
@@ -25,13 +32,23 @@ function addAlbumToMain(albumString) {
         }
         const json = JSON.parse(resp);
         console.log(json);
-        document.getElementById("ratings").innerHTML +=
+        for (let k in sections) {
+            if (sections[k].type === "artist" && sections[k].contentTag === )
+            sections[k].content += `
+            <a href="rating.html?v=${albumString}" class="album">
+                    <div class="albumOverlay">
+                        <p>${json.title}</p>
+                    </div>
+                    <img src="${json.image}" alt="">
+                 </a>`;
+        }
+        /*document.getElementById("ratings").innerHTML +=
             `<a href="rating.html?v=${albumString}" class="album">
                     <div class="albumOverlay">
                         <p>${json.title}</p>
                     </div>
                     <img src="${json.image}" alt="">
-                 </a>`
+                 </a>`*/
     });
 }
 

@@ -146,6 +146,10 @@ button:hover {
   margin: 0 10px 5px 10px;
 }
 
+.weekEven, .weekOdd {
+  opacity: 100%;
+}
+
 .moduleTime {
   display: none;
 }
@@ -563,8 +567,8 @@ Mobile
     margin: 50px 0 20px 0;
   }
 
-  .taskInput {
-    display: none;
+  #titleInput {
+    width: 100px;
   }
 
 }
@@ -608,38 +612,38 @@ Fächerzuordnung
   outline: solid #143464 5px;
 }
 
-.mathe {
+.fl {
   background-color: #0069aa;
 }
 
-.matheTut {
+.flTut {
   background-color: transparent;
   outline: solid #0069aa 5px;
 }
 
-.gsi {
+.ss {
   background-color: #33984b;
 }
 
-.gsiTut {
+.ssTut {
   background-color: transparent;
   outline: solid #33984b 5px;
 }
 
-.gnn {
+.clr {
   background-color: #93388f;
 }
 
-.gnnTut {
+.clrTut {
   background-color: transparent;
   outline: solid #93388f 5px;
 }
 
-.sgp {
+.gm {
   background-color: #0098dc;
 }
 
-.sgpTut {
+.gmTut {
   background-color: transparent;
   outline: solid #0098dc 5px;
 }
@@ -653,11 +657,11 @@ Fächerzuordnung
   outline: solid #cc4125 5px;
 }
 
-.bs {
+.bv {
   background-color: #da8021;
 }
 
-.bsTut {
+.bvTut {
   background-color: transparent;
   outline: solid #da8021 5px;
 }
@@ -682,7 +686,7 @@ Fächerzuordnung
   background-color: #0099DB;
 }
 
-.matrix {
+.frettie {
   background-color: #1ABC9C;
 }
 

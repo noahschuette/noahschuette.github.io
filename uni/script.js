@@ -291,15 +291,6 @@ function addPoints(nr, points, maximum){
     req.send();
 }
 
-function getNumberOfWeek() {
-    let date = new Date();
-    let currentThursday = new Date(date.getTime() +(3-((date.getDay()+6) % 7)) * 86400000);
-    let yearOfThursday = currentThursday.getFullYear();
-    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(3-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) * 86400000);
-    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
-    document.getElementById("kw").innerHTML = "KW " + weekNumber;
-}
-
 function removeTask(nr){
     let req = new XMLHttpRequest();
     req.onreadystatechange = () => {
@@ -515,5 +506,41 @@ function switchPlan(name) {
     for (let m = 0; m < itemsToHide.length; m++) {
         console.log(m, itemsToHide[m]);
         itemsToHide[m].style.display = "none";
+    }
+}
+
+function getNumberOfWeek() {
+    let date = new Date();
+    let currentThursday = new Date(date.getTime() +(3-((date.getDay()+6) % 7)) * 86400000);
+    let yearOfThursday = currentThursday.getFullYear();
+    let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(3-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) * 86400000);
+    let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
+    document.getElementById("kw").innerHTML = `KW ${weekNumber} (#${weekNumber-40})`;
+    setCorrectWeek(weekNumber);
+}
+
+function setCorrectWeek(weekNr) {
+    const evenWeek = weekNr % 2 === 0;
+    const evenItems = document.getElementsByClassName("weekEven");
+    const oddItems = document.getElementsByClassName("weekOdd");
+    console.log(oddItems);
+    if (evenItems.length !== 0)
+        for (let k in evenItems) {
+            if (evenWeek) {
+                evenItems[k].innerHTML = "DIESE WOCHE";
+                evenItems[k].style.color = "#3E8948";
+            } else {
+                evenItems[k].innerHTML = "NICHT DIESE WOCHE";
+                evenItems[k].style.color = "#E74C3C";
+            }
+        }
+    for (let j in oddItems) {
+        if (!evenWeek) {
+            oddItems[j].innerHTML = "DIESE WOCHE";
+            oddItems[j].style.color = "#3E8948";
+        } else {
+            oddItems[j].innerHTML = "NICHT DIESE WOCHE";
+            oddItems[j].style.color = "#E74C3C";
+        }
     }
 }

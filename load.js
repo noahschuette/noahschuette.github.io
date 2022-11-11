@@ -23,6 +23,8 @@ function replaceMain(json) {
     document.title = json.title;
     document.getElementById("title").innerHTML = json.header_main;
     document.getElementById("subtitle").innerHTML = json.header_sub;
+    document.getElementById("title").style.display = "flex";
+    document.getElementById("subtitle").style.display = "flex";
 }
 
 /*
@@ -62,16 +64,14 @@ function loadSpotify() {
 
 function replaceSpotify(json) {
     json = json.songdata;
+    console.log(json);
     document.getElementById("spotifyArtist").innerHTML = json.artists[0].name;
-    const titleObj = document.getElementById("spotifyTitle");
-    titleObj.innerHTML = json.name.split("(")[0];
-    titleObj.href = json.external_urls.spotify;
+    const albumObj = document.getElementById("spotifyAlbum");
+    albumObj.innerHTML = (json.album.name).split("(")[0];
+    albumObj.href = json.album.external_urls.spotify;
     document.getElementById("spotifyImg").src = json.album.images[0].url;
-    const albumname = json.album.name;
-    if (json.name !== albumname)
-        document.getElementById("spotifyAlbum").innerHTML = ` on ${albumname}`;
-    else
-        document.getElementById("spotifyAlbum").style.display = "none";
+    document.getElementById("spotifyImgSmall").src = json.album.images[0].url;
+    document.getElementById("spotifyTitle").innerHTML = `<i class="fa-solid fa-music"></i> ` + json.name.split("(")[0];
     document.getElementById("spotify").style.display = "flex";
 }
 

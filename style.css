@@ -80,6 +80,7 @@ body {
 }
 
 #spotifySub {
+    transform: translateX(-50px);
     display: flex;
     flex-direction: row;
 }
@@ -92,10 +93,42 @@ body {
     margin: 0 0 15px 5px;
 }
 
-#spotify img {
+#spotifyImg {
     transform: rotate(-5deg);
     width: 150px;
     height: 150px;
+}
+
+#vinyl {
+    position: relative;
+    top: 12px;
+    right: -70px;
+    z-index: -2;
+}
+
+#vinyl img {
+    width: 140px;
+    height: 140px;
+    -webkit-animation: rotating 15s linear infinite;
+}
+
+#spotifyImgSmall {
+    filter: contrast(50%);
+    width: 50px !important;
+    height: 50px !important;
+    position: absolute;
+    top: 45px;
+    right: 45px;
+    z-index: -3;
+}
+
+@-webkit-keyframes rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 #spotifyArtist {
@@ -104,7 +137,7 @@ body {
     margin: 0 0 2px 0;
 }
 
-#spotifyTitle {
+#spotifyAlbum {
     color: var(--dark2);
     font-size: 40px;
     margin: 0 0 2px 10px;
@@ -113,7 +146,7 @@ body {
     text-align: left;
 }
 
-#spotifyTitle:hover {
+#spotifyAlbum:hover {
     color: var(--link);
 }
 
@@ -126,9 +159,13 @@ body {
     margin: 0 0 20px 0;
 }
 
-#spotifyAlbum{
+#spotifyTitle{
     max-width: 400px;
     margin: 0 0 0 12px;
+}
+
+#spotifyTitle i {
+    font-size: 16px;
 }
 
 #leftContent {
@@ -202,4 +239,33 @@ body {
     position: absolute;
     top: 53%;
     right: 120px;
+}
+
+@media (max-width: 900px){
+
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    #mainContent {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 0;
+    }
+
+    #midContent {
+        flex-grow: 0;
+    }
+
+    #leftContent {
+        display: none;
+    }
+
+    #rightContent {
+        display: none;
+    }
 }

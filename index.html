@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/038f795198.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="images/logo.png">
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Scripts -->
@@ -20,8 +21,12 @@
 </head>
 <body onload="load()">
     <div id="mainContent">
-        <!--
-        <div id="leftContent" onclick="redirect('pixelArt')">
+
+        <div id="midContent">
+            <p id="title" style="display: none">Hello There!</p>
+            <p id="subtitle" style="display: none">schreib hier irgend was sinnvolles rein</p>
+        </div>
+        <div id="leftContent" onclick="redirect('https://dribbble.com/n0j0')">
             <img class="pixelArt" id="pixelArt0" src="https://cdn.dribbble.com/users/7787883/screenshots/18143696/media/9d1ae5ba947a24f87599c7212be5fd80.png" alt="">
             <img class="pixelArt" id="pixelArt1" src="https://cdn.dribbble.com/users/7787883/screenshots/15661816/media/4ae8446e8b7000ea61a600f4dac57c37.png" alt="">
             <img class="pixelArt" id="pixelArt2" src="https://cdn.dribbble.com/users/7787883/screenshots/15606076/media/7841eca744d94dca2c7e2f8f9a2375a9.png" alt="">
@@ -29,24 +34,24 @@
                 <img id="arrowLeft" src="images/arrow1.png" alt="">
                 <p class="midText" id="arrowLeftText">Look at my PixelArt</p>
             </div>
-        </div>-->
-        <div id="midContent">
-            <p id="title">Hello There!</p>
-            <p id="subtitle">schreib hier irgend was sinnvolles rein</p>
-        </div><!--
-        <div id="rightContent">
+        </div>
+        <div id="rightContent" onclick="redirect('projects')">
             <img id="arrowRight" src="images/arrow2.png" alt="">
             <p class="midText" id="arrowRightText">Look at my Projects</p>
-        </div>-->
+        </div>
     </div>
     <div id="spotify" class="subClass">
         <p class="midText" id="spotifyListeningTo">I'm currently listening to</p>
         <div id="spotifySub">
+            <div id="vinyl">
+                <img src="images/vinyl.png" alt="">
+                <img id="spotifyImgSmall" src="https://m.media-amazon.com/images/I/813XseYNw1L._SY355_.jpg" alt="">
+            </div>
             <img id="spotifyImg" src="https://m.media-amazon.com/images/I/813XseYNw1L._SY355_.jpg" alt="">
             <div id="spotifyRight">
                 <p id="spotifyArtist">The Weekend</p>
-                <a href="" id="spotifyTitle">Heartless</a>
-                <p id="spotifyAlbum" class="midText">on After Hours</p>
+                <a href="" id="spotifyAlbum">Heartless</a>
+                <p id="spotifyTitle" class="midText">on After Hours</p>
             </div>
         </div>
     </div>

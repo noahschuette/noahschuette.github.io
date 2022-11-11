@@ -33,7 +33,7 @@ function addAlbumToMain(albumString) {
         const json = JSON.parse(resp);
         console.log(json);
         for (let k in sections) {
-            if (sections[k].type === "artist" && sections[k].contentTag === )
+            if (sections[k].type === "artist" && sections[k].contentTag === "")
             sections[k].content += `
             <a href="rating.html?v=${albumString}" class="album">
                     <div class="albumOverlay">

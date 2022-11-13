@@ -5,11 +5,7 @@ function redirect(link) {
 }
 
 function load() {
-    loadMain();
-    loadSpotify();
-}
-
-function loadMain() {
+    console.log("loading");
     callApi("GET",`https://getpantry.cloud/apiv1/pantry/${pantryid}/basket/main`,null,function() {
         console.log("loading main");
         if (this.status === 200) {
@@ -28,6 +24,7 @@ function replaceMain(title, main, sub) {
     document.getElementById("subtitle").innerHTML = sub;
     document.getElementById("title").style.display = "flex";
     document.getElementById("subtitle").style.display = "flex";
+    loadSpotify();
 }
 
 /*
@@ -70,8 +67,7 @@ function replaceSpotify(json) {
     json = json.songdata;
     console.log(json);
     const diff = compareDate(json);
-    console.log(diff);
-    if (diff > 10)
+    if (diff > json.duration_ms/60000)
         return;
     document.getElementById("spotifyArtist").innerHTML = json.artists[0].name;
     const albumObj = document.getElementById("spotifyAlbum");
@@ -86,7 +82,6 @@ function replaceSpotify(json) {
 function compareDate(songdata) {
     let current = new Date(Date.now());
     let last = new Date(songdata.date);
-    console.log(current.getHours(), current.getMinutes(), last.getHours(), last.getMinutes());
     let diff = current.getMinutes()-last.getMinutes();
     if (current.getHours() > last.getHours())
         diff += 60;

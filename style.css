@@ -241,7 +241,15 @@ body {
     right: 120px;
 }
 
+#mobile {
+    display: none;
+}
+
 @media (max-width: 900px){
+
+    #mobile {
+        display: flex;
+    }
 
     body {
         flex-direction: column;
@@ -249,12 +257,14 @@ body {
     }
 
     #mainContent {
+        height: auto;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
         justify-content: flex-start;
         margin: 0;
+        flex-grow: 0;
     }
 
     #midContent {

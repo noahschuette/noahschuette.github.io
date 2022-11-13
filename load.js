@@ -11,18 +11,21 @@ function load() {
 
 function loadMain() {
     callApi("GET",`https://getpantry.cloud/apiv1/pantry/${pantryid}/basket/main`,null,function() {
+        console.log("loading main");
         if (this.status === 200) {
-            replaceMain(JSON.parse(this.responseText));
+            const json = JSON.parse(this.responseText);
+            replaceMain(json.title, json.header_main, json.header_sub);
         } else {
             console.error(`> Error ${this.status}: ${this.responseText}`);
+            replaceMain(":(","Hello There!","Fehler beim laden :/");
         }
     });
 }
 
-function replaceMain(json) {
-    document.title = json.title;
-    document.getElementById("title").innerHTML = json.header_main;
-    document.getElementById("subtitle").innerHTML = json.header_sub;
+function replaceMain(title, main, sub) {
+    document.title = title;
+    document.getElementById("title").innerHTML = main;
+    document.getElementById("subtitle").innerHTML = sub;
     document.getElementById("title").style.display = "flex";
     document.getElementById("subtitle").style.display = "flex";
 }
@@ -54,6 +57,7 @@ function loadDarkmode() {
 
 function loadSpotify() {
     callApi("GET",`https://getpantry.cloud/apiv1/pantry/${pantryid}/basket/spotify`,null,function() {
+        console.log("load spotify");
         if (this.status === 200) {
             replaceSpotify(JSON.parse(this.responseText));
         } else {
@@ -65,6 +69,10 @@ function loadSpotify() {
 function replaceSpotify(json) {
     json = json.songdata;
     console.log(json);
+    const diff = compareDate(json);
+    console.log(diff);
+    if (diff > 10)
+        return;
     document.getElementById("spotifyArtist").innerHTML = json.artists[0].name;
     const albumObj = document.getElementById("spotifyAlbum");
     albumObj.innerHTML = (json.album.name).split("(")[0];
@@ -73,6 +81,16 @@ function replaceSpotify(json) {
     document.getElementById("spotifyImgSmall").src = json.album.images[0].url;
     document.getElementById("spotifyTitle").innerHTML = `<i class="fa-solid fa-music"></i> ` + json.name.split("(")[0];
     document.getElementById("spotify").style.display = "flex";
+}
+
+function compareDate(songdata) {
+    let current = new Date(Date.now());
+    let last = new Date(songdata.date);
+    console.log(current.getHours(), current.getMinutes(), last.getHours(), last.getMinutes());
+    let diff = current.getMinutes()-last.getMinutes();
+    if (current.getHours() > last.getHours())
+        diff += 60;
+    return diff;
 }
 
 function callApi(method, url, body, callback) {

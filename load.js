@@ -5,6 +5,12 @@ function redirect(link) {
 }
 
 function load() {
+    loadSpotify();
+}
+
+/*
+
+function load() {
     console.log("loading");
     callApi("GET",`https://getpantry.cloud/apiv1/pantry/${pantryid}/basket/main`,null,function() {
         console.log("loading main");
@@ -26,6 +32,9 @@ function replaceMain(title, main, sub) {
     document.getElementById("subtitle").style.display = "flex";
     loadSpotify();
 }
+
+*/
+
 
 /*
     LIGHT / DARKMODE
@@ -58,6 +67,7 @@ function loadSpotify() {
         if (this.status === 200) {
             replaceSpotify(JSON.parse(this.responseText));
         } else {
+            console.log("ERR");
             console.error(`> Error ${this.status}: ${this.responseText}`);
         }
     });

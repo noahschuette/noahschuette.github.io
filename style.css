@@ -72,6 +72,15 @@ body {
     font-size: 40px;
 }
 
+#subtitle a {
+    text-decoration: none;
+    color: var(--dark2)
+}
+
+#subtitle a:hover {
+    color: var(--link);
+}
+
 #spotify {
     position: fixed;
     bottom: 50px;

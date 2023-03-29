@@ -23,11 +23,7 @@
 <body onload="load()">
     <div id="mainContent">
 
-        <div id="midContent">
-            <p id="title">Hello There!</p>
-            <p id="subtitle">Check out my <a href="https://releasr.netlify.app">Spotify Release Tracker</a>!</p>
-        </div>
-        <div id="leftContent" onclick="redirect('pixelart/index.html')">
+        <div id="leftContent" onclick="redirect('https://n0j0.artstation.com/')">
             <img class="pixelArt" id="pixelArt2" src="https://raw.githubusercontent.com/n0j0games/pixelart/main/graduation_small.gif" alt="">
             <img class="pixelArt" id="pixelArt1" src="https://raw.githubusercontent.com/n0j0games/pixelart/main/witcher.png" alt="">
             <img class="pixelArt" id="pixelArt0" src="https://raw.githubusercontent.com/n0j0games/pixelart/main/heroesVillains.png" alt="">
@@ -36,10 +32,45 @@
                 <p class="midText" id="arrowLeftText">Look at my PixelArt</p>
             </div>
         </div>
-        <div id="rightContent" onclick="redirect('projects')">
+        <div id="midContent">
+            <p id="title">Hello There!</p>
+            <p id="subtitle">Check out my <a href="https://releasr.netlify.app">Spotify Release Tracker</a>!</p>
+        </div>
+        <div id="pixelArtMobile" onclick="redirect('https://n0j0.artstation.com/')">
+            <img id="pixelArtSmall" src="https://raw.githubusercontent.com/n0j0games/pixelart/main/graduation_small.gif" alt="">
+            <p class="midText" id="smallText">Look at my PixelArt</p>
+        </div>
+        <div id="rightContent">
+            <p class="midText">My Projects</p>
+            <div class="link">
+                <a href="https://crawlspotify.netlify.app/">Spotify Discography Crawler (WIP)</a>
+                <img src="https://pbs.twimg.com/profile_images/1329089107952209922/PInQ39Xq_400x400.jpg" alt="">
+            </div>
+            <div class="link">
+                <a href="https://releasr.netlify.app/">releasr - Spotify Release Tracker</a>
+                <img src="https://releasr.netlify.app/images/favicon.png" alt="">
+            </div>
+            <div class="link">
+                <a href="../palettebin">Palettebin (Color Palette Library & Generator)</a>
+                <img src="../palettebin/iconMulticolor.png" alt="">
+            </div>
+            <div class="link">
+                <a href="../minitxt">minitxt</a>
+                <img src="../minitxt/images/logo.png" alt="">
+            </div>
+            <div class="link">
+                <a href="../tcwquotes">The Clone Wars Quote Generator</a>
+                <img src="../tcwquotes/clone.png" alt="">
+            </div>
+            <!--<div class="link" id="lastLink">
+                View all my projects on <i class="fa-brands fa-github"></i>
+                <a href="https://github.com/n0j0games">GitHub @n0j0games</a>
+            </div>-->
+        </div>
+        <!--<div id="rightContent" onclick="redirect('projects')">
             <img id="arrowRight" src="images/arrow2.png" alt="">
             <p class="midText" id="arrowRightText">Look at my Projects</p>
-        </div>
+        </div>-->
     </div>
     <div id="spotify" class="subClass">
         <p class="midText" id="spotifyListeningTo">I'm currently listening to</p>

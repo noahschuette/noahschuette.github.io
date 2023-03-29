@@ -22,6 +22,7 @@
 body, a, p, button {
     font-family: 'Mungil', 'Maybe Next', sans-serif;
     text-align: center;
+    overflow-x: hidden;
 }
 
 body {
@@ -60,6 +61,25 @@ body {
     align-items: center;
     justify-content: center;
     margin: 50px;
+}
+
+#leftContent {
+    /*position: fixed;
+    left: 0;*/
+    width: 300px;
+    align-items: flex-start;
+    height: 100%;
+    cursor: pointer;
+}
+
+#rightContent {
+    display: flex;
+    flex-direction: column;
+    /*position: fixed;
+    right: 0;*/
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 #title {
@@ -177,14 +197,6 @@ body {
     font-size: 16px;
 }
 
-#leftContent {
-    position: fixed;
-    left: 0;
-    align-items: flex-start;
-    height: 100%;
-    cursor: pointer;
-}
-
 .pixelArt {
     transform: translateX(-30px);
     position: absolute;
@@ -228,14 +240,6 @@ body {
     left: 220px;
 }
 
-#rightContent {
-    position: fixed;
-    right: 0;
-    align-items: flex-start;
-    height: 100%;
-    cursor: pointer;
-}
-
 #arrowRight {
     position: absolute;
     top: 50%;
@@ -251,6 +255,42 @@ body {
 }
 
 #mobile {
+    display: none;
+}
+
+.link a {
+    text-decoration: none;
+    color: var(--dark2);
+    text-align: right;
+    margin-right: 10px;
+    flex-grow: 2;
+}
+
+.link:hover a {
+    color: var(--link);
+}
+
+.link {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    min-font-size: 16px;
+    font-size: 25px;
+    max-font-size: 40px;
+}
+
+.link img {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+#pixelArtMobile {
     display: none;
 }
 
@@ -284,7 +324,52 @@ body {
         display: none;
     }
 
-    #rightContent {
-        display: none;
+    #pixelArtMobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        cursor: pointer;
+        margin-bottom: 50px;
     }
+
+    #pixelArtMobile img {
+        width: 100px;
+        height: 100px;
+        transform: rotate(-5deg);
+        margin-right: 20px;
+    }
+
+    .link {
+        width: 90vw;
+    }
+
+    #spotify {
+        position: relative;
+        /*bottom: 50px;*/
+        margin-top: 100px;
+        display: none;
+        flex-direction: column;
+    }
+}
+
+/*
+    Scrollbar
+ */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(0deg, var(--light2), #db0000);
+    background: var(--light2);
+    background-size: 400% 100%;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--mid);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark);
 }

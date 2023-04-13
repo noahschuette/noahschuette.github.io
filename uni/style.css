@@ -603,42 +603,35 @@ Fächerzuordnung
   outline-offset: -5px;
 }
 
-.matheZwei {
-  background-color: #143464;
-}
 
-.matheZweiTut {
-  background-color: transparent;
-  outline: solid #143464 4px;
-}
-
-.fl {
+.kr {
   background-color: #0069aa;
 }
 
-.flTut {
+.krTut {
   background-color: transparent;
   outline: solid #0069aa 4px;
 }
 
-.ss {
+.adi {
   background-color: #33984b;
 }
 
-.ssTut {
+.adiTut {
   background-color: transparent;
   outline: solid #33984b 4px;
 }
 
-.clr {
+.gm {
   background-color: #93388f;
 }
 
-.clrTut {
+.gmTut {
   background-color: transparent;
   outline: solid #93388f 4px;
 }
 
+/*
 .gm {
   background-color: #0098dc;
 }
@@ -647,12 +640,13 @@ Fächerzuordnung
   background-color: transparent;
   outline: solid #0098dc 4px;
 }
+*/
 
-.ra {
+.rm {
   background-color: #cc4125;
 }
 
-.raTut {
+.rmTut {
   background-color: transparent;
   outline: solid #cc4125 4px;
 }
@@ -694,7 +688,7 @@ Fächerzuordnung
   background-color: #73789A;
 }
 
-.redmine {
+.else {
   background-color: #FF77A8;
   color: black;
 }

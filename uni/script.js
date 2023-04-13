@@ -515,8 +515,8 @@ function getNumberOfWeek() {
     let yearOfThursday = currentThursday.getFullYear();
     let firstThursday = new Date(new Date(yearOfThursday,0,4).getTime() +(3-((new Date(yearOfThursday,0,4).getDay()+6) % 7)) * 86400000);
     let weekNumber = Math.floor(1 + 0.5 + (currentThursday.getTime() - firstThursday.getTime()) / 86400000/7);
-    document.getElementById("kw").innerHTML = `KW ${weekNumber} (#${weekNumber-40})`;
-    setCorrectWeek(weekNumber);
+    document.getElementById("kw").innerHTML = `KW ${weekNumber} (#${weekNumber-13})`;
+    //setCorrectWeek(weekNumber);
 }
 
 function setCorrectWeek(weekNr) {

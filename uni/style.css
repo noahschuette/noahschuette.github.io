@@ -676,10 +676,6 @@ Fächerzuordnung
   background-color: #33984b;
 }
 
-.dropbox {
-  background-color: #0099DB;
-}
-
 .frettie {
   background-color: #1ABC9C;
 }
@@ -691,6 +687,10 @@ Fächerzuordnung
 .else {
   background-color: #FF77A8;
   color: black;
+}
+
+.sagecell {
+  background-color: #0099DB;
 }
 
 .jenkins {

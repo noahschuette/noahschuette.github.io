@@ -19,10 +19,25 @@
     /* Source: https://www.dafont.com/de/maybe-next.font */
 }
 
+@font-face {
+    font-family: "With My Woes";
+    src: url("fonts/WithMyWoes.ttf");
+}
+
+@font-face {
+    font-family: "Makisupa";
+    src: url("fonts/Makisupa.ttf");
+}
+
 body, a, p, button {
-    font-family: 'Mungil', 'Maybe Next', sans-serif;
+    font-family: 'Makisupa', monospace;
+    font-weight: 100;
     text-align: center;
     overflow-x: hidden;
+}
+
+#title {
+    font-family: 'Makisupa', monospace;
 }
 
 body {

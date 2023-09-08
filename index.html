@@ -16,16 +16,26 @@
     <link rel="icon" href="images/logo.png">
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="error/error_style.css">
     <!-- Scripts -->
     <script src="load.js"></script>
 
 </head>
 <body onload="load()">
+
+    <div id="scene" data-relative-input="true">
+        <!--<img src="https://noahschuette.github.io/error/space0.png" data-depth='1' class="paramimg" id="img-0"/>
+        <img src="https://noahschuette.github.io/error/space1.png" data-depth='0.7' class="paramimg" id="img-1"/>-->
+        <img src="https://noahschuette.github.io/error/space2.png" data-depth='0.3' class="paramimg" id="img-2"/>
+        <img src="https://noahschuette.github.io/error/space3.png" data-depth='0.1' class="paramimg" id="img-3"/>
+        <img src="https://noahschuette.github.io/error/space4.png" data-depth='0.05' class="paramimg" id="img-4"/>
+    </div>
+    
     <div id="mainContent">
 
         <div id="leftContent" onclick="redirect('https://n0j0.artstation.com/')">
-            <img class="pixelArt" id="pixelArt2" src="https://raw.githubusercontent.com/n0j0games/pixelart/main/graduation_small.gif" alt="">
-            <img class="pixelArt" id="pixelArt1" src="https://raw.githubusercontent.com/n0j0games/pixelart/main/witcher.png" alt="">
+            <img class="pixelArt" id="pixelArt2" src="https://cdnb.artstation.com/p/assets/images/images/061/318/419/large/noah-flower-boy-2.jpg?1680525279" alt="">
+            <img class="pixelArt" id="pixelArt1" src="https://raw.githubusercontent.com/n0j0games/pixelart/main/graduation_small.gif" alt="">
             <img class="pixelArt" id="pixelArt0" src="https://raw.githubusercontent.com/n0j0games/pixelart/main/heroesVillains.png" alt="">
             <div id="arrowLeftDiv">
                 <img id="arrowLeft" src="images/arrow1.png" alt="">
@@ -87,5 +97,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    <script src="parallax.js"></script>
 </body>
 </html>

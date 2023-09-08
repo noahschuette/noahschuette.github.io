@@ -1,10 +1,12 @@
 :root {
+    --white: #ffffff;
     --light1: #C0CBDC;
     --light2: #8B9BB4;
     --mid: #5A6988;
     --dark2: #3A4466;
     --dark1: #262B44;
     --link: #FF0044;
+    --background: #181425;
 }
 
 @font-face {
@@ -33,7 +35,7 @@ body, a, p, button {
     font-family: 'Makisupa', monospace;
     font-weight: 100;
     text-align: center;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 #title {
@@ -41,7 +43,7 @@ body, a, p, button {
 }
 
 body {
-    background-color: var(--light1);
+    background-color: var(--background);
 }
 
 p {
@@ -98,18 +100,18 @@ body {
 }
 
 #title {
-    color: var(--dark1);
+    color: var(--light1);
     font-size: 50px;
 }
 
 #subtitle {
-    color: var(--dark2);
+    color: var(--light2);
     font-size: 40px;
 }
 
 #subtitle a {
     text-decoration: none;
-    color: var(--dark2)
+    color: var(--light2)
 }
 
 #subtitle a:hover {
@@ -182,7 +184,7 @@ body {
 }
 
 #spotifyAlbum {
-    color: var(--dark2);
+    color: var(--light2);
     font-size: 40px;
     margin: 0 0 2px 10px;
     text-decoration: none;
@@ -275,7 +277,7 @@ body {
 
 .link a {
     text-decoration: none;
-    color: var(--dark2);
+    color: var(--light2);
     text-align: right;
     margin-right: 10px;
     flex-grow: 2;
@@ -318,6 +320,8 @@ body {
     body {
         flex-direction: column;
         justify-content: flex-start;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     #mainContent {
@@ -376,8 +380,8 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: linear-gradient(0deg, var(--light2), #db0000);
-    background: var(--light2);
+    background: linear-gradient(0deg, var(--dark2), #db0000);
+    background: var(--dark2);
     background-size: 400% 100%;
 }
 
@@ -386,5 +390,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--dark);
+    background: var(--light1);
 }

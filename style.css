@@ -168,6 +168,16 @@ body {
     z-index: -3;
 }
 
+#spotifyDivSmall {
+    width: 50px !important;
+    height: 50px !important;
+    position: absolute;
+    top: 45px;
+    right: 45px;
+    z-index: -3;
+    background-color: white;
+}
+
 @-webkit-keyframes rotating {
     from{
         -webkit-transform: rotate(0deg);
@@ -188,7 +198,7 @@ body {
     font-size: 40px;
     margin: 0 0 2px 10px;
     text-decoration: none;
-    max-width: 400px;
+    max-width: 600px;
     text-align: left;
 }
 
@@ -208,10 +218,15 @@ body {
 #spotifyTitle{
     max-width: 400px;
     margin: 0 0 0 12px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    text-align: left;
 }
 
 #spotifyTitle i {
-    font-size: 16px;
+    font-size: 20px;
+    margin: 0 10px 0 0;
 }
 
 .pixelArt {

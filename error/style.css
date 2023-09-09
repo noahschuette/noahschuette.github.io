@@ -2,10 +2,16 @@
     --background: #181425;
 }
 
+@font-face {
+    font-family: "Mungil";
+    src: url("../fonts/Mungil-Regular.ttf");
+    /* Source: https://www.dafont.com/de/mungil.font */
+}
+
 body {
     background-color: var(--background);
     overflow: hidden;
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: 'Mungil', sans-serif;
     color: #bbbbbb;
 }
 

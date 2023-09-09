@@ -5,41 +5,26 @@ function redirect(link) {
 }
 
 function load() {
-    loadSpotify();
-}
-
-/*
-
-function load() {
-    console.log("loading");
-    callApi("GET",`https://getpantry.cloud/apiv1/pantry/${pantryid}/basket/main`,null,function() {
-        console.log("loading main");
-        if (this.status === 200) {
-            const json = JSON.parse(this.responseText);
-            replaceMain(json.title, json.header_main, json.header_sub);
-        } else {
-            console.error(`> Error ${this.status}: ${this.responseText}`);
-            replaceMain(":(","Hello There!","Fehler beim laden :/");
+    html = {
+        spotify : {
+        self : document.getElementById("spotify"),
+        artist : document.getElementById("spotifyArtist"),
+        album : document.getElementById("spotifyAlbum"),
+        img : document.getElementById("spotifyImg"),
+        imgSmall : document.getElementById("spotifyImgSmall"),
+        divSmall : document.getElementById("spotifyDivSmall"),
+        title : document.getElementById("spotifyTitle"),
+        link : document.getElementById("spotifyLink")
         }
-    });
-}
-
-function replaceMain(title, main, sub) {
-    document.title = title;
-    document.getElementById("title").innerHTML = main;
-    document.getElementById("subtitle").innerHTML = sub;
-    document.getElementById("title").style.display = "flex";
-    document.getElementById("subtitle").style.display = "flex";
+    }
     loadSpotify();
 }
-
-*/
-
 
 /*
     LIGHT / DARKMODE
  */
 
+/*
 function loadDarkmode() {
     const darkmode = localStorage.getItem("darkmode");
     if (darkmode === null) {
@@ -56,52 +41,91 @@ function loadDarkmode() {
         document.documentElement.style.setProperty('--dark2',light2);
     }
 }
+*/
 
 /*
     SPOTIFY FEATURE
  */
 
+const backend = "https://noahschuette-api.onrender.com/api/"
+
+let inloop = 0;
+
 function loadSpotify() {
-    callApi("GET",`https://getpantry.cloud/apiv1/pantry/${pantryid}/basket/spotify`,null,function() {
-        console.log("load spotify");
+    const method = "GET";
+    const sub = "spotify/playback";
+    const body = null;
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, backend+sub, true);
+    xhr.send(body);
+    xhr.onload = function () {
         if (this.status === 200) {
+            inloop = 0;
             replaceSpotify(JSON.parse(this.responseText));
+        } else if (this.status === 401 && inloop < 10) {
+            inloop++;
+            setTimeout(function() {
+                loadSpotify();
+            }, 1000);
         } else {
-            console.log("ERR");
+            inloop = 0;
             console.error(`> Error ${this.status}: ${this.responseText}`);
         }
-    });
+    }
+}
+
+let html = {}
+
+const fontawesome = {
+    solid : {
+        music : `<i class="fa-solid fa-music"></i>`,
+    }
 }
 
 function replaceSpotify(json) {
-    json = json.songdata;
-    console.log(json);
-    const diff = compareDate(json);
-    if (diff > json.duration_ms/60000)
+    if (json.islistening === false) {
         return;
-    document.getElementById("spotifyArtist").innerHTML = json.artists[0].name;
-    const albumObj = document.getElementById("spotifyAlbum");
-    albumObj.innerHTML = (json.album.name).split("(")[0];
-    albumObj.href = json.album.external_urls.spotify;
-    document.getElementById("spotifyImg").src = json.album.images[0].url;
-    document.getElementById("spotifyImgSmall").src = json.album.images[0].url;
-    document.getElementById("spotifyTitle").innerHTML = `<i class="fa-solid fa-music"></i> ` + json.name.split("(")[0];
-    document.getElementById("spotify").style.display = "flex";
-}
+    }
+    json = json.json;
+    html.spotify.artist.innerHTML = json.artist + "'s";
+    let album = json.album.split("(")[0].split("[")[0];
+    let title = json.song.split("(")[0].split("[")[0];
+    if (json.isalbum) {
+        html.spotify.title.style.display = "flex";
+        if (title.length > 23) {
+            html.spotify.title.innerHTML = fontawesome.solid.music + title.substring(0,20) + "...";
+        } else {
+            html.spotify.title.innerHTML = fontawesome.solid.music + title;
+        }
+    } else {
+        album = title;
+        html.spotify.title.style.display = "none";
+    }
+    if (album.length > 35) {
+        html.spotify.album.innerHTML = album.substring(0,32) + "...";
+    } else {
+        html.spotify.album.innerHTML = album;
+    }
+    html.spotify.album.href = json.href;
+    html.spotify.img.src = json.image;
 
-function compareDate(songdata) {
-    let current = new Date(Date.now());
-    let last = new Date(songdata.date);
-    let diff = current.getMinutes()-last.getMinutes();
-    if (current.getHours() > last.getHours())
-        diff += 60;
-    return diff;
-}
+    let nearest = 255*3;
+    let nearest_i = 0;
+    const opt = 255*3/0.5;
+    for (let i in json.palette) {
+        const diff = Math.abs((json.palette[i][0]+json.palette[i][1]+json.palette[i][2])-opt);
+        if (diff < Math.abs(nearest-opt)) {
+            nearest = diff;
+            nearest_i = i;
+        }
+    }
+    html.spotify.divSmall.style.backgroundColor = 'rgb(' + json.palette[nearest_i][0] + ',' + json.palette[nearest_i][1] + ',' + json.palette[nearest_i][2] + ')';
+    
+    //html.spotify.imgSmall.src = json.image;
+    html.spotify.self.style.display = "flex";
 
-function callApi(method, url, body, callback) {
-    let xhr = new XMLHttpRequest();
-    xhr.open(method, url, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(body);
-    xhr.onload = callback;
+    /*setTimeout(function() {
+        loadSpotify();
+    }, 120000);*/
+
 }

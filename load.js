@@ -5,6 +5,7 @@ function redirect(link) {
 }
 
 function load() {
+    
     html = {
         spotify : {
         self : document.getElementById("spotify"),
@@ -20,28 +21,6 @@ function load() {
     loadSpotify();
 }
 
-/*
-    LIGHT / DARKMODE
- */
-
-/*
-function loadDarkmode() {
-    const darkmode = localStorage.getItem("darkmode");
-    if (darkmode === null) {
-        localStorage.setItem("darkmode","true");
-        return;
-    } else if (darkmode === "true") {
-        const light1 = document.documentElement.style.getPropertyValue('--light1');
-        const light2 = document.documentElement.style.getPropertyValue('--light2');
-        const dark1 = document.documentElement.style.getPropertyValue('--dark1');
-        const dark2 = document.documentElement.style.getPropertyValue('--dark2');
-        document.documentElement.style.setProperty('--light1',dark1);
-        document.documentElement.style.setProperty('--light2',dark2);
-        document.documentElement.style.setProperty('--dark1',light1);
-        document.documentElement.style.setProperty('--dark2',light2);
-    }
-}
-*/
 
 /*
     SPOTIFY FEATURE
@@ -119,7 +98,9 @@ function replaceSpotify(json) {
             nearest_i = i;
         }
     }
+
     html.spotify.divSmall.style.backgroundColor = 'rgb(' + json.palette[nearest_i][0] + ',' + json.palette[nearest_i][1] + ',' + json.palette[nearest_i][2] + ')';
+    
     
     //html.spotify.imgSmall.src = json.image;
     html.spotify.self.style.display = "flex";

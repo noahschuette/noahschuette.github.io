@@ -40,11 +40,14 @@
     src: url("fonts/makisupa.ttf");
 }
 
+html, body {
+    overflow: hidden;
+}
+
 body, a, p, button {
     font-family: 'Makisupa', monospace;
     font-weight: 100;
     text-align: center;
-    overflow: hidden;
 }
 
 #title {
@@ -354,6 +357,18 @@ body {
     display: none;
 }
 
+#socials {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin: 15px;
+}
+
+#socials img {
+    width: 70px;
+    height: 70px;
+}
+
 @media (max-width: 900px){
 
     #mobile {
@@ -362,12 +377,12 @@ body {
 
     body, html {
         overflow-x: hidden;
+        overflow-y: auto;
     }
 
     body {
         flex-direction: column;
         justify-content: flex-start;
-        overflow-y: scroll;
     }
 
     #mainContent {

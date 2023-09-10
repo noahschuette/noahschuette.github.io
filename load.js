@@ -87,8 +87,8 @@ function replaceSpotify(json) {
     let title = json.song.split("(")[0].split("[")[0];
     if (json.isalbum) {
         html.spotify.title.style.display = "flex";
-        if (title.length > 23) {
-            html.spotify.title.innerHTML = fontawesome.solid.music + title.substring(0,20) + "...";
+        if (title.length > 35) {
+            html.spotify.title.innerHTML = fontawesome.solid.music + title.substring(0,32) + "...";
         } else {
             html.spotify.title.innerHTML = fontawesome.solid.music + title;
         }

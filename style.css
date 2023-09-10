@@ -7,6 +7,15 @@
     --dark1: #262B44;
     --link: #FF0044;
     --background: #181425;
+    --color1: #E86A73;
+    --color2: #BC4A9B;
+    --color3: #793A80;
+    --font-tiny: 1em;
+    --font-small: 1.2em;
+    --font-regular: 1.5em;
+    --font-medium: 2em;
+    --font-large: 2.3em;
+    --font-title: 3em;
 }
 
 @font-face {
@@ -40,23 +49,23 @@ body, a, p, button {
 
 #title {
     font-family: 'Makisupa', monospace;
+    color: var(--color1);
+    filter: drop-shadow(4px 4px 0px var(--color3));
+    font-size: 50px;
+    font-weight: 700;
 }
-
-body {
-    background-color: var(--background);
-}
-
 p {
     margin: 5px;
 }
 
 body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    height: 100vh;
     margin: 0;
 }
 
@@ -99,14 +108,9 @@ body {
     height: 100%;
 }
 
-#title {
-    color: var(--light1);
-    font-size: 50px;
-}
-
 #subtitle {
-    color: var(--light2);
-    font-size: 40px;
+    color: var(--light1);
+    font-size: 30px;
 }
 
 #subtitle a {
@@ -115,12 +119,21 @@ body {
 }
 
 #subtitle a:hover {
-    color: var(--link);
+    color: var(--color1);
 }
 
+#char {
+    width: 75px;
+    height: 150px;
+}
+
+/*
+    Spotify
+*/
+
 #spotify {
-    position: fixed;
-    bottom: 50px;
+    position: absolute;
+    bottom: 10px;
     display: none;
     flex-direction: column;
 }
@@ -141,20 +154,26 @@ body {
 
 #spotifyImg {
     transform: rotate(-5deg);
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
 }
 
 #vinyl {
     position: relative;
-    top: 12px;
-    right: -70px;
+    top: -111px;
+    right: 60px;
     z-index: -2;
 }
 
+#spotifyImgDiv {
+    margin: 0 0 0 50px;
+    width: 130px;
+    height: 130px;
+}
+
 #vinyl img {
-    width: 140px;
-    height: 140px;
+    width: 110px;
+    height: 110px;
     -webkit-animation: rotating 15s linear infinite;
 }
 
@@ -172,8 +191,8 @@ body {
     width: 50px !important;
     height: 50px !important;
     position: absolute;
-    top: 45px;
-    right: 45px;
+    top: 30px;
+    right: 50px;
     z-index: -3;
     background-color: white;
 }
@@ -189,34 +208,34 @@ body {
 
 #spotifyArtist {
     color: var(--mid);
-    font-size: 30px;
+    font-size: var(--font-small);
     margin: 0 0 2px 0;
 }
 
 #spotifyAlbum {
     color: var(--light2);
-    font-size: 40px;
+    max-width: 500px;
+    font-size: var(--font-medium);
     margin: 0 0 2px 10px;
     text-decoration: none;
-    max-width: 600px;
     text-align: left;
 }
 
 #spotifyAlbum:hover {
-    color: var(--link);
+    color: var(--color1);
 }
 
 .midText {
-    color: var(--mid);
-    font-size: 25px;
+    color: var(--color2);
+    font-size: var(--font-small);
 }
 
 #spotifyListeningTo {
+    font-size: var(--font-small);
     margin: 0 0 20px 0;
 }
 
 #spotifyTitle{
-    max-width: 400px;
     margin: 0 0 0 12px;
     display: flex;
     flex-wrap: nowrap;
@@ -225,9 +244,18 @@ body {
 }
 
 #spotifyTitle i {
-    font-size: 20px;
+    font-size: var(--font-small);
     margin: 0 10px 0 0;
 }
+
+.midSpotify {
+    color: var(--mid);
+    font-size: var(--font-small);
+}
+
+/*
+    Pixel-Art
+*/
 
 .pixelArt {
     transform: translateX(-30px);
@@ -299,7 +327,7 @@ body {
 }
 
 .link:hover a {
-    color: var(--link);
+    color: var(--color1);
 }
 
 .link {
@@ -350,12 +378,27 @@ body {
         flex-grow: 0;
     }
 
+    #title {
+        width: auto;
+        font-size: 40px;
+    }
+
+    #subtitle {
+        font-size: 20px;
+    }
+
     #midContent {
         flex-grow: 0;
+        bottom: 300px;
     }
 
     #leftContent {
         display: none;
+    }
+
+    #rightContent a {
+        text-align: center;
+        width: auto;
     }
 
     #pixelArtMobile {
@@ -374,14 +417,19 @@ body {
         margin-right: 20px;
     }
 
-    .link {
-        width: 90vw;
+    .link  {
+        justify-content: flex-start;
+        width: auto;
     }
 
     #spotify {
         position: relative;
         margin: 100px;
         flex-direction: column;
+    }
+
+    #vinyl {
+        display: none;
     }
 
 }

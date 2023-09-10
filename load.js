@@ -27,6 +27,7 @@ function load() {
  */
 
 const backend = "https://noahschuette-api.onrender.com/api/"
+//const backend = 'http://127.0.0.1:8081/api/'
 
 let inloop = 0;
 
@@ -103,25 +104,19 @@ function replaceSpotify(json) {
     html.spotify.album.href = json.href;
     html.spotify.img.src = json.image;
 
-    let nearest = 255*3;
-    let nearest_i = 0;
-    const opt = 255*3/0.5;
-    for (let i in json.palette) {
-        const diff = Math.abs((json.palette[i][0]+json.palette[i][1]+json.palette[i][2])-opt);
-        if (diff < Math.abs(nearest-opt)) {
-            nearest = diff;
-            nearest_i = i;
-        }
-    }
+    const rgb = json.album_colors;
 
-    html.spotify.divSmall.style.backgroundColor = 'rgb(' + json.palette[nearest_i][0] + ',' + json.palette[nearest_i][1] + ',' + json.palette[nearest_i][2] + ')';
+    html.spotify.divSmall.style.backgroundColor = toRGBString(rgb.comp);
     
     
     //html.spotify.imgSmall.src = json.image;
     html.spotify.self.style.display = "flex";
 
-    /*setTimeout(function() {
+    setTimeout(function() {
         loadSpotify();
-    }, 120000);*/
+    }, 120000);
+}
 
+function toRGBString(color) {
+    return 'rgb(' + color.r + ',' + color.g + ',' + color.b + ')';
 }

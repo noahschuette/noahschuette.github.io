@@ -360,11 +360,14 @@ body {
         display: flex;
     }
 
+    body, html {
+        overflow-x: hidden;
+    }
+
     body {
         flex-direction: column;
         justify-content: flex-start;
         overflow-y: scroll;
-        overflow-x: hidden;
     }
 
     #mainContent {
@@ -381,6 +384,7 @@ body {
     #title {
         width: auto;
         font-size: 40px;
+        filter: drop-shadow(3px 3px 0px var(--color3));
     }
 
     #subtitle {

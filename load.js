@@ -31,18 +31,33 @@ const backend = "https://noahschuette-api.onrender.com/api/"
 let inloop = 0;
 
 function loadSpotify() {
+    console.log("Opening request");
     const method = "GET";
     const sub = "spotify/playback";
     const body = null;
     let xhr = new XMLHttpRequest();
     xhr.open(method, backend+sub, true);
     xhr.send(body);
+    xhr.timeout = 4000;
+    xhr.ontimeout = function () { 
+        inloop++;
+        if (inloop < 10) {
+            console.log("Timed out, trying again in 5 sec");
+            setTimeout(function() {
+                loadSpotify();
+            }, 5000);
+        } else {
+            inloop = 0;
+            console.error(`> Error: Timed out several times`);
+        }
+    }
     xhr.onload = function () {
         if (this.status === 200) {
             inloop = 0;
             replaceSpotify(JSON.parse(this.responseText));
         } else if (this.status === 401 && inloop < 10) {
             inloop++;
+            console.log("Auth code expired, trying again in 1 sec");
             setTimeout(function() {
                 loadSpotify();
             }, 1000);

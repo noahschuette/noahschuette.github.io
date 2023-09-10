@@ -19,25 +19,9 @@
 }
 
 @font-face {
-    font-family: "Mungil";
-    src: url("fonts/Mungil-Regular.ttf");
-    /* Source: https://www.dafont.com/de/mungil.font */
-}
-
-@font-face {
-    font-family: "Maybe Next";
-    src: url("fonts/Maybe-Next.ttf");
-    /* Source: https://www.dafont.com/de/maybe-next.font */
-}
-
-@font-face {
-    font-family: "With My Woes";
-    src: url("fonts/WithMyWoes.ttf");
-}
-
-@font-face {
     font-family: "Makisupa";
     src: url("fonts/makisupa.ttf");
+    /* src: https://www.dafont.com/makisupa.font */
 }
 
 html, body {
@@ -45,13 +29,13 @@ html, body {
 }
 
 body, a, p, button {
-    font-family: 'Makisupa', monospace;
+    font-family: 'Makisupa', sans-serif;
     font-weight: 100;
     text-align: center;
 }
 
 #title {
-    font-family: 'Makisupa', monospace;
+    font-family: 'Makisupa', serif;
     color: var(--color1);
     filter: drop-shadow(4px 4px 0px var(--color3));
     font-size: 50px;

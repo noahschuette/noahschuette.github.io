@@ -83,8 +83,8 @@ function replaceSpotify(json) {
     }
     json = json.json;
     html.spotify.artist.innerHTML = json.artist + "'s";
-    let album = json.album.split("(")[0].split("[")[0];
-    let title = json.song.split("(")[0].split("[")[0];
+    let album = json.album.split("(")[0].split("[")[0].split("-")[0];
+    let title = json.song.split("(")[0].split("[")[0].split("-")[0];
     if (json.isalbum) {
         html.spotify.title.style.display = "flex";
         if (title.length > 35) {
@@ -96,8 +96,8 @@ function replaceSpotify(json) {
         album = title;
         html.spotify.title.style.display = "none";
     }
-    if (album.length > 35) {
-        html.spotify.album.innerHTML = album.substring(0,32) + "...";
+    if (album.length > 30) {
+        html.spotify.album.innerHTML = album.substring(0,27) + "...";
     } else {
         html.spotify.album.innerHTML = album;
     }

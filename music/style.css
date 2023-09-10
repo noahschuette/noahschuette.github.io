@@ -1,0 +1,312 @@
+:root {
+    --white: #ffffff; 
+    --light1: #FFFC40;
+    --light2: #FFD541;
+    --mid: #F9A31B;
+    --dark5: #F5A097;
+    --dark3: #BC4A9B;
+    --dark2: #793A80;
+    --dark1: #403353;
+    --link: #FF0044;
+    --background: #242234;
+    --font-tiny: 1em;
+    --font-small: 1.2em;
+    --font-regular: 1.5em;
+    --font-medium: 2em;
+    --font-large: 2.3em;
+    --font-title: 3em;
+}
+
+@font-face {
+    font-family: "Mungil";
+    src: url("../fonts/Mungil-Regular.ttf");
+    /* Source: https://www.dafont.com/de/mungil.font */
+}
+
+@font-face {
+    font-family: "Maybe Next";
+    src: url("../fonts/Maybe-Next.ttf");
+    /* Source: https://www.dafont.com/de/maybe-next.font */
+}
+
+@font-face {
+    font-family: "With My Woes";
+    src: url("../fonts/WithMyWoes.ttf");
+}
+
+@font-face {
+    font-family: "Makisupa";
+    src: url("../fonts/makisupa.ttf");
+}
+
+body, a, p, button {
+    font-family: 'Makisupa', monospace;
+    font-weight: 100;
+    text-align: center;
+    overflow: hidden;
+}
+
+#title {
+    font-family: 'Makisupa', monospace;
+}
+
+body {
+    background-color: var(--background);
+}
+
+p {
+    margin: 5px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    height: auto;
+    margin: 0;
+    gap: 50px;
+    overflow-y: auto;
+    margin-bottom: 100px;
+    color: white;
+}
+
+#header {
+    background-color: transparent;
+    width: calc(100vw);
+    margin: 50px 0 0 0;
+}
+
+#title {
+    color: var(--light1);
+    font-size: var(--font-title);
+    font-weight: 700;
+    filter: drop-shadow(4px 4px 0px var(--mid));
+}
+
+.color {
+    width: 50px;
+    height: 50px;
+    background: white;
+    margin: 10px;
+    border-radius: 50px;
+}
+
+.splitContent {
+    width: calc(100vw - 200px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.singleContent {
+    width: calc(100vw - 260px);
+}
+
+.subContent {
+    flex-grow: 2;
+    height: 100%;
+    min-height: 250px;
+}
+
+.mainContent {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark1);
+    filter: drop-shadow(4px 4px 0px var(--dark2));
+    border-radius: 3px;
+}
+
+#spotify {
+    position: relative;
+    display: none;
+    flex-direction: column;
+}
+
+#spotifySub {
+    transform: translateX(-50px);
+    display: flex;
+    flex-direction: row;
+}
+
+#spotifyRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 0 15px 5px;
+}
+
+#spotifyImg {
+    transform: rotate(-5deg);
+    width: 120px;
+    height: 120px;
+}
+
+#vinyl {
+    position: relative;
+    top: -111px;
+    right: 60px;
+    z-index: -2;
+}
+
+#spotifyImgDiv {
+    margin: 0 0 0 50px;
+    width: 130px;
+    height: 130px;
+}
+
+#vinyl img {
+    width: 110px;
+    height: 110px;
+    -webkit-animation: rotating 15s linear infinite;
+}
+
+#spotifyImgSmall {
+    filter: contrast(50%);
+    width: 50px !important;
+    height: 50px !important;
+    position: absolute;
+    top: 45px;
+    right: 45px;
+    z-index: -3;
+}
+
+#spotifyDivSmall {
+    width: 50px !important;
+    height: 50px !important;
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    z-index: -3;
+    background-color: white;
+}
+
+@-webkit-keyframes rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+#spotifyArtist {
+    color: var(--mid);
+    font-size: var(--font-small);
+    margin: 0 0 2px 0;
+}
+
+#spotifyAlbum {
+    color: var(--light2);
+    max-width: 500px;
+    font-size: var(--font-medium);
+    margin: 0 0 2px 10px;
+    text-decoration: none;
+    text-align: left;
+}
+
+#spotifyAlbum:hover {
+    color: var(--dark5);
+}
+
+.midText {
+    color: var(--mid);
+    font-size: var(--font-small);
+}
+
+#spotifyListeningTo {
+    font-size: var(--font-small);
+    margin: 0 0 20px 0;
+}
+
+#spotifyTitle{
+    margin: 0 0 0 12px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    text-align: left;
+}
+
+#spotifyTitle i {
+    font-size: var(--font-small);
+    margin: 0 10px 0 0;
+}
+
+/*
+    Mobile
+*/
+
+@media (max-width: 900px){
+
+    .singleContent {
+        margin-right: 10px;
+        width: calc(80vw);
+    }
+
+    .mainContent {
+        width: calc(80vw);
+    }
+
+    .splitContent {
+        flex-direction: column;
+        width: calc(80vw);
+        margin-right: 10px;
+        gap: 20px;
+    }
+
+    .subContent {
+        width: calc(80vw);
+        min-height: 0;
+    }
+
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        gap: 20px;
+    }
+
+    #header {
+        margin: 20px;
+    }
+
+    #spotify {
+        position: relative;
+        /*bottom: 50px;*/
+        flex-direction: column;
+    }
+
+    #spotifySub {
+        flex-direction: column;
+    }
+}
+
+/*
+    Scrollbar
+ */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(0deg, var(--dark2), var(--dark3));
+    background: var(--dark2);
+    background-size: 400% 100%;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--mid);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--light1);
+}

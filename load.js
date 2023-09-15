@@ -16,11 +16,37 @@ function load() {
         divSmall : document.getElementById("spotifyDivSmall"),
         title : document.getElementById("spotifyTitle"),
         link : document.getElementById("spotifyLink")
-        }
+        },
+        avatar : document.getElementById("char"),
     }
     loadSpotify();
 }
 
+/*
+    CHARACTER MOVEMENT FEATURE
+*/
+
+let mousePos = { x: undefined, y: undefined };
+const win = window,
+    doc = document,
+    docElem = doc.documentElement,
+    body = doc.getElementsByTagName('body')[0],
+    width = win.innerWidth || docElem.clientWidth || body.clientWidth,
+    height = win.innerHeight|| docElem.clientHeight|| body.clientHeight;
+
+window.addEventListener('mousemove', (event) => {
+    mousePos = { x: event.clientX - (width/2), y: event.clientY - (height/2) };
+    console.log(mousePos, width, height);
+    if (Math.abs(mousePos.x) < 100) {
+        html.avatar.src = "images/char.png"
+    } else if ((mousePos.y < 0 && mousePos.x < 0) || mousePos.x < -Math.abs(mousePos.y)) {
+        html.avatar.src = "images/char_left.png"
+    } else if ((mousePos.y < 0 && mousePos.x > 0) || mousePos.x > Math.abs(mousePos.y)) {
+        html.avatar.src = "images/char_right.png"
+    } else {
+        html.avatar.src = "images/char.png"
+    }
+  });
 
 /*
     SPOTIFY FEATURE

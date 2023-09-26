@@ -36,7 +36,6 @@ const win = window,
 
 window.addEventListener('mousemove', (event) => {
     mousePos = { x: event.clientX - (width/2), y: event.clientY - (height/2) };
-    console.log(mousePos, width, height);
     if (Math.abs(mousePos.x) < 100) {
         html.avatar.src = "images/char.png"
     } else if ((mousePos.y < 0 && mousePos.x < 0) || mousePos.x < -Math.abs(mousePos.y)) {

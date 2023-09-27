@@ -110,8 +110,8 @@ body {
 }
 
 #char {
-    width: 75px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
 }
 
 /*
@@ -353,6 +353,20 @@ body {
     height: 70px;
 }
 
+#img-0-mobile, #img-1-mobile, #img-2-mobile, #img-3-mobile, #img-4-mobile {
+    display: none !important;
+}
+
+@media (max-width: 500px){
+    #img-0-mobile, #img-1-mobile, #img-2-mobile, #img-3-mobile, #img-4-mobile {
+        display: block !important;
+    }
+
+    #img-0, #img-1, #img-2, #img-3, #img-4 {
+        display: none !important;
+    }
+}
+
 @media (max-width: 900px){
 
     #mobile {
@@ -361,12 +375,16 @@ body {
 
     body, html {
         overflow-x: hidden;
-        overflow-y: auto;
+    }
+
+    html {
+        overflow-y: hidden;
     }
 
     body {
         flex-direction: column;
         justify-content: flex-start;
+        overflow-y: auto;
     }
 
     #mainContent {

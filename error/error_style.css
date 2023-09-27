@@ -16,22 +16,22 @@
     height: 100vh;
 }
 
-#img-0 {
+#img-0, #img-0-mobile {
     z-index: 1;
 }
 
-#img-1{
+#img-1, #img-1-mobile{
     z-index: -2;
 }
 
-#img-2{
+#img-2, #img-2-mobile {
     z-index: -3;
 }
 
-#img-3{
+#img-3, #img-3-mobile{
     z-index: -4;
 }
 
-#img-4{
+#img-4, #img-4-mobile{
     z-index: -5;
 }

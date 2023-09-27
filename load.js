@@ -20,12 +20,31 @@ function load() {
         avatar : document.getElementById("char"),
     }
     loadSpotify();
+    setChar("idle");
 }
 
 /*
-    CHARACTER MOVEMENT FEATURE
+    CHARACTER FEATURE
 */
 
+function setChar(state) {
+    if (state === "idle") {
+        const date = new Date();
+        const hour = date.getHours();
+        if (hour >= 2 && hour <= 11) {
+            html.avatar.src = "images/emotes/state_sleep.png"
+        } else {
+            html.avatar.src = "images/emotes/state_uwu.png"
+        } 
+    } else if (state === "music") {
+        html.avatar.src = "images/emotes/state_music.png"
+    } else {
+        console.warn("Unknown state: " + state);
+        html.avatar.src = "images/emotes/state_uwu.png"
+    }
+}
+
+/*
 let mousePos = { x: undefined, y: undefined };
 const win = window,
     doc = document,
@@ -46,6 +65,8 @@ window.addEventListener('mousemove', (event) => {
         html.avatar.src = "images/char.png"
     }
   });
+
+*/
 
 /*
     SPOTIFY FEATURE
@@ -104,8 +125,10 @@ const fontawesome = {
 
 function replaceSpotify(json) {
     if (json.islistening === false) {
+        setChar("idle");
         return;
     }
+    setChar("music");
     json = json.json;
     html.spotify.artist.innerHTML = json.artist + "'s";
     let album = json.album.split("(")[0].split("[")[0].split("-")[0];

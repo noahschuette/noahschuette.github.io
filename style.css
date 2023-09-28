@@ -445,8 +445,12 @@ body {
 
     #spotify {
         position: relative;
-        margin: 100px;
+        margin: 50px;
         flex-direction: column;
+    }
+
+    #spotifyAlbum {
+        font-size: 22px;
     }
 
     #vinyl {

@@ -56,7 +56,7 @@ function setPalette(){
     document.getElementById("author").innerHTML = 'by ' + pauthor;
     author = pauthor;
   }
-  //setTitleColors();
+  setTitleColors();
 }
 
 function showColor(id, color){
@@ -312,4 +312,5 @@ function setTitleColors(){
   for (var i=count+1; i<=8; i++){
     document.getElementById("x"+count).style.color = "#8b9bb4";
   }
-}*/
+}
+*/

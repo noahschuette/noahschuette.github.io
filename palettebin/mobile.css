@@ -9,15 +9,27 @@
   }
 
   .mobiletitle {
+    color: #46878f;
+    background-image: -webkit-radial-gradient(circle, #46878f 11%, #94e344 57%, #e2f3e4 95%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
     margin-top: 50px;
     margin-bottom: 30px;
-    display: inline;
-    font-size: 3em;
-    color: #8b9bb4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
     font-family: 'Dimitri';
     cursor: pointer;
     text-shadow: solid 2px white;
     text-decoration: none;
+  }
+
+  .subtitle {
+    font-size: 0.7em;
+    margin: 5px;
   }
 
   .fullscreen {

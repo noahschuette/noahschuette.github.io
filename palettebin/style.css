@@ -36,8 +36,13 @@ body {
 }
 
 .title {
+  color: #46878f;
+  background-image: -webkit-radial-gradient(circle, #46878f 11%, #94e344 57%, #e2f3e4 95%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
   font-size: 40px;
-  color: #8b9bb4;
   font-family: 'Dimitri';
   cursor: pointer;
   text-shadow: solid white 2px;
@@ -48,11 +53,16 @@ body {
   align-items: center;
 }
 
+.subtitle {
+  font-size: 30px;
+  margin: 5px;
+}
+
 .titleIcon {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   margin-right: 10px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .library {

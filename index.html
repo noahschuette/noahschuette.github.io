@@ -46,13 +46,14 @@
         <div id="midContent">
             <img id="char" src="images/emotes/state_uwu.png" alt="">
             <p id="title">Hello therE!</p>
-            <p id="subtitle">I'm noah and i code stuff & do pixel arT</p>
+            <p id="subtitle">I'm noah and i code stuff & create pixel arT</p>
             <div id="socials">
                 <a href="https://open.spotify.com/user/d1g69g8d4ni9ype7dhfyazy22?si=5490f1a2c00b4444"><img src="images/socials/icon0.png" alt=""></a>
                 <a href="https://twitter.com/pixelingnoah"><img src="images/socials/icon1.png" alt=""></a>
                 <a href="https://github.com/n0j0games"><img src="images/socials/icon2.png" alt=""></a>
                 <a href="https://discord.com/users/227504919140106240"><img src="images/socials/icon3.png" alt=""></a>
             </div>
+            <button onclick="toggle()" id="toggleMid"><i class="fa-solid fa-circle-info"></i> ABOUT ME</button>
         </div>
         <div id="pixelArtMobile" onclick="redirect('https://n0j0.artstation.com/')">
             <img id="pixelArtSmall" src="https://raw.githubusercontent.com/n0j0games/pixelart/main/graduation_small.gif" alt="">
@@ -65,33 +66,75 @@
                 <img src="https://releasr.netlify.app/images/favicon.png" alt="">
             </div>
             <div class="link">
-                <a href="../palettebin">PalettebiN</a>
-                <img src="../palettebin/iconMulticolor.png" alt="">
+                <a href="../palettebin">Paste your palettE</a>
+                <img src="../palettebin/pasteyourpalette.png" alt="">
             </div>
         </div>
-        <!--<div id="rightContent" onclick="redirect('projects')">
-            <img id="arrowRight" src="images/arrow2.png" alt="">
-            <p class="midText" id="arrowRightText">Look at my Projects</p>
-        </div>-->
-    </div>
-    <div id="spotify" class="subClass">
-        <p class="midSpotify" id="spotifyListeningTo">I'm currently listening to</p>
-        <div id="spotifySub">
-            <div id="spotifyImgDiv">
-                <img id="spotifyImg" src="https://m.media-amazon.com/images/I/813XseYNw1L._SY355_.jpg" alt="">
-                <div id="vinyl">
-                    <img src="../images/vinyl.png" alt="">
-                    <!--<img id="spotifyImgSmall" src="https://m.media-amazon.com/images/I/813XseYNw1L._SY355_.jpg" alt="">-->
-                    <div id="spotifyDivSmall"></div>
+        <div id="aboutme">
+
+            <button onclick="toggle()" id="toggleMidBack"><i class="fa-solid fa-xmark"></i> CLOSE </button>
+
+            <div id="irl_about" class="aboutMeClass">
+                <img src="../images/char.png" alt="">
+                <div id="irl_about_right">
+                    <p class="aboutMeUpperTitle">About me</p>
+                    <p class="irl_about_text">I'm Noah, 23y/o from Germany</p>
+                    <p class="irl_about_text">Studying computer science & cognitive systems</p>
+                    <p class="irl_about_text">At Bielefeld University</p>
                 </div>
-            </div>                                
-            <div id="spotifyRight">
-                <p id="spotifyArtist">The Weekend</p>
-                <a href="" id="spotifyAlbum">After Hours</a>
-                <p id="spotifyTitle" class="midSpotify">on After Hours</p>
+            </div>
+
+            <div id="spotify" class="subClass aboutMeClass">
+                <p class="aboutMeUpperTitle" id="spotifyListeningTo">I'm currently listening to</p>
+                <div id="spotifySub" class="aboutMeSub">
+                    <div id="spotifyImgDiv">
+                        <img id="spotifyImg" src="https://m.media-amazon.com/images/I/813XseYNw1L._SY355_.jpg" alt="">
+                        <div id="vinyl">
+                            <img src="../images/vinyl.png" alt="">
+                            <!--<img id="spotifyImgSmall" src="https://m.media-amazon.com/images/I/813XseYNw1L._SY355_.jpg" alt="">-->
+                            <div id="spotifyDivSmall"></div>
+                        </div>
+                    </div>                                
+                    <div id="spotifyRight">
+                        <p id="spotifyArtist">The Weekend</p>
+                        <a href="" id="spotifyAlbum">After Hours</a>
+                        <p id="spotifyTitle" class="midSpotify">on After Hours</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="irl_movies" class="aboutMeClass">                
+                <div id="irlMovieSub" class="aboutMeSub">      
+                    <div id="irlMoviesLeft">
+                        <p class="aboutMeUpperTitle">I've recently watched</p>
+                        <p id="irlMoviesTitle">Prinzessin Mononoke</p>
+                        <p id="irlMoviesBy">Hayao Miyazaki</p>
+                        <p id="irlMoviesSeason">1997</p>
+                        <p id="irlMoviesStars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i><!--<i class="fa-regular fa-star"></i>--></p>
+                    </div>
+                    <div id="irlMoviesRight">
+                        <img id="irlMoviesTicket" src="images/irl_icons/movie_high.png" alt="">
+                        <img id="irlMoviesImage" src="https://m.media-amazon.com/images/M/MV5BNTZkYmI0MmEtNGFlZC00OWZjLWFjMmItMjk1OWZkOWJiZGVjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div id="irl_skills" class="aboutMeClass">
+                <p class="aboutMeUpperTitle">Skilltree</p>
+                <div id="irl_skills_parts">
+                    <div class="irl_skills_part">
+                        <div class="irl_skills_sub"><p>JavaScript</p><img src="images/bar/sprite_5.png" alt=""></div>
+                        <div class="irl_skills_sub"><p>Java</p><img src="images/bar/sprite_4.png" alt=""></div>
+                        <div class="irl_skills_sub"><p>Dart</p><img src="images/bar/sprite_2.png" alt=""></div>
+                    </div>
+                    <div class="irl_skills_part">
+                        <div class="irl_skills_sub"><p>Python</p><img src="images/bar/sprite_4.png" alt=""></div>
+                        <div class="irl_skills_sub"><p>C#</p><img src="images/bar/sprite_2.png" alt=""></div>
+                    </div>            
+                </div>                                
             </div>
         </div>
-    </div>
+    </div>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
     <script src="parallax.js"></script> 
 </body>

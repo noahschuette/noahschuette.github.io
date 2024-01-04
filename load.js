@@ -1,5 +1,3 @@
-const pantryid = "f131829c-6c79-4bc7-8451-ef4bbe7cccac";
-
 function redirect(link) {
     window.location.href = link;
 }
@@ -8,18 +6,26 @@ function load() {
     
     html = {
         spotify : {
-        self : document.getElementById("spotify"),
-        artist : document.getElementById("spotifyArtist"),
-        album : document.getElementById("spotifyAlbum"),
-        img : document.getElementById("spotifyImg"),
-        imgSmall : document.getElementById("spotifyImgSmall"),
-        divSmall : document.getElementById("spotifyDivSmall"),
-        title : document.getElementById("spotifyTitle"),
-        link : document.getElementById("spotifyLink")
+            self : document.getElementById("spotify"),
+            artist : document.getElementById("spotifyArtist"),
+            album : document.getElementById("spotifyAlbum"),
+            img : document.getElementById("spotifyImg"),
+            imgSmall : document.getElementById("spotifyImgSmall"),
+            divSmall : document.getElementById("spotifyDivSmall"),
+            title : document.getElementById("spotifyTitle"),
+            link : document.getElementById("spotifyLink")
+        },
+        movies : {
+            self: document.getElementById("irl_movies")
+        },
+        books : {
+            self: document.getElementById("irl_books")  
         },
         avatar : document.getElementById("char"),
+        aboutme : document.getElementById("aboutme"),
+        mid : document.getElementById("midContent"),
     }
-    loadSpotify();
+    loadIRL();
     setChar("idle");
 }
 
@@ -45,30 +51,6 @@ function setChar(state) {
 }
 
 /*
-let mousePos = { x: undefined, y: undefined };
-const win = window,
-    doc = document,
-    docElem = doc.documentElement,
-    body = doc.getElementsByTagName('body')[0],
-    width = win.innerWidth || docElem.clientWidth || body.clientWidth,
-    height = win.innerHeight|| docElem.clientHeight|| body.clientHeight;
-
-window.addEventListener('mousemove', (event) => {
-    mousePos = { x: event.clientX - (width/2), y: event.clientY - (height/2) };
-    if (Math.abs(mousePos.x) < 100) {
-        html.avatar.src = "images/char.png"
-    } else if ((mousePos.y < 0 && mousePos.x < 0) || mousePos.x < -Math.abs(mousePos.y)) {
-        html.avatar.src = "images/char_left.png"
-    } else if ((mousePos.y < 0 && mousePos.x > 0) || mousePos.x > Math.abs(mousePos.y)) {
-        html.avatar.src = "images/char_right.png"
-    } else {
-        html.avatar.src = "images/char.png"
-    }
-  });
-
-*/
-
-/*
     SPOTIFY FEATURE
  */
 
@@ -77,7 +59,7 @@ const backend = "https://noahschuette-api.onrender.com/api/"
 
 let inloop = 0;
 
-function loadSpotify() {
+function loadIRL() {
     console.log("Opening request");
     const method = "GET";
     const sub = "spotify/playback";
@@ -91,7 +73,7 @@ function loadSpotify() {
         if (inloop < 10) {
             console.log("Timed out, trying again in 5 sec");
             setTimeout(function() {
-                loadSpotify();
+                loadIRL();
             }, 5000);
         } else {
             inloop = 0;
@@ -101,12 +83,12 @@ function loadSpotify() {
     xhr.onload = function () {
         if (this.status === 200) {
             inloop = 0;
-            replaceSpotify(JSON.parse(this.responseText));
+            replaceIRL(JSON.parse(this.responseText));
         } else if (this.status === 401 && inloop < 10) {
             inloop++;
             console.log("Auth code expired, trying again in 1 sec");
             setTimeout(function() {
-                loadSpotify();
+                loadIRL();
             }, 1000);
         } else {
             inloop = 0;
@@ -123,9 +105,52 @@ const fontawesome = {
     }
 }
 
-function replaceSpotify(json) {
-    if (json.islistening === false) {
+let noneActive = true;
+let islistening = false;
+
+function activate(name) {
+    noneActive = false;
+    if (name === "spotify" && islistening) {
+        html.spotify.self.style.display = "flex";
+        html.movies.self.style.display = "none";
+        html.books.self.style.display = "none";
+    } else if (name === "movies") {
+        html.spotify.self.style.display = "none";
+        html.movies.self.style.display = "flex";
+        html.books.self.style.display = "none";
+    } else if (name === "books") {
+        html.spotify.self.style.display = "none";
+        html.movies.self.style.display = "none";
+        html.books.self.style.display = "flex";
+    } 
+}
+
+let showSide = true;
+function toggle() {
+    html.mid.style.transition = "opacity 1s";
+    html.aboutme.style.transition = "opacity 1s";
+    if (showSide) {
+        html.mid.style.opacity = 0;
+        html.aboutme.style.opacity = 1;
+        html.mid.style.zIndex = 0;
+        html.aboutme.style.zIndex = 1;
+    } else {
+        html.mid.style.opacity = 1;
+        html.aboutme.style.opacity = 0;
+        html.mid.style.zIndex = 1;
+        html.aboutme.style.zIndex = 0;
+    }
+    showSide = !showSide;
+}
+
+function replaceIRL(json) {
+    islistening = json.islistening;
+    if (islistening === false) {
         setChar("idle");
+        html.spotify.self.style.display = "none"; 
+        setTimeout(function() {
+            loadIRL();
+        }, 120000);
         return;
     }
     setChar("music");
@@ -156,12 +181,11 @@ function replaceSpotify(json) {
 
     html.spotify.divSmall.style.backgroundColor = toRGBString(rgb.comp);
     
-    
     //html.spotify.imgSmall.src = json.image;
     html.spotify.self.style.display = "flex";
 
     setTimeout(function() {
-        loadSpotify();
+        loadIRL();
     }, 120000);
 }
 

@@ -120,7 +120,7 @@ body {
     About/IRL Section
 */
 
-#toggleMid, #toggleMidBack {
+.toggleMid, .toggleMidBack {
     background-color: transparent;
     outline: none;
     border: none;
@@ -128,19 +128,31 @@ body {
     font-size: var(--font-regular);
 }
 
-#toggleMid:hover, #toggleMidBack:hover {
+.toggleMid:hover, .toggleMidBack:hover {
     color: var(--color1);
 } 
 
-#toggleMid {
+.toggleMid {
     margin-top: 20px;
 }
 
-#toggleMidBack {
+#toggleMidDisabled {
+    color: var(--mid);
+}
+
+#toggleMidEnabled {
+    display: none;
+}
+
+#toggleMidDisabled:hover {
+    color: var(--mid);
+}
+
+.toggleMidBack {
     margin-bottom: 10px;
 }
 
-#aboutme {
+#aboutme, #current {
     position: absolute;
     display: flex;
     opacity: 0;
@@ -291,13 +303,23 @@ body {
     object-fit: contain;
 }
 
-#irlMoviesStars {
-    margin: 15px 20px 0 0;
-    text-align: right;
+#irlMoviesRating {
+    margin: 15px 0 0 0;
+    display: inline-block;
+    color: var(--color2);
+    text-decoration: none;
+}
+
+#irlMoviesRating:hover {
+    color: var(--color1);
+}
+
+#irlMoviesRating:hover i {
+    color: var(--color1);
 }
 
 #irlMoviesStars i {
-    color: var(--light1);
+    color: var(--color2);
 }
 
 #vinyl {
@@ -353,16 +375,14 @@ body {
 }
 
 #irlMoviesBy {
-    text-align: right;
-    margin: 0 10px 0 0;
+    margin: 0;
 }
 
-#irlMoviesSeason {
-    text-align: right;
-    margin: 0 15px 0 0;
+#irlMoviesYear {
+    margin: 0;
 }
 
-#spotifyArtist, #irlMoviesBy, #irlMoviesSeason {
+#spotifyArtist, #irlMoviesBy, #irlMoviesYear {
     color: var(--mid);
     font-size: var(--font-small);
 }
@@ -373,8 +393,7 @@ body {
 }
 
 #irlMoviesTitle {
-    text-align: right;
-    margin: 0 5px 0 0;
+    margin: 0;
 }
 
 #spotifyAlbum, #irlMoviesTitle {
@@ -579,7 +598,7 @@ body {
 
 @media (max-width: 1100px){
 
-    #toggleMid, #toggleMidBack {
+    .toggleMid, .toggleMidBack {
         display: none;
     }
 
@@ -589,16 +608,17 @@ body {
 
     body, html {
         overflow-x: hidden;
+        height: auto;
     }
 
     html {
-        overflow-y: hidden;
+        overflow-y: auto;
     }
 
     body {
         flex-direction: column;
         justify-content: flex-start;
-        overflow-y: auto;
+        overflow-y: hidden;
     }
 
     #mainContent {
@@ -629,7 +649,7 @@ body {
         margin: 30px;        
     }
 
-    #aboutme {
+    #aboutme, #current {
         opacity: 1 !important;
     }
 
@@ -664,7 +684,7 @@ body {
         width: auto;
     }
 
-    #aboutme {
+    #aboutme, #current {
         position: relative;
         margin: 30px;
         flex-direction: column;
@@ -681,6 +701,11 @@ body {
 
     #irl_skills_parts {
         flex-direction: column;
+    }
+
+    #spotifySub {
+        padding-left: 0px;
+        transform: translateX(-40px);
     }
     
 

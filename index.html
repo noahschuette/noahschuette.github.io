@@ -53,7 +53,9 @@
                 <a href="https://github.com/n0j0games"><img src="images/socials/icon2.png" alt=""></a>
                 <a href="https://discord.com/users/227504919140106240"><img src="images/socials/icon3.png" alt=""></a>
             </div>
-            <button onclick="toggle()" id="toggleMid"><i class="fa-solid fa-circle-info"></i> ABOUT ME</button>
+            <button onclick="toggle('about')" class="toggleMid"><i class="fa-solid fa-address-card"></i> ABOUT ME</button>
+            <button id="toggleMidDisabled" class="toggleMid"><i class="fa-solid fa-face-grin-beam-sweat"></i> LOADING...</button>
+            <button id="toggleMidEnabled" onclick="toggle('current')" class="toggleMid"><i class="fa-solid fa-face-grin-beam"></i> WHAT AM I DOING?</button>
         </div>
         <div id="pixelArtMobile" onclick="redirect('https://n0j0.artstation.com/')">
             <img id="pixelArtSmall" src="https://raw.githubusercontent.com/n0j0games/pixelart/main/graduation_small.gif" alt="">
@@ -66,13 +68,13 @@
                 <img src="https://releasr.netlify.app/images/favicon.png" alt="">
             </div>
             <div class="link">
-                <a href="../palettebin">Paste your palettE</a>
-                <img src="../palettebin/pasteyourpalette.png" alt="">
+                <a href="palettecrafter.netlify.app">PalettecrafteR</a>
+                <img src="https://palettecrafter.netlify.app/images/icon.png" alt="">
             </div>
         </div>
         <div id="aboutme">
 
-            <button onclick="toggle()" id="toggleMidBack"><i class="fa-solid fa-xmark"></i> CLOSE </button>
+            <button onclick="toggle('close')" class="toggleMidBack"><i class="fa-solid fa-xmark"></i> CLOSE </button>
 
             <div id="irl_about" class="aboutMeClass">
                 <img src="../images/char.png" alt="">
@@ -83,6 +85,25 @@
                     <p class="irl_about_text">At Bielefeld University</p>
                 </div>
             </div>
+
+            <div id="irl_skills" class="aboutMeClass">
+                <p class="aboutMeUpperTitle">My Programming Languages</p>
+                <div id="irl_skills_parts">
+                    <div class="irl_skills_part">
+                        <div class="irl_skills_sub"><p>JavaScript</p><img src="images/bar/sprite_5.png" alt=""></div>
+                        <div class="irl_skills_sub"><p>Java</p><img src="images/bar/sprite_4.png" alt=""></div>
+                        <div class="irl_skills_sub"><p>Dart</p><img src="images/bar/sprite_2.png" alt=""></div>
+                    </div>
+                    <div class="irl_skills_part">
+                        <div class="irl_skills_sub"><p>Python</p><img src="images/bar/sprite_4.png" alt=""></div>
+                        <div class="irl_skills_sub"><p>C#</p><img src="images/bar/sprite_2.png" alt=""></div>
+                    </div>            
+                </div>                                
+            </div>
+        </div>
+        <div id="current">
+
+            <button onclick="toggle('closeCurrent')" class="toggleMidBack"><i class="fa-solid fa-xmark"></i> CLOSE </button>
 
             <div id="spotify" class="subClass aboutMeClass">
                 <p class="aboutMeUpperTitle" id="spotifyListeningTo">I'm currently listening to</p>
@@ -97,7 +118,7 @@
                     </div>                                
                     <div id="spotifyRight">
                         <p id="spotifyArtist">The Weekend</p>
-                        <a href="" id="spotifyAlbum">After Hours</a>
+                        <a href="" id="spotifyAlbum" target="_blank">After Hours</a>
                         <p id="spotifyTitle" class="midSpotify">on After Hours</p>
                     </div>
                 </div>
@@ -109,29 +130,14 @@
                         <p class="aboutMeUpperTitle">I've recently watched</p>
                         <p id="irlMoviesTitle">Prinzessin Mononoke</p>
                         <p id="irlMoviesBy">Hayao Miyazaki</p>
-                        <p id="irlMoviesSeason">1997</p>
-                        <p id="irlMoviesStars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i><!--<i class="fa-regular fa-star"></i>--></p>
+                        <p id="irlMoviesYear">1997</p>
+                        <a href="" target="_blank" id="irlMoviesRating">My letterboxd rating: <p id="irlMoviesStars"><i class="fa-solid fa-star"></i></p></a>
                     </div>
                     <div id="irlMoviesRight">
                         <img id="irlMoviesTicket" src="images/irl_icons/movie_high.png" alt="">
                         <img id="irlMoviesImage" src="https://m.media-amazon.com/images/M/MV5BNTZkYmI0MmEtNGFlZC00OWZjLWFjMmItMjk1OWZkOWJiZGVjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" alt="">
                     </div>
                 </div>
-            </div>
-
-            <div id="irl_skills" class="aboutMeClass">
-                <p class="aboutMeUpperTitle">Skilltree</p>
-                <div id="irl_skills_parts">
-                    <div class="irl_skills_part">
-                        <div class="irl_skills_sub"><p>JavaScript</p><img src="images/bar/sprite_5.png" alt=""></div>
-                        <div class="irl_skills_sub"><p>Java</p><img src="images/bar/sprite_4.png" alt=""></div>
-                        <div class="irl_skills_sub"><p>Dart</p><img src="images/bar/sprite_2.png" alt=""></div>
-                    </div>
-                    <div class="irl_skills_part">
-                        <div class="irl_skills_sub"><p>Python</p><img src="images/bar/sprite_4.png" alt=""></div>
-                        <div class="irl_skills_sub"><p>C#</p><img src="images/bar/sprite_2.png" alt=""></div>
-                    </div>            
-                </div>                                
             </div>
         </div>
     </div>    

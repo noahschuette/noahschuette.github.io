@@ -34,6 +34,8 @@ function load() {
         togglemid_enabled : document.getElementById("toggleMidEnabled"),
         togglemid_disabled : document.getElementById("toggleMidDisabled"),
     }
+    html.spotify.self.style.display = "none"; 
+    html.movies.self.style.display = "none";
     loadIRL();
     setChar("idle");
 }

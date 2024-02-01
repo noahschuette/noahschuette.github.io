@@ -649,10 +649,6 @@ body {
         margin: 30px;        
     }
 
-    #aboutme, #current {
-        opacity: 1 !important;
-    }
-
     #leftContent {
         display: none;
     }
@@ -685,10 +681,18 @@ body {
     }
 
     #aboutme, #current {
+        opacity: 1 !important;
         position: relative;
-        margin: 30px;
         flex-direction: column;
         z-index: 1;
+    }
+
+    #aboutme {
+        margin: 30px 30px 0 30px;
+    }
+
+    #current {
+        margin: 0 30px 30px 30px;
     }
 
     #spotifyAlbum {

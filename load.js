@@ -2,7 +2,14 @@ function redirect(link) {
     window.location.href = link;
 }
 
+let isOnMobile = false;
+
 function load() {
+
+    if (window.screen && window.screen.width < 1100) {
+        isOnMobile = true;
+    }
+    console.log(isOnMobile);
     
     html = {
         spotify : {
@@ -49,15 +56,15 @@ function setChar(state) {
         const date = new Date();
         const hour = date.getHours();
         if (hour >= 2 && hour <= 11) {
-            html.avatar.src = "images/emotes/state_sleep.png"
+            html.avatar.src = "images/chars/state_sleep.png"
         } else {
-            html.avatar.src = "images/emotes/state_uwu.png"
+            html.avatar.src = "images/chars/state_uwu.png"
         } 
     } else if (state === "music") {
-        html.avatar.src = "images/emotes/state_music.png"
+        html.avatar.src = "images/chars/state_music.png"
     } else {
         console.warn("Unknown state: " + state);
-        html.avatar.src = "images/emotes/state_uwu.png"
+        html.avatar.src = "images/chars/state_uwu.png"
     }
 }
 
@@ -80,7 +87,7 @@ function loadIRL() {
     xhr.timeout = 4000;
     xhr.ontimeout = function () { 
         inloop++;
-        if (inloop < 10) {
+        if (inloop < 20) {
             console.log("Timed out, trying again in 5 sec");
             setTimeout(function() {
                 loadIRL();
@@ -223,9 +230,7 @@ function replaceIRL(dataFromSpotify, dataFromLetterboxd) {
         html.movies.rating.href = json.href;
         html.movies.image.src = json.poster;
         let temp = "";
-        console.warn(json.rating)
         let floored = Math.floor(json.rating);
-        console.warn(floored);
         for (let i = 0; i < floored; i++) {
             temp += `<i class="fa-solid fa-star"></i>`;
         }
@@ -240,8 +245,10 @@ function replaceIRL(dataFromSpotify, dataFromLetterboxd) {
         html.movies.self.style.display = "flex";
     }
     
-    html.togglemid_enabled.style.display = "block";
-    html.togglemid_disabled.style.display = "none";
+    if (!isOnMobile) {
+        html.togglemid_enabled.style.display = "block";
+        html.togglemid_disabled.style.display = "none";
+    }    
 
     setTimeout(function() {
         loadIRL();

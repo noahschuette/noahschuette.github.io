@@ -114,6 +114,7 @@ body {
 #char {
     width: 120px;
     height: 120px;
+    pointer-events: none;
 }
 
 /*
@@ -185,6 +186,13 @@ body {
 #irl_about {
     padding: 10px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#irl_about_bot {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -197,10 +205,11 @@ body {
 
 #irl_about img {
     width: auto;
-    height: 100px;
+    height: 90px;
     border-radius: 5px;
     object-fit: cover;
-    padding: 10px;
+    padding: 0 10px;
+    pointer-events: none;
 }
 
 #aboutMeControls {
@@ -278,6 +287,7 @@ body {
     transform: rotate(-5deg);
     width: 100px;
     height: 100px;
+    pointer-events: none;
 }
 
 #irlMoviesRight {
@@ -290,6 +300,7 @@ body {
 #irlMoviesTicket {
     transform: rotate(5deg);
     height: 160px;
+    pointer-events: none;
 }
 
 #irlMoviesImage {
@@ -301,6 +312,18 @@ body {
     top: -150px;
     z-index: -2;
     object-fit: contain;
+    pointer-events: none;
+}
+
+#irlMoviesAvatar {
+    position: relative;
+    right: -50px;
+    top: -220px;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    object-fit: contain;
+    pointer-events: none;
 }
 
 #irlMoviesRating {
@@ -327,6 +350,7 @@ body {
     top: -92px;
     right: 50px;
     z-index: -2;
+    pointer-events: none;
 }
 
 #spotifyImgDiv {
@@ -339,6 +363,7 @@ body {
     width: 90px;
     height: 90px;
     -webkit-animation: rotating 15s linear infinite;
+    pointer-events: none;
 }
 
 #spotifyImgSmall {
@@ -349,6 +374,7 @@ body {
     top: 45px;
     right: 45px;
     z-index: -3;
+    pointer-events: none;
 }
 
 #spotifyDivSmall {
@@ -418,6 +444,10 @@ body {
     margin: 0 0 20px 0;
 }
 
+#aboutMeUpperAbout {
+    margin: 0 0 10px 0;
+}
+
 #spotifyTitle {
     margin: 0 0 0 12px;
     text-align: left;
@@ -462,6 +492,7 @@ body {
 
 .irl_skills_sub img {
     height: 25px;
+    pointer-events: none;
 }
 
 /*
@@ -564,6 +595,7 @@ body {
     height: 40px;
     border-radius: 5px;
     object-fit: cover;
+    pointer-events: none;
 }
 
 #pixelArtMobile {
@@ -586,17 +618,15 @@ body {
     display: none !important;
 }
 
-@media (max-width: 500px){
+@media (max-width: 1100px){
+
     #img-0-mobile, #img-1-mobile, #img-2-mobile, #img-3-mobile, #img-4-mobile {
-        display: block !important;
+        display: none !important;
     }
 
     #img-0, #img-1, #img-2, #img-3, #img-4 {
         display: none !important;
     }
-}
-
-@media (max-width: 1100px){
 
     .toggleMid, .toggleMidBack {
         display: none;
@@ -619,6 +649,7 @@ body {
         flex-direction: column;
         justify-content: flex-start;
         overflow-y: hidden;
+        background-image: url("images/misc/space_layered.png");
     }
 
     #mainContent {
@@ -688,19 +719,19 @@ body {
     }
 
     #aboutme {
-        margin: 30px 30px 0 30px;
+        margin: 10px 10px 0 10px;
     }
 
     #current {
-        margin: 0 30px 30px 30px;
+        margin: 0 10px 10px 10px;
     }
 
     #spotifyAlbum {
         font-size: 22px;
     }
 
-    #vinyl {
-        display: none;
+    .aboutMeClass {
+        width: calc(100% - 80px);
     }
 
     #irl_skills_parts {
@@ -709,7 +740,24 @@ body {
 
     #spotifySub {
         padding-left: 0px;
-        transform: translateX(-40px);
+        transform: translateX(-80px);
+        width: calc(100% + 70px);
+        border: 1px solid red;
+    }
+
+    #irl_movies {
+        padding: 10px;
+    }
+
+    #irlMovieSub {
+        transform: translateX(0px);
+        width: calc(100% + 100px);
+        border: 1px solid red;
+    }
+
+    #irlMoviesAvatar {
+        top: -210px;
+        right: -20px;
     }
     
 

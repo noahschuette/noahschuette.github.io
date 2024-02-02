@@ -742,7 +742,6 @@ body {
         padding-left: 0px;
         transform: translateX(-80px);
         width: calc(100% + 70px);
-        border: 1px solid red;
     }
 
     #irl_movies {
@@ -752,7 +751,6 @@ body {
     #irlMovieSub {
         transform: translateX(0px);
         width: calc(100% + 100px);
-        border: 1px solid red;
     }
 
     #irlMoviesAvatar {

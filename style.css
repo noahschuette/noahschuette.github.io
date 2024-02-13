@@ -495,6 +495,69 @@ body {
     pointer-events: none;
 }
 
+#irl_music {
+    padding: 10px;
+}
+
+#irlMusicAlbums {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px;
+}
+
+.irlAlbum {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.irlAlbum img {
+    width: 80px;
+    height: 80px;
+    pointer-events: none;
+}
+
+.irlAlbum p {
+    position: absolute;
+    bottom: -8px;
+    left: calc(50% - 11px);
+    background-color: var(--color3);
+    color: var(--white);
+    padding: 3px;
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.irlAlbum:hover {
+    cursor: pointer;
+}
+
+.irlAlbum:hover p {
+    background-color: var(--color1);
+}
+
+#irlMusicboard {
+    color: var(--color2);
+    text-decoration: none;
+    margin: 10px;
+}
+
+#irlMusicboard:hover {
+    color: var(--color1);
+
+}
+
+#irlMusicTitle {
+    color: var(--light2);
+    font-size: var(--font-small);
+}
+
 /*
     Pixel-Art
 */
@@ -756,6 +819,10 @@ body {
     #irlMoviesAvatar {
         top: -210px;
         right: -20px;
+    }
+
+    #album-4, #album-5 {
+        display: none;
     }
     
 

@@ -55,7 +55,7 @@
             </div>
             <button onclick="toggle('about')" class="toggleMid"><i class="fa-solid fa-address-card"></i> ABOUT ME</button>
             <button id="toggleMidDisabled" class="toggleMid"><i class="fa-solid fa-face-grin-beam-sweat"></i> LOADING...</button>
-            <button id="toggleMidEnabled" onclick="toggle('current')" class="toggleMid"><i class="fa-solid fa-face-grin-beam"></i> WHAT AM I DOING?</button>
+            <button id="toggleMidEnabled" onclick="toggle('current')" class="toggleMid"><i class="fa-solid fa-face-grin-beam"></i> PERSONAL PAGE</button>
         </div>
         <div id="pixelArtMobile" onclick="redirect('https://n0j0.artstation.com/')">
             <img id="pixelArtSmall" src="https://raw.githubusercontent.com/n0j0games/pixelart/main/graduation_small.gif" alt="">
@@ -127,6 +127,34 @@
                 </div>
             </div>
 
+            <div id="irl_music" class="aboutMeClass">
+                <p class="aboutMeUpperTitle">I love reviewing music</p>
+                <p id="irlMusicTitle">My Favorite Albums of 2023</p>
+                <div id="irlMusicAlbums">
+                    <a id="album-1" href="https://musicboard.app/review/35f6a3bd-4b08-4153-8140-79d77f5cc58c" target="_blank" class="irlAlbum">
+                        <img id="album-1-img" src="https://e-cdns-images.dzcdn.net/images/cover/406c9cd49815027a6dbed8a02f44e180/500x500-000000-80-0-0.jpg">
+                        <p>1</p>
+                    </a>
+                    <a id="album-2" href="https://musicboard.app/review/0a906f34-ee33-4c01-a783-7fe8b55cf65e" target="_blank" class="irlAlbum">
+                        <img id="album-2-img" src="https://e-cdns-images.dzcdn.net/images/cover/6c91e64b7157f1332a4f6b0de9e4c714/500x500-000000-80-0-0.jpg">
+                        <p>2</p>
+                    </a>
+                    <a id="album-3" href="https://musicboard.app/album/247014519" target="_blank" class="irlAlbum">
+                        <img id="album-3-img" src="https://e-cdns-images.dzcdn.net/images/cover/0ae53c84250981214bcb7ca39f8c2195/500x500-000000-80-0-0.jpg">
+                        <p>3</p>
+                    </a>
+                    <a id="album-4" href="https://musicboard.app/review/e129bae5-f39a-46da-8782-811d100df83a" target="_blank" class="irlAlbum">
+                        <img id="album-4-img" src="https://e-cdns-images.dzcdn.net/images/cover/be3bc6ccbca02be2701661ecf73ac85d/500x500-000000-80-0-0.jpg">
+                        <p>4</p>
+                    </a>
+                    <a id="album-5" href="https://musicboard.app/album/246976300" target="_blank" class="irlAlbum">
+                        <img id="album-5-img" src="https://e-cdns-images.dzcdn.net/images/cover/46b0d2cec9a5a6dcb192d8e8d910587b/500x500-000000-80-0-0.jpg">
+                        <p>5</p>
+                    </a>
+                </div>
+                <a href="https://musicboard.app/laughnoahcryltr" target="_blank" id="irlMusicboard">Visit my Musicboard profile</a>
+            </div>
+
             <div id="irl_movies" class="aboutMeClass">                
                 <div id="irlMovieSub" class="aboutMeSub">      
                     <div id="irlMoviesLeft">
@@ -143,6 +171,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>

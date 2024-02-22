@@ -31,6 +31,7 @@ function load() {
             stars : document.getElementById("irlMoviesStars"),
             image : document.getElementById("irlMoviesImage")
         },
+        music : document.getElementById("irl_music"),
         books : {
             self: document.getElementById("irl_books")  
         },
@@ -43,6 +44,7 @@ function load() {
     }
     html.spotify.self.style.display = "none"; 
     html.movies.self.style.display = "none";
+    html.music.style.display = "none";
     loadIRL();
     setChar("idle");
 }
@@ -244,6 +246,8 @@ function replaceIRL(dataFromSpotify, dataFromLetterboxd) {
         html.movies.stars.innerHTML = temp;
         html.movies.self.style.display = "flex";
     }
+
+    html.music.style.display = "flex";
     
     if (!isOnMobile) {
         html.togglemid_enabled.style.display = "block";

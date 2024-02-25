@@ -211,6 +211,7 @@ body {
     object-fit: cover;
     margin: 5px 20px;
     pointer-events: none;
+    border: 3px solid var(--color3);
 }
 
 #irl_about_right {
@@ -429,7 +430,7 @@ body {
 }
 
 #spotifyAlbum, #irlMoviesTitle {
-    color: var(--light1);
+    color: var(--color2);
     max-width: 500px;
     font-size: var(--font-medium);
     text-decoration: none; 
@@ -445,7 +446,7 @@ body {
 }
 
 .aboutMeUpperTitle {
-    color: var(--color2);
+    color: var(--light1);
     font-size: var(--font-small);
     margin: 0 0 20px 0;
 }
@@ -524,9 +525,26 @@ body {
     gap: 10px;
 }
 
-#irl_frameworks_sub i {
+.framework i {
     font-size: 30px;
     color: var(--light1);
+}
+
+.framework p {
+    color: var(--light2);
+    font-size: var(--font-small);
+    margin: 0 5px;
+}
+
+@keyframes framework-color-html {
+    from {color: var(--light2); transform: scale(1)}
+    to {color: var(--color2); transform: scale(1.1)}
+}
+
+.framework:hover p, .framework:hover i {
+    color: var(--color2);
+    transform: scale(1.1);
+    animation: framework-color-html 0.5s;
 }
 
 #irl_music {
@@ -828,7 +846,7 @@ body {
     }
 
     .aboutMeClass {
-        width: calc(100% - 80px);
+        width: calc(100vw - 80px);
     }
 
     #irl_skills_parts {
@@ -869,6 +887,17 @@ body {
 
     #irl_about_right {
         padding: 0;
+    }
+
+    #irl_frameworks_sub {
+        flex-direction: column;
+    }
+
+    .framework {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
     }
 
 }

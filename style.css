@@ -537,13 +537,12 @@ body {
 }
 
 @keyframes framework-color-html {
-    from {color: var(--light2); transform: scale(1)}
-    to {color: var(--color2); transform: scale(1.1)}
+    from {color: var(--light2);}
+    to {color: var(--color2);}
 }
 
 .framework:hover p, .framework:hover i {
     color: var(--color2);
-    transform: scale(1.1);
     animation: framework-color-html 0.5s;
 }
 

@@ -15,7 +15,7 @@ function generateParallax() {
     let scene = document.getElementById('scene');
     scene.innerHTML = "";
 
-    width = window.document.body.scrollWidth;
+    width = window.innerWidth;
     height = window.document.body.scrollHeight;
 
     // <img src="error/space2.png" data-depth='0.3' class="paramimg" id="img-2"/>

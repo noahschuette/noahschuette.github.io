@@ -16,7 +16,7 @@
     <link rel="icon" href="images/logo.png">
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="error/error_style.css">
+    <!--<link rel="stylesheet" href="error/error_style.css">-->
     <!-- Scripts -->
     <script src="load.js"></script>
 
@@ -24,12 +24,12 @@
 <body onload="load()">
 
     <div id="scene" data-relative-input="true">
-        <img src="error/space2.png" data-depth='0.3' class="paramimg" id="img-2"/>
+        <!--<img src="error/space2.png" data-depth='0.3' class="paramimg" id="img-2"/>
         <img src="error/space3.png" data-depth='0.1' class="paramimg" id="img-3"/>
         <img src="error/space4.png" data-depth='0.05' class="paramimg" id="img-4"/>
         <img src="error/mobile/space2.png" data-depth='0.3' class="paramimg" id="img-2-mobile"/>
         <img src="error/mobile/space3.png" data-depth='0.1' class="paramimg" id="img-3-mobile"/>
-        <img src="error/mobile/space4.png" data-depth='0.05' class="paramimg" id="img-4-mobile"/>
+        <img src="error/mobile/space4.png" data-depth='0.05' class="paramimg" id="img-4-mobile"/>-->
     </div>
     
     <div id="mainContent">
@@ -217,6 +217,6 @@
         </div>
     </div>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
-    <script src="parallax.js"></script> 
+    <script src="parallax.js" type="module" onload="parallax()"></script> 
 </body>
 </html>

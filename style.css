@@ -732,6 +732,11 @@ body {
     display: none !important;
 }
 
+.paramimg {
+    position: absolute;
+    pointer-events: none;
+}
+
 @media (max-width: 1100px){
 
     #img-0-mobile, #img-1-mobile, #img-2-mobile, #img-3-mobile, #img-4-mobile {
@@ -763,7 +768,7 @@ body {
         flex-direction: column;
         justify-content: flex-start;
         overflow-y: hidden;
-        background-image: url("images/misc/space_layered.png");
+        /*background-image: url("images/misc/space_layered.png");*/
     }
 
     #mainContent {

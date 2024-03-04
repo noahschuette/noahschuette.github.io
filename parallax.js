@@ -15,7 +15,7 @@ function generateParallax() {
     let scene = document.getElementById('scene');
     scene.innerHTML = "";
 
-    width = window.innerWidth;
+    width = self.innerWidth;
     height = window.document.body.scrollHeight;
 
     // <img src="error/space2.png" data-depth='0.3' class="paramimg" id="img-2"/>
@@ -26,9 +26,10 @@ function generateParallax() {
 
     const path = "images/space/"
     const image_pool = [
-        {"name" : "tiny", "length" : 4, "data-depth" : 0.01, "zIndex" : -10, "amount" : scale / 4},
-        {"name" : "small", "length" : 3, "data-depth" : 0.05, "zIndex" : -11, "amount" : scale / 32},
-        {"name" : "large", "length" : 4, "data-depth" : 0.1, "zIndex" : -12, "amount" : 5},
+        {"name" : "tiny", "length" : 4, "data-depth" : 0.01, "zIndex" : -12, "amount" : scale / 2, "scale" : 30},
+        {"name" : "small", "length" : 3, "data-depth" : 0.05, "zIndex" : -11, "amount" : scale / 64, "scale" : 100},
+        {"name" : "large", "length" : 2, "data-depth" : 0.1, "zIndex" : -10, "amount" : 4, "scale" : 100},
+        {"name" : "huge", "length" : 2, "data-depth" : 0.2, "zIndex" : -9, "amount" : 1, "scale" : 100}
     ];
 
     let count = 0;
@@ -36,15 +37,29 @@ function generateParallax() {
         for (let i = 0; i < image_pool[k].amount; i++) {
             let img = document.createElement("img");
             img.src = path + image_pool[k].name + Math.floor(Math.random() * image_pool[k].length) + ".png";
+            console.log(k, img.src);
             img.setAttribute("data-depth", image_pool[k]["data-depth"]);
             img.classList.add("paramimg");
-            img.style.top = Math.floor(Math.random() * height) + "px";
-            img.style.left = Math.floor(Math.random() * width) + "px";
+            if (k < 2) {
+                if (Math.random() < 0.4) {
+                    img.style.animation = `star-animation-1 ${Math.floor(Math.random() * 100 + 5)}s infinite`;
+                } else if (Math.random() < 0.9) {
+                    img.style.animation = `star-animation-2 ${Math.floor(Math.random() * 5)}s infinite`;
+                }                
+            } else {
+                img.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`
+                if (Math.random() < 0.3) {
+                    img.style.animation = `star-animation-3 ${Math.floor(Math.random() * 100 + 80)}s infinite linear`;
+                } else if (Math.random() < 0.6) {
+                    img.style.animation = `star-animation-4 ${Math.floor(Math.random() * 100 + 80)}s infinite linear`;
+                }               
+            }
+            img.style.top = Math.floor(Math.random() * (height - image_pool[k].scale)) + "px";
+            img.style.left = Math.floor(Math.random() * (width - image_pool[k].scale)) + "px";
             img.setAttribute("data-top", img.style.top);
             img.setAttribute("data-left", img.style.left);
             scene.appendChild(img);
             img.style.zIndex = image_pool[k].zIndex;
-            img.style.transorm = `rotate("${Math.floor(Math.random() * 360)}deg)`;
             img.id = "img-" + count;
             count++;
         }
@@ -52,6 +67,9 @@ function generateParallax() {
 
     //let parallaxInstance = new Parallax(scene);
 }
+
+// give random int between 1 and 10
+// Math.floor(Math.random() * 10) + 1
 
 //window.addEventListener('mousemove', mouseMove);
 

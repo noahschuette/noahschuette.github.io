@@ -28,8 +28,8 @@ function generateParallax() {
     const image_pool = [
         {"name" : "tiny", "length" : 4, "data-depth" : 0.01, "zIndex" : -12, "amount" : scale / 2, "scale" : 30},
         {"name" : "small", "length" : 3, "data-depth" : 0.05, "zIndex" : -11, "amount" : scale / 64, "scale" : 100},
-        {"name" : "large", "length" : 2, "data-depth" : 0.1, "zIndex" : -10, "amount" : 4, "scale" : 100},
-        {"name" : "huge", "length" : 2, "data-depth" : 0.2, "zIndex" : -9, "amount" : 1, "scale" : 100}
+        {"name" : "large", "length" : 2, "data-depth" : 0.1, "zIndex" : -10, "amount" : 0, "scale" : 100},
+        {"name" : "huge", "length" : 2, "data-depth" : 0.2, "zIndex" : -9, "amount" : 0, "scale" : 100}
     ];
 
     let count = 0;

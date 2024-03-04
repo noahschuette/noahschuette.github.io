@@ -24,12 +24,6 @@
 <body onload="load()">
 
     <div id="scene" data-relative-input="true">
-        <!--<img src="error/space2.png" data-depth='0.3' class="paramimg" id="img-2"/>
-        <img src="error/space3.png" data-depth='0.1' class="paramimg" id="img-3"/>
-        <img src="error/space4.png" data-depth='0.05' class="paramimg" id="img-4"/>
-        <img src="error/mobile/space2.png" data-depth='0.3' class="paramimg" id="img-2-mobile"/>
-        <img src="error/mobile/space3.png" data-depth='0.1' class="paramimg" id="img-3-mobile"/>
-        <img src="error/mobile/space4.png" data-depth='0.05' class="paramimg" id="img-4-mobile"/>-->
     </div>
     
     <div id="mainContent">
@@ -48,10 +42,11 @@
             <p id="title">Hello therE!</p>
             <p id="subtitle">I'm Noah, a programmer & pixel artisT</p>
             <div id="socials">
-                <a href="https://open.spotify.com/user/d1g69g8d4ni9ype7dhfyazy22?si=5490f1a2c00b4444"><img src="images/socials/icon0.png" alt=""></a>
-                <a href="https://twitter.com/pixelingnoah"><img src="images/socials/icon1.png" alt=""></a>
-                <a href="https://github.com/n0j0games"><img src="images/socials/icon2.png" alt=""></a>
-                <a href="https://discord.com/users/227504919140106240"><img src="images/socials/icon3.png" alt=""></a>
+                <a href="https://open.spotify.com/user/d1g69g8d4ni9ype7dhfyazy22?si=5490f1a2c00b4444"><img src="images/socials/icon0.png" alt="spotify"></a>
+                <a href="https://twitter.com/pixelingnoah"><img src="images/socials/icon1.png" alt="twitter"></a>
+                <a href="https://github.com/n0j0games"><img src="images/socials/icon2.png" alt="github"></a>
+                <!--<a href="https://discord.com/users/227504919140106240"><img src="images/socials/icon3.png" alt=""></a>-->
+                <a href="https://www.linkedin.com/in/noah-sch%C3%BCtte-044695295/"><img src="images/socials/icon4.png" alt="linkedin"></a>
             </div>
             <button onclick="toggle('about')" class="toggleMid"><i class="fa-solid fa-address-card"></i> ABOUT ME</button>
             <button id="toggleMidDisabled" class="toggleMid"><i class="fa-solid fa-face-grin-beam-sweat"></i> LOADING...</button>
@@ -64,12 +59,16 @@
         <div id="rightContent">
             <p class="midText">My projectS</p>
             <div class="link">
-                <a href="https://releasr.noahschuette.de/">Spotify release trackeR</a>
+                <a onclick="loadProject('releasr')">Spotify release trackeR</a>
                 <img src="https://releasr.noahschuette.de/images/favicon.png" alt="">
             </div>
             <div class="link">
-                <a href="https://palettecrafter.noahschuette.de">PalettecrafteR</a>
+                <a onclick="loadProject('palettecrafter')">PalettecrafteR</a>
                 <img src="https://palettecrafter.noahschuette.de/images/icon.png" alt="">
+            </div>
+            <div class="link">
+                <a onclick="loadProject('smashteroid')">SmashteroiD</a>
+                <img src="https://n0j0games.github.io/n0j0games_archive/images/smashteroidLogo.png" alt="">
             </div>
         </div>
         <div id="aboutme">
@@ -213,6 +212,26 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+        <div id="projectPage">
+            <button onclick="toggle('closeProject')" class="toggleMidBack"><i class="fa-solid fa-xmark"></i> CLOSE </button>
+
+            <div id="project" class="aboutMeClass">
+               
+            </div>
+
+            <!--<div id="projectUpdates" class="aboutMeClass">
+                <p id="projectUpdatesTitle" class="aboutMeUpperTitle">Updates</p>
+                <div class="updatesDiv">
+                    <p class="updatesTitle">Version 1.4</p>
+                    <p class="updatesText">
+                        - Added release-playlists<br>
+                        - Added sorting filters<br>
+                        - WIP: Added backbone for pantry<br>
+                    </p>
+                </div>
+            </div>-->
 
         </div>
     </div>    

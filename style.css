@@ -7,6 +7,7 @@
     --dark1: #262B44;
     --darkOpacity: #3A446622;
     --link: #FF0044;
+    --ok : #2B8435;
     --background: #181425;
     --color1: #E86A73;
     --color2: #BC4A9B;
@@ -154,7 +155,7 @@ body {
     margin-bottom: 10px;
 }
 
-#aboutme, #current {
+#aboutme, #current, #projectPage {
     position: absolute;
     display: flex;
     opacity: 0;
@@ -170,6 +171,7 @@ body {
     margin: 10px;
     background-color: var(--darkOpacity);
     border: 3px dotted var(--mid);
+    backdrop-filter: blur(10px);
 }
 
 #spotify {
@@ -737,6 +739,137 @@ body {
     pointer-events: none;
 }
 
+#project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 10px;
+}
+
+#project_top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+#project_right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 0 5px 0;
+    gap: 5px;
+}
+
+#projectImg {
+    width: 70px;
+    height: 70px;
+    filter: drop-shadow(0px 0px 5px var(--dark2));
+    padding: 10px;
+    border-radius: 20px;
+}
+
+#projectTitle {
+    color: var(--light1);
+    font-size: var(--font-medium);
+    margin: 0;
+}
+
+#projectDesc {
+    color: var(--light2);
+    font-size: var(--font-small);
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
+}
+
+#project_tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+#project_tags p {
+    background-color: var(--color3);
+    color: var(--light1);
+    padding: 0 5px 2px 5px;
+    font-size: var(--font-tinyuppercase);
+    text-transform: lowercase;
+    border-radius: 5px;
+    margin: 0;
+}
+
+#projectFullDesc {
+    max-width: 300px;
+    text-align: left;
+    color: var(--mid);
+    text-transform: lowercase;
+}
+
+#projectUpdates {
+    padding: 20px;
+    gap: 20px;
+}
+
+#projectUpdatesTitle {
+    margin: 0;
+}
+
+.updatesDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.updatesText {
+    color: var(--mid);
+    font-size: var(--font-small);
+    text-align: left;
+    margin: 0;
+    text-transform: lowercase;
+}
+
+.updatesTitle {
+    color: var(--light2);
+    font-size: var(--font-tinyuppercase);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.projectLink {
+    color: var(--color2);
+    font-size: var(--font-regular);
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.projectLink p {
+    text-transform: lowercase;
+    margin: 0 0 5px 0;
+}
+
+.projectLink:hover {
+    color: var(--color1);
+}
+
+.finished {
+    background-color: var(--dark2) !important;
+}
+
+.active {
+    background-color: var(--ok) !important;
+    color: white !important;
+}
+
 @keyframes star-animation-1 {
     0%   {opacity: 100%;}
     50%  {opacity: 0%;}
@@ -756,8 +889,9 @@ body {
 }
 
 @keyframes star-animation-4 {
-    0%   {transform: rotate(70deg); transform: translateX(0px);}
-    100% {transform: rotate(70deg); transform: translateX(-1000px);}
+    0%   {transform: rotate(360deg);}
+    50% {transform: rotate(180deg);}
+    100% {transform: rotate(0deg);}
 }
 
 @media (max-width: 1100px){
@@ -874,6 +1008,7 @@ body {
 
     .aboutMeClass {
         width: calc(100vw - 80px);
+        backdrop-filter: blur(10px);
     }
 
     #irl_skills_parts {

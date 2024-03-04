@@ -12,6 +12,8 @@ function load() {
     console.log(isOnMobile);
     
     html = {
+        leftcontent : document.getElementById("leftContent"),
+        rightcontent : document.getElementById("rightContent"),
         spotify : {
             self : document.getElementById("spotify"),
             artist : document.getElementById("spotifyArtist"),
@@ -38,6 +40,10 @@ function load() {
         avatar : document.getElementById("char"),
         aboutme : document.getElementById("aboutme"),
         current : document.getElementById("current"),
+        projectPage : {
+            self : document.getElementById("projectPage"),
+            main : document.getElementById("project"),
+        },
         mid : document.getElementById("midContent"),
         togglemid_enabled : document.getElementById("toggleMidEnabled"),
         togglemid_disabled : document.getElementById("toggleMidDisabled"),
@@ -160,10 +166,136 @@ function activate(name) {
     } 
 }
 
+function loadProject(name) {
+
+    if (window.screen && window.screen.width < 1100) {
+        if (name === "releasr") {
+            window.location.href = "https://releasr.noahschuette.de";
+        } else if (name === "palettecrafter") {
+            window.location.href = "https://palettecrafter.noahschuette.de";
+        } else if (name === "smashteroid") {
+            window.location.href = "https://n0j0games.itch.io/smashteroid";
+        } else {
+            console.error("Unknown project: " + name);
+        }
+        return;
+    }
+
+    const releasr = {
+        title : "RELEASR",
+        desc : "Spotify Release Tracker",
+        tags : ["web", "spotify-api", "js", "html/css"],
+        fullDesc : `Artist release tracker for Spotify. Get notified when your favorite artists release new music.<br><br>
+        Features:<br>
+        - Synchronize your followed artists with Spotify<br>
+        - Alternatively add artists manually<br>
+        - Search for new releases in playlists like "New Music Friday"<br>
+        - Various filters & highly customizable<br>`,
+        links : {
+            website : "https://releasr.noahschuette.de",
+            website_name : "releasr.noahschuette.de",
+            repo : "spotifyreleasetracker",
+        },
+        src : "https://releasr.noahschuette.de/images/favicon.png",
+        status : "active"
+    }
+
+    const palettecrafter = {
+        title : "PALETTECRAFTER",
+        desc : "Minecraft Color-Palette Generator",
+        tags : ["web", "node-js", "html/css", "minecraft"],
+        fullDesc : `Pick any color and this generator finds the matching minecraft block<br><br>
+        Features:<br>
+        - Find matching blocks based on a color<br>
+        - Create palettes from these blocks<br>
+        - Save palettes and share them with others<br>`,
+        links : {
+            website : "https://palettecrafter.noahschuette.de",
+            website_name : "palettecrafter.noahschuette.de",
+            repo : "palettecrafter",
+        },
+        src : "https://palettecrafter.noahschuette.de/images/icon.png",
+        status : "active"
+    }
+
+    const smashteroid = {
+        title : "SMASHTEROID",
+        desc : "2D Asteroid Shooter for Android",
+        tags : ["android", "C#", "unity engine"],
+        fullDesc : `Smashteroid is an endless shooter for Android in which you have to destroy asteroids so that your ship doesn't explode.`,
+        links : {
+            website : "https://n0j0games.itch.io/smashteroid",
+            website_name : "n0j0games.itch.io/smashteroid",
+            repo : null,
+        },
+        src : "https://n0j0games.github.io/n0j0games_archive/images/smashteroidLogo.png",
+        status : "finished"
+    }
+
+    if (name === "releasr") {
+        buildProjectPage(releasr);
+        toggle("projectPage");
+    } else if (name === "palettecrafter") {
+        buildProjectPage(palettecrafter);
+        toggle("projectPage");
+    } else if (name === "smashteroid") {
+        buildProjectPage(smashteroid);
+        toggle("projectPage");
+    } else {
+        console.error("Unknown project: " + name);
+    }
+
+}
+
+function buildProjectPage(content) {
+
+    let tags = "";
+    if (content.status === "active") {
+        tags += `<p class="active">In Development</p>`;
+    } else {
+        tags += `<p class="finished">Finished</p>`;
+    }
+    for (let i = 0; i < content.tags.length; i++) {
+        tags += `<p>${content.tags[i]}</p>`;
+    }
+
+    let repo = "";
+    if (content.links.repo !== null) {
+        repo = `
+        <a class="projectLink" target="_blank" href="https://github.com/n0j0games/${content.links.repo}">
+            <i class="fa-brands fa-github"></i>
+            <p>repo: ${content.links.repo}</p>
+        </a>`;
+    }
+
+    const html_ = `
+    <div id="project_top">
+        <img id="projectImg" src="${content.src}" alt="">
+        <div id="project_right">
+            <p id="projectTitle">${content.title}</p>
+            <p id="projectDesc">${content.desc}</p>
+            <div id="project_tags">
+                ${tags}
+            </div>
+        </div>
+    </div> 
+    <p id="projectFullDesc">${content.fullDesc}</p>
+    <a class="projectLink" target="_blank" href="${content.links.website}">
+        <i class="fa-solid fa-link"></i>
+        <p>${content.links.website_name}</p>
+    </a>
+    ${repo}`;
+
+    html.projectPage.main.innerHTML = html_;
+}
+
 function toggle(type) {
     html.mid.style.transition = "opacity 1s";
     html.aboutme.style.transition = "opacity 1s";
     html.current.style.transition = "opacity 1s";
+    html.leftcontent.style.transition = "opacity 2s";
+    html.rightcontent.style.transition = "opacity 2s";
+    html.projectPage.self.style.transition = "opacity 1s";
     if (type === "about") {
         html.mid.style.opacity = 0;
         html.aboutme.style.opacity = 1;
@@ -174,6 +306,15 @@ function toggle(type) {
         html.current.style.opacity = 1;
         html.mid.style.zIndex = 0;
         html.current.style.zIndex = 1;
+    } else if (type === "projectPage") {
+        html.current.style.opacity = 0;
+        html.aboutme.style.opacity = 0;
+        html.current.style.zIndex = 0;
+        html.aboutme.style.zIndex = 0;
+        html.mid.style.opacity = 0;
+        html.projectPage.self.style.opacity = 1;
+        html.mid.style.zIndex = 0;
+        html.projectPage.self.style.zIndex = 1;
     } else if (type === "close") {
         html.mid.style.opacity = 1;
         html.aboutme.style.opacity = 0;
@@ -184,6 +325,11 @@ function toggle(type) {
         html.current.style.opacity = 0;
         html.mid.style.zIndex = 1;
         html.current.style.zIndex = 0;
+    } else if (type === "closeProject") {
+        html.mid.style.opacity = 1;
+        html.projectPage.self.style.opacity = 0;
+        html.mid.style.zIndex = 1;
+        html.projectPage.self.style.zIndex = 0;
     }
 }
 

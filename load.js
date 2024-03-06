@@ -168,7 +168,7 @@ function activate(name) {
 
 function loadProject(name) {
 
-    if (window.screen && window.screen.width < 1100) {
+    /*if (window.screen && window.screen.width < 1100) {
         if (name === "releasr") {
             window.location.href = "https://releasr.noahschuette.de";
         } else if (name === "palettecrafter") {
@@ -179,7 +179,7 @@ function loadProject(name) {
             console.error("Unknown project: " + name);
         }
         return;
-    }
+    }*/
 
     const releasr = {
         title : "RELEASR",
@@ -296,16 +296,30 @@ function toggle(type) {
     html.leftcontent.style.transition = "opacity 2s";
     html.rightcontent.style.transition = "opacity 2s";
     html.projectPage.self.style.transition = "opacity 1s";
-    if (type === "about") {
+    if (type === "about") {  
         html.mid.style.opacity = 0;
         html.aboutme.style.opacity = 1;
         html.mid.style.zIndex = 0;
         html.aboutme.style.zIndex = 1;
+        if (isOnMobile) {
+            html.aboutme.style.display = "flex";
+            html.leftcontent.style.opacity = 0;
+            html.rightcontent.style.opacity = 0;
+            html.leftcontent.style.zIndex = 0;
+            html.rightcontent.style.zIndex = 0;
+        }
     } else if (type === "current") {
         html.mid.style.opacity = 0;
         html.current.style.opacity = 1;
         html.mid.style.zIndex = 0;
         html.current.style.zIndex = 1;
+        if (isOnMobile) {
+            html.current.style.display = "flex";
+            html.leftcontent.style.opacity = 0;
+            html.rightcontent.style.opacity = 0;
+            html.leftcontent.style.zIndex = 0;
+            html.rightcontent.style.zIndex = 0;
+        }
     } else if (type === "projectPage") {
         html.current.style.opacity = 0;
         html.aboutme.style.opacity = 0;
@@ -315,21 +329,49 @@ function toggle(type) {
         html.projectPage.self.style.opacity = 1;
         html.mid.style.zIndex = 0;
         html.projectPage.self.style.zIndex = 1;
-    } else if (type === "close") {
+        if (isOnMobile) {
+            html.projectPage.self.style.display = "flex";
+            html.leftcontent.style.opacity = 0;
+            html.rightcontent.style.opacity = 0;
+            html.leftcontent.style.zIndex = 0;
+            html.rightcontent.style.zIndex = 0;
+        }
+    } else if (type === "close") {    
         html.mid.style.opacity = 1;
         html.aboutme.style.opacity = 0;
         html.mid.style.zIndex = 1;
         html.aboutme.style.zIndex = 0;
+        if (isOnMobile) {
+            html.aboutme.style.display = "none";
+            html.leftcontent.style.opacity = 1;
+            html.rightcontent.style.opacity = 1;
+            html.leftcontent.style.zIndex = 1;
+            html.rightcontent.style.zIndex = 1;
+        }
     } else if (type === "closeCurrent") {
         html.mid.style.opacity = 1;
         html.current.style.opacity = 0;
         html.mid.style.zIndex = 1;
         html.current.style.zIndex = 0;
-    } else if (type === "closeProject") {
+        if (isOnMobile) {
+            html.current.style.display = "none";
+            html.leftcontent.style.opacity = 1;
+            html.rightcontent.style.opacity = 1;
+            html.leftcontent.style.zIndex = 1;
+            html.rightcontent.style.zIndex = 1;
+        }
+    } else if (type === "closeProject") {   
         html.mid.style.opacity = 1;
         html.projectPage.self.style.opacity = 0;
         html.mid.style.zIndex = 1;
         html.projectPage.self.style.zIndex = 0;
+        if (isOnMobile) {
+            html.current.style.display = "none";
+            html.leftcontent.style.opacity = 1;
+            html.rightcontent.style.opacity = 1;
+            html.leftcontent.style.zIndex = 1;
+            html.rightcontent.style.zIndex = 1;
+        }
     }
 }
 
@@ -395,10 +437,8 @@ function replaceIRL(dataFromSpotify, dataFromLetterboxd) {
 
     html.music.style.display = "flex";
     
-    if (!isOnMobile) {
-        html.togglemid_enabled.style.display = "block";
-        html.togglemid_disabled.style.display = "none";
-    }    
+    html.togglemid_enabled.style.display = "block";
+    html.togglemid_disabled.style.display = "none"; 
 
     setTimeout(function() {
         loadIRL();

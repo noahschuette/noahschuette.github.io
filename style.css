@@ -87,6 +87,7 @@ body {
     align-items: flex-start;
     height: 100%;
     cursor: pointer;
+    z-index: 1;
 }
 
 #rightContent {
@@ -97,6 +98,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
+    z-index: 1;
 }
 
 #subtitle {
@@ -152,7 +154,7 @@ body {
 }
 
 .toggleMidBack {
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 #aboutme, #current, #projectPage {
@@ -763,6 +765,7 @@ body {
     justify-content: center;
     margin: 0 0 5px 0;
     gap: 5px;
+    flex-wrap: wrap;
 }
 
 #projectImg {
@@ -777,6 +780,7 @@ body {
     color: var(--light1);
     font-size: var(--font-medium);
     margin: 0;
+    text-align: left;
 }
 
 #projectDesc {
@@ -784,6 +788,7 @@ body {
     font-size: var(--font-small);
     text-transform: uppercase;
     margin: 0 0 5px 0;
+    text-align: left;
 }
 
 #project_tags {
@@ -791,6 +796,7 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 5px;
+    flex-wrap: wrap;
 }
 
 #project_tags p {
@@ -904,9 +910,9 @@ body {
         display: none !important;
     }
 
-    .toggleMid, .toggleMidBack {
+    /*.toggleMid, .toggleMidBack {
         display: none;
-    }
+    }*/
 
     #mobile {
         display: flex;
@@ -950,7 +956,7 @@ body {
     }
 
     #midContent {
-        opacity: 1 !important;
+        /*opacity: 1 !important;*/
         flex-grow: 0;
         bottom: 300px;
         margin: 30px;        
@@ -985,21 +991,36 @@ body {
     .link  {
         justify-content: flex-start;
         width: auto;
+        margin: 10px 0 10px 10px;
+    }
+
+    #rightContent {
+        align-items: flex-end;
+    }
+
+    .midText {
+        margin: 0 10px 10px 0;
     }
 
     #aboutme, #current {
-        opacity: 1 !important;
+        /*opacity: 1 !important;
         position: relative;
-        flex-direction: column;
-        z-index: 1;
+        flex-direction: column;*/
     }
 
     #aboutme {
-        margin: 10px 10px 0 10px;
+        margin: 20px 10px 0 10px;
+        display: none;
     }
 
     #current {
-        margin: 0 10px 10px 10px;
+        margin: 20px 10px 10px 10px;
+        display: none;
+    }
+
+    #projectPage {
+        margin: 20px 10px 10px 10px;
+        display: none;
     }
 
     #spotifyAlbum {
@@ -1061,6 +1082,7 @@ body {
         align-items: center;
         gap: 5px;
     }
+
 
 }
 

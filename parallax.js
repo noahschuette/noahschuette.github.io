@@ -7,7 +7,7 @@ window.parallax = function() {
     generateParallax();
 }
 
-let width = window.document.body.scrollWidth;
+let width = self.innerWidth;
 let height = window.document.body.scrollHeight;
 
 function generateParallax() {
@@ -17,6 +17,11 @@ function generateParallax() {
 
     width = self.innerWidth;
     height = window.document.body.scrollHeight;
+    if (window.screen && window.screen.width < 1100) {
+        width = document.getElementById('mainContent').scrollWidth;
+        height = document.getElementById('mainContent').scrollHeight;
+    }
+
 
     // <img src="error/space2.png" data-depth='0.3' class="paramimg" id="img-2"/>
 

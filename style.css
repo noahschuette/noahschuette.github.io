@@ -737,7 +737,7 @@ body {
 }
 
 .paramimg {
-    position: absolute;
+    position: fixed;
     pointer-events: none;
 }
 
@@ -900,7 +900,15 @@ body {
     100% {transform: rotate(0deg);}
 }
 
+#pixelArtToggle {
+    display: none;
+}
+
 @media (max-width: 1100px){
+
+    #pixelArtToggle {
+        display: block;
+    }
 
     #img-0-mobile, #img-1-mobile, #img-2-mobile, #img-3-mobile, #img-4-mobile {
         display: none !important;

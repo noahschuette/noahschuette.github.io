@@ -1,7 +1,7 @@
 //let scene = document.getElementById('scene');
 //let parallaxInstance = new Parallax(scene);
 
-window.addEventListener('resize', generateParallax);
+//window.addEventListener('resize', generateParallax);
 
 window.parallax = function() {
     generateParallax();
@@ -19,7 +19,6 @@ function generateParallax() {
     height = window.document.body.scrollHeight;
     if (window.screen && window.screen.width < 1100) {
         width = document.getElementById('mainContent').scrollWidth;
-        height = document.getElementById('mainContent').scrollHeight;
     }
 
 

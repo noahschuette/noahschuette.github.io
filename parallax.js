@@ -25,7 +25,6 @@ function generateParallax() {
     // <img src="error/space2.png" data-depth='0.3' class="paramimg" id="img-2"/>
 
     
-    console.log(width, height);
     const scale = Math.sqrt(width * height); // 1440
 
     const path = "images/space/"
@@ -87,7 +86,6 @@ function mouseMove(event) {
 
     let mouseX = event.clientX / width * 100 - 50;
     let mouseY = event.clientY / height * 100 - 50;
-    console.log(mouseX, mouseY);
 
     let scene = document.getElementById('scene');
     for (let i = 0; i < scene.children.length; i++) {

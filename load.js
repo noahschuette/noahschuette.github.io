@@ -51,7 +51,7 @@ function load() {
     html.spotify.self.style.display = "none"; 
     html.movies.self.style.display = "none";
     html.music.style.display = "none";
-    loadIRL();
+    connect();
     setChar("idle");
 }
 
@@ -85,12 +85,12 @@ const backend = "https://noahschuette-api.onrender.com/api/"
 
 let inloop = 0;
 
-function loadIRL() {
+function connect() {
     console.log("Opening request");
     const method = "GET";
     const body = null;
     let xhr = new XMLHttpRequest();
-    xhr.open(method, backend+"spotify/playback", true);
+    xhr.open(method, backend+"goodmorning", true);
     xhr.send(body);
     xhr.timeout = 4000;
     xhr.ontimeout = function () { 
@@ -98,7 +98,7 @@ function loadIRL() {
         if (inloop < 20) {
             console.log("Timed out, trying again in 5 sec");
             setTimeout(function() {
-                loadIRL();
+                connect();
             }, 5000);
         } else {
             inloop = 0;
@@ -108,15 +108,32 @@ function loadIRL() {
     xhr.onload = function () {
         if (this.status === 200) {
             inloop = 0;
-            loadMovies(JSON.parse(this.responseText));
+            console.log("Sucessful connection");
+            loadSpotify();
         } else if (this.status === 401 && inloop < 10) {
             inloop++;
             console.log("Auth code expired, trying again in 1 sec");
             setTimeout(function() {
-                loadIRL();
+                connect();
             }, 1000);
         } else {
             inloop = 0;
+            console.error(`> Error ${this.status}: ${this.responseText}`);
+        }
+    }
+}
+
+function loadSpotify() {
+    const method = "GET";
+    const body = null;
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, backend+"spotify/playback", true);
+    xhr.send(body);
+    xhr.onload = function () {
+        if (this.status === 200) {
+            inloop = 0;
+            loadMovies(JSON.parse(this.responseText));
+        } else {
             console.error(`> Error ${this.status}: ${this.responseText}`);
         }
     }
@@ -441,7 +458,7 @@ function replaceIRL(dataFromSpotify, dataFromLetterboxd) {
     html.togglemid_disabled.style.display = "none"; 
 
     setTimeout(function() {
-        loadIRL();
+        loadSpotify();
     }, 120000);
 }
 

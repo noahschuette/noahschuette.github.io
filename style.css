@@ -44,6 +44,11 @@ body, a, p, button {
     font-size: 50px;
     font-weight: 700;
 }
+
+button:hover, a:hover {
+    cursor: pointer;
+}
+
 p {
     margin: 5px;
 }
@@ -928,7 +933,7 @@ body {
 
     body, html {
         overflow-x: hidden;
-        height: auto;
+        height: 100vh;
     }
 
     html {

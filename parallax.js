@@ -31,8 +31,8 @@ function generateParallax() {
     const image_pool = [
         {"name" : "tiny", "length" : 4, "data-depth" : 0.1, "zIndex" : -12, "amount" : scale / 2, "scale" : 30},
         {"name" : "small", "length" : 3, "data-depth" : 0.2, "zIndex" : -11, "amount" : scale / 64, "scale" : 30},
-        {"name" : "large", "length" : 5, "data-depth" : 0.4, "zIndex" : -10, "amount" : scale / 200, "scale" : 50},
-        {"name" : "huge", "length" : 6, "data-depth" : 0.8, "zIndex" : -9, "amount" : scale / 500, "scale" : 70}
+        /*{"name" : "large", "length" : 5, "data-depth" : 0.4, "zIndex" : -10, "amount" : scale / 200, "scale" : 50},
+        {"name" : "huge", "length" : 6, "data-depth" : 0.8, "zIndex" : -9, "amount" : scale / 500, "scale" : 70}*/
     ];
 
     let count = 0;
@@ -81,6 +81,10 @@ function generateParallax() {
 window.addEventListener('mousemove', mouseMove);
 
 function mouseMove(event) {
+
+    if (window.screen && window.screen.width < 1100) {
+        return;
+    }
 
     // get mouse position on screen    
 

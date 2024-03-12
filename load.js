@@ -127,8 +127,7 @@ function loadSpotify() {
         if (this.status === 200) {
             inloop = 0;
             loadMovies(JSON.parse(this.responseText));
-        } else if (this.status === 401 && inloop < 10) {
-            inloop++;
+        } else if (this.status === 401) {
             console.log("Auth code expired, trying again in 1 sec");
             setTimeout(function() {
                 loadSpotify();
@@ -220,7 +219,7 @@ function loadProject(name) {
     const palettecrafter = {
         title : "PALETTECRAFTER",
         desc : "Minecraft Color-Palette Generator",
-        tags : ["web", "node-js", "html/css", "minecraft"],
+        tags : ["web", "node-js", "html/css"],
         fullDesc : `Pick any color and this generator finds the matching minecraft block<br><br>
         Features:<br>
         - Find matching blocks based on a color<br>

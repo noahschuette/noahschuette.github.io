@@ -967,7 +967,7 @@ body {
         /*opacity: 1 !important;*/
         flex-grow: 0;
         bottom: 300px;
-        margin: 30px;        
+        margin: 0 30px 30px 30px;        
     }
 
     #leftContent {
@@ -1004,6 +1004,7 @@ body {
 
     #rightContent {
         align-items: flex-end;
+        margin: 0 0 50px 0;
     }
 
     .midText {

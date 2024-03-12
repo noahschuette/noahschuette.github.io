@@ -110,12 +110,6 @@ function connect() {
             inloop = 0;
             console.log("Sucessful connection");
             loadSpotify();
-        } else if (this.status === 401 && inloop < 10) {
-            inloop++;
-            console.log("Auth code expired, trying again in 1 sec");
-            setTimeout(function() {
-                connect();
-            }, 1000);
         } else {
             inloop = 0;
             console.error(`> Error ${this.status}: ${this.responseText}`);
@@ -133,6 +127,12 @@ function loadSpotify() {
         if (this.status === 200) {
             inloop = 0;
             loadMovies(JSON.parse(this.responseText));
+        } else if (this.status === 401 && inloop < 10) {
+            inloop++;
+            console.log("Auth code expired, trying again in 1 sec");
+            setTimeout(function() {
+                loadSpotify();
+            }, 1000);
         } else {
             console.error(`> Error ${this.status}: ${this.responseText}`);
         }

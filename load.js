@@ -52,7 +52,7 @@ function load() {
     html.movies.self.style.display = "none";
     html.music.style.display = "none";
     connect();
-    setChar("idle");
+    //setChar("idle");
 }
 
 /*

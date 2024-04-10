@@ -52,7 +52,6 @@ function load() {
     html.movies.self.style.display = "none";
     html.music.style.display = "none";
     connect();
-    //setChar("idle");
 }
 
 /*
@@ -60,6 +59,7 @@ function load() {
 */
 
 function setChar(state) {
+    return; // disabled
     if (state === "idle") {
         const date = new Date();
         const hour = date.getHours();

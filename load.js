@@ -9,7 +9,6 @@ function load() {
     if (window.screen && window.screen.width < 1100) {
         isOnMobile = true;
     }
-    console.log(isOnMobile);
     
     html = {
         leftcontent : document.getElementById("leftContent"),
@@ -124,7 +123,7 @@ function loadSpotify() {
     xhr.open(method, backend+"spotify/playback", true);
     xhr.send(body);
     xhr.onload = function () {
-        if (this.status === 200) {
+        if (this.status === 200) {            
             inloop = 0;
             loadMovies(JSON.parse(this.responseText));
         } else if (this.status === 401) {

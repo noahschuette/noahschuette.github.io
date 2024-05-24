@@ -50,7 +50,7 @@ function load() {
     html.spotify.self.style.display = "none"; 
     html.movies.self.style.display = "none";
     html.music.style.display = "none";
-    connect();
+    //connect();
 }
 
 /*

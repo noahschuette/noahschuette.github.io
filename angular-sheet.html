@@ -1,0 +1,734 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Angular/TS Cheat-Sheet</title><link rel="shortcut icon" href="https://platri.de/wp-content/uploads/2024/01/Angular-Framework-e1649312852136.png">
+
+<style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 0px;
+	padding: 0.2em 0;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+:not(mark) > code {
+	color: #eb5757;
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1) !important;
+	fill: rgba(203, 145, 47, 1) !important;
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1) !important;
+	fill: rgba(51, 126, 169, 1) !important;
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a01a093e-7777-4212-8eef-11d029a12f18" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://platri.de/wp-content/uploads/2024/01/Angular-Framework-e1649312852136.png"/></div><h1 class="page-title">Angular/TS Cheat-Sheet</h1><p class="page-description"></p></header><div class="page-body"><blockquote id="6c9c736a-d81f-4921-8902-c355f098aef7" class=""><strong>Table of Contents</strong><nav id="d1e7e483-47a1-4ebf-a487-d056c08a8a40" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c661436-c482-4f80-ae9c-4ca6a38cf557">⌨️ Angular CLI</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d180794f-9853-4653-b903-3b1b039f0de8">📜 TypeScript</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3461d375-206a-4cf6-8d73-e635f152a1f5">🏠 Modules &amp; Standalone</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#81864d1c-ea26-4341-af7f-bff518acbe0a">⛓️ Databinding</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e834ed54-d886-484d-90f6-3fc765cab1e7">☝️ Directives</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6807a8fc-9547-469e-8ef5-eaabae21d5af">🛎️ Services</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#579f0670-c215-4220-a807-bf0988d3999c">🪧 Routing</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#600211d8-ef93-48f8-98f3-d04e8945e971">👀 Async Data Handling</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9e090c54-68d5-480e-97de-a3925f3f7594">📝 Forms</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3c9ac5f1-2c62-4fc1-8a4b-cdca635602e8">⬇️ Pipes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3229214f-c8df-4acf-9031-60cff8afeefa">🛌 REST-APIs</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a9f0af53-55a6-4b18-a4c1-b0d3c6e37a69">✨ Optimization &amp; Export</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22871689-4ee0-41c0-8022-f8cecdd0cd58">🧪 Testing</a></div></nav></blockquote><p id="05c0e10f-d0ab-4d34-a7c8-0051ea95b011" class=""></p>
+
+
+</p><h3 id="1c661436-c482-4f80-ae9c-4ca6a38cf557" class="">⌨️ Angular CLI</h3><ul id="3852bd6b-ff77-416a-b153-63a812a5094d" class="toggle"><li><details open=""><summary><strong>Commands</strong></summary><p id="62bbe7bb-4233-48dd-a6ea-19bdd65b04c6" class=""><code>ng new </code><em><mark class="highlight-yellow"><code>name</code></mark></em><mark class="highlight-yellow"><code> </code></mark><mark class="highlight-gray"><code>--standalone false --routing false --skip-tests --dry-run</code></mark><mark class="highlight-yellow"> </mark> Generates new workspace, removes standalone/routing/tests if needed. Dry-run only previews the possible output, without writing on disk</p><p id="aceba72d-947a-44ef-be54-1ccb49733a32" class=""><code>ng serve </code><mark class="highlight-gray"><code>--open</code></mark> Build &amp; run testwise, <code>ng build</code> for deployment</p><p id="bb3d56a7-a0ae-4d95-9a72-b6111d9a09a8" class=""><code>ng generate component </code><em><mark class="highlight-yellow"><code>path/name</code></mark></em> Generate name component in path, also works with modules, directives, classes, enums, pipes, services, etc.</p><p id="e6bf5076-5258-46a8-8c09-8236be65d62d" class=""><code>ng lint</code> Check for warnings in files</p><p id="7aadf86a-a475-4fd7-b108-03eda6c85141" class=""><code>ng update</code> Check for updates in modules, update certein modules</p><p id="b5bb4030-ed69-43ea-9f56-1a3aad5a38f7" class=""><code>ng deploy</code> Automatically deploy to firebase / netlify / other services</p></details></li></ul><ul id="aa53632d-d02a-46f4-a46f-355f39fd7b58" class="toggle"><li><details open=""><summary><strong>Config Files</strong></summary><p id="97e98174-3a96-401f-85fa-aab416e2c7aa" class=""><code>angular.json</code>: General config, manage starting point, global styles and assets</p><p id="a4b825cd-b22c-48b6-9b15-782aec2b5bb6" class=""><code>.editorconfig</code>: Overrides IDE formatting settings </p><p id="aa7c7569-0586-48e6-8556-c01f23bff583" class=""><code>browserslist</code>: Tells CLI with browsers should be supported with the project</p><p id="40eb8db3-c621-439a-abc4-1cdb66166132" class=""><code>package.json</code>: Manages 3rd party node.js &amp; angular dependencies</p><p id="e2185ca0-6de8-42d4-96ad-853b67de005f" class=""><code>tsconfig.json</code>, <code>tsconfig.app.json</code>, <code>tsconfig.spec.json</code>: Configure TypeScript</p></details></li></ul><ul id="9346b5a1-1e95-410b-b9bd-fbaef42e7b66" class="toggle"><li><details open=""><summary><strong>Libraries</strong></summary><p id="1ba269df-053f-4334-9378-a5a09e5ee72e" class="">Inside a lib folder: <code>ng-package.json</code> configures library, <code>public-api.ts </code>to export files from the library. Any exported component/service/… can now be used in other projects</p></details></li></ul><p id="a14a5840-bb8a-4e94-8bc3-e11f8ea2a3f6" class="">
+</p><h3 id="d180794f-9853-4653-b903-3b1b039f0de8" class="">📜 TypeScript</h3><ul id="951143df-e610-4bf6-b746-bd0329b5be2b" class="toggle"><li><details open=""><summary><strong>Basics</strong></summary><p id="316b8fc2-b020-4748-a103-0679f7f19f45" class="">Type definition: <code>type </code><em><mark class="highlight-yellow"><code>TypeName</code></mark></em><code> = </code><em><mark class="highlight-yellow"><code>{ ObjectOrWhatever … }</code></mark></em></p><p id="ae44ca41-4dfa-4b7f-810c-4aa826da0e75" class="">Generics: <code>function </code><em><mark class="highlight-yellow"><code>functionName</code></mark></em><code>&lt;</code><em><mark class="highlight-yellow"><code>T</code></mark></em><code>&gt;(param1: </code><em><mark class="highlight-yellow"><code>T</code></mark></em><code>, param2: </code><em><mark class="highlight-yellow"><code>T</code></mark></em><code>) {}</code></p><p id="9a5fa745-09b3-49ee-8a68-9ccd507c5094" class="">Interface: <code>interface </code><em><mark class="highlight-yellow"><code>InterfaceName</code></mark></em><code> { </code><em><mark class="highlight-yellow"><code>key</code></mark></em><code> : </code><em><mark class="highlight-yellow"><code>Type</code></mark></em><code>, </code><em><mark class="highlight-yellow"><code>key2 </code></mark></em><code>: </code><em><mark class="highlight-yellow"><code>Type2</code></mark></em><code>, … }</code> works as an implementable function (same as interface in java)</p><p id="8745998d-d747-4eae-a3fa-74d6a60fe066" class="">Abstract classes work same as in java (with extends, super, etc.)</p></details></li></ul><p id="6bb49608-e0fc-4dc5-af6b-56f97c6c4213" class="">
+</p><h3 id="3461d375-206a-4cf6-8d73-e635f152a1f5" class="">🏠 Modules &amp; Standalone</h3><ul id="df1b316a-d60e-4d94-b2b1-2d1176cd3662" class="toggle"><li><details open=""><summary><strong>Modules</strong></summary><p id="7da54e05-2688-44fb-8d59-bb3d18cc6864" class="">Holds one or more components, directives &amp; pipes. Consists of the following variables in the header: <code>declarations</code>, to declare any component in the module. <code>imports</code>, to import shared modules into the module, <code>providers</code>: to provide services to the module and its component and <code>bootstrap</code>, to define the app starting point.</p><p id="d24fa76b-6d6c-4b82-9a45-d411e26d8c65" class="">Export components inside <code>export</code> array, or by providing them in child routing.</p><p id="3b2ca79f-3313-4ebe-bd54-5704b0687f4c" class="">Define Root-Module in main.ts: <code>bootstrapModule(</code><em><mark class="highlight-yellow"><code>AppModule</code></mark></em><code>)</code> </p></details></li></ul><ul id="a1bdcb0b-5ea4-4601-af8f-eb69e6979a93" class="toggle"><li><details open=""><summary><strong>Standalone</strong></summary><p id="f19cccd8-a4d0-4851-854a-12116237bfc9" class="">Alternative to Ng-Module. Set <code>standalone = true</code> on a component and then import other components/modules into it with <code>imports = []</code> inside the component instead of the module</p><p id="076b0bcf-a900-41a8-b0eb-9c9d80e42fab" class="">Root-Component in main.ts: <code>bootstrapApplication(</code><em><mark class="highlight-yellow"><code>AppComponent</code></mark></em><code>)</code>  </p><p id="a17a7be3-cc30-4e2f-8376-de2e8820cd26" class="">Provide servies with <code>@</code><mark class="highlight-blue"><code>Injectable</code></mark><code>({providedIn: “</code><em><mark class="highlight-yellow"><code>root</code></mark></em><code>”})</code> , or in the <code>providers</code> array of a component</p></details></li></ul><p id="1812e14a-4172-4612-b9c4-ee35d2fb88c7" class="">
+</p><h3 id="81864d1c-ea26-4341-af7f-bff518acbe0a" class="">⛓️ Databinding</h3><ul id="9ecb0907-8434-4dfe-800f-da2db961f722" class="toggle"><li><details open=""><summary><strong>Input/Output</strong></summary><p id="2e6b2988-f6f4-46bf-84e6-d72e3e303274" class=""><mark class="highlight-blue"><code>@Input</code></mark><code>() </code><em><mark class="highlight-yellow"><code>nameA</code></mark></em><em><code> </code></em><code>: </code><em><mark class="highlight-yellow"><code>type</code></mark></em><em><code> </code></em><code>= </code><em><mark class="highlight-yellow"><code>xyz</code></mark></em> Add input, can be referenced inside template with <code>[</code><em><mark class="highlight-yellow"><code>nameA</code></mark></em><code>]</code></p><p id="2dee6f59-f14a-4104-9841-e5ac5b8ce17f" class=""><mark class="highlight-blue"><code>@Output</code></mark><code>() </code><em><mark class="highlight-yellow"><code>nameB</code></mark></em><em><code> </code></em><code>: new </code><mark class="highlight-blue"><code>EventEmitter</code></mark><code>&lt;{</code><em><mark class="highlight-yellow"><code>name</code></mark></em><em><code> </code></em><mark class="highlight-yellow"><code>: </code></mark><em><mark class="highlight-yellow"><code>type</code></mark></em><mark class="highlight-yellow"><code>, ...</code></mark><code> }&gt;();</code> Triggers Output that can be emitted in a function via <code>this.</code><em><mark class="highlight-yellow"><code>nameB</code></mark></em><code>.emit({</code><em><mark class="highlight-yellow"><code>name</code></mark></em><mark class="highlight-yellow"><code>: </code></mark><em><mark class="highlight-yellow"><code>type</code></mark></em><mark class="highlight-yellow"><code>, ...</code></mark><code> });</code> and referenced inside template with <code>(</code><em><mark class="highlight-yellow"><code>nameA</code></mark></em><code>) </code>or watched via <code>this.</code><em><mark class="highlight-yellow"><code>nameB</code></mark></em><code>.subscribe( (</code><em><mark class="highlight-yellow"><code>name </code></mark></em><mark class="highlight-yellow"><code>: </code></mark><em><mark class="highlight-yellow"><code>type</code></mark></em><code>) ⇒ console.log(</code><em><mark class="highlight-yellow"><code>name</code></mark></em><code>) )</code> for example</p></details></li></ul><ul id="b47b2e6a-3cdb-455a-bc3e-8dc13e2d1fcb" class="toggle"><li><details open=""><summary><strong>References</strong></summary><p id="5cb2dbf7-b354-4a07-b5bb-f8f40d988d6c" class="">References starting with # can be added to the head of any HTML item and then be used inside the HTML template at any point, e.g. to get the value of an input field with <code>#</code><em><mark class="highlight-yellow"><code>inputFieldName</code></mark></em><code>.value</code></p><p id="7c5ce7a9-1f29-4a98-a402-45cad69b8253" class="">The # Reference can be viewed inside the TS file via ViewChild: <mark class="highlight-blue"><code>@ViewChild</code></mark><code>(’</code><em><mark class="highlight-yellow"><code>referenceName</code></mark></em><code>’) </code><em><mark class="highlight-yellow"><code>varName </code></mark></em><code>: </code><mark class="highlight-blue"><code>ElementRef</code></mark><code>;</code>  and used with <code>this.</code><em><mark class="highlight-yellow"><code>varName</code></mark></em><code>.nativeElement.value</code> for example</p></details></li></ul><p id="f47a2bfd-30a5-4fa5-985d-09a067f139c0" class="">
+</p><h3 id="e834ed54-d886-484d-90f6-3fc765cab1e7" class="">☝️ Directives</h3><ul id="38964288-ec33-42a9-b6ba-85ecee7e2679" class="toggle"><li><details open=""><summary><strong>Common Directives</strong></summary><p id="4ea5f7e6-8150-49b1-8148-dbb972b8bc1f" class=""><mark class="highlight-blue"><code>*ngFor</code></mark><code>=”let </code><em><mark class="highlight-yellow"><code>item</code></mark></em><em><code> </code></em><code>of </code><em><mark class="highlight-yellow"><code>list</code></mark></em><code>; let </code><em><mark class="highlight-yellow"><code>i</code></mark></em><code> = </code><mark class="highlight-blue"><code>index</code></mark><code>”</code> works as a for loop with item item and index i</p><p id="ee893e36-58bf-49eb-925b-08f6073043ed" class=""><mark class="highlight-blue"><code>*ngIf</code></mark><code>=”</code><em><mark class="highlight-yellow"><code>condition </code></mark></em><code>else </code><em><mark class="highlight-yellow"><code>refrence</code></mark></em><code>”</code> with <mark class="highlight-yellow"><code>#</code></mark><em><mark class="highlight-yellow"><code>reference</code></mark></em><em> </em>works as if for a HTML block, and else the reference block is shown.</p><p id="b6c8887f-a115-4707-8711-5c8d5aeefbfa" class="">Note: Angular18 introduces <code>@if</code>, <code>@for</code> blocks instead of the directives</p><p id="57d93d94-8a85-4af9-97ab-739dc342abe2" class=""><mark class="highlight-blue"><code>[ngClass]</code></mark><code>=”{</code><em><mark class="highlight-yellow"><code>className</code></mark></em><code>: </code><em><mark class="highlight-yellow"><code>condition</code></mark></em><code>}”</code> adds class className if condition is met</p><p id="49776156-8a4b-47da-8340-1ddd0b111595" class=""><mark class="highlight-blue"><code>[ngStyle]</code></mark><code>=”{</code><em><mark class="highlight-yellow"><code>styleAttribute</code></mark></em><code>: </code><em><mark class="highlight-yellow"><code>value</code></mark></em><code>}”</code> sets style attribute to value (value is var in TS)</p><p id="7cbf8365-f8a1-4177-ac98-dd89b269342e" class=""><mark class="highlight-blue"><code>[ngSwitch]</code></mark><code>=”</code><em><mark class="highlight-yellow"><code>value</code></mark></em><code>”</code> can be used as switch with <mark class="highlight-blue"><code>*ngSwitchCase</code></mark> and <mark class="highlight-blue"><code>*ngSwitchDefault</code></mark> in children</p></details></li></ul><ul id="a35b4f17-3e2b-4048-ad0a-ae5edceb1a01" class="toggle"><li><details open=""><summary><strong>Custom Directives</strong></summary><p id="1292ce03-8efa-4b04-ba04-d6487b89a8e1" class="">A TS-class <mark class="highlight-blue"><code>@Directive</code></mark><code>({ </code><mark class="highlight-blue"><code>selector</code></mark><code> : ‘</code><mark class="highlight-yellow"><code>[</code></mark><em><mark class="highlight-yellow"><code>directiveName</code></mark></em><mark class="highlight-yellow"><code>]</code></mark><code>’})</code> can be added to any HTML element as <mark class="highlight-yellow"><code>[</code></mark><em><mark class="highlight-yellow"><code>directiveName</code></mark></em><mark class="highlight-yellow"><code>]</code></mark>class. The HTML element el can be referred to in the class via <code>constructor (private </code><mark class="highlight-yellow"><code>el</code></mark><code>: </code><mark class="highlight-blue"><code>ElementRef</code></mark><code>,private </code><em><mark class="highlight-yellow"><code>renderer</code></mark></em><code>: </code><mark class="highlight-blue"><code>Renderer2</code></mark><code>) {}</code> (generated via ng generate directive)</p><p id="cb504853-eee9-408d-8cdf-889855db9b8d" class=""><mark class="highlight-blue"><code>@HostListener</code></mark><code>(’</code><em><mark class="highlight-yellow"><code>eventName</code></mark></em><code>’) </code><em><mark class="highlight-yellow"><code>funcName</code></mark></em><code>(</code><em><mark class="highlight-yellow"><code>eventData</code></mark></em><code>: </code><mark class="highlight-blue"><code>Event</code></mark><code>) {</code>} listens to event e.g. mouseenter on HTML element. Listen to document-wide events with <code>‘</code><em><mark class="highlight-yellow"><code>document:eventName</code></mark></em><code>’</code></p><p id="9c56d9d1-0874-471b-9693-959ac997e0ce" class=""><mark class="highlight-blue"><code>@HostBinding</code></mark><code>(’</code><em><mark class="highlight-yellow"><code>propertyName</code></mark></em><code>’) </code><em><mark class="highlight-yellow"><code>varName </code></mark></em><code>: </code><em><mark class="highlight-yellow"><code>type</code></mark></em><code>;</code> refers certein property, e.g. style.backgroundColor which then can be set</p></details></li></ul><p id="7b6f103f-a8a0-49f3-8961-83b23b73b57a" class="">
+</p><h3 id="6807a8fc-9547-469e-8ef5-eaabae21d5af" class="">🛎️ Services</h3><ul id="5f542f84-0116-49a4-90e1-6b526474cbc8" class="toggle"><li><details open=""><summary><strong>General</strong></summary><p id="ac5e3784-e7c0-44d4-9b98-6c602b1e4964" class="">Injectable TS class. Optional requires <mark class="highlight-blue"><code>@Injectable()</code></mark> header if the service is injected from other classes beside components/directives</p><p id="91485a02-f16f-4d69-83e3-fb2b0acebc70" class="">Provide services either to <code>AppModule</code> (same service-instance for whole application), <code>AppComponent</code> (same service-instance for all childs of the <code>AppComponent</code>), Single component (component has own instance). Add service to the <code>providers</code> array of the specific component/module, declare it inside the constructor for each .ts using the service!</p></details></li></ul><p id="ebeb265a-1694-4fb0-b035-1f106a134ebf" class="">
+</p><h3 id="579f0670-c215-4220-a807-bf0988d3999c" class="">🪧 Routing</h3><ul id="1afbabd5-5d00-4e42-ba13-df667333da2c" class="toggle"><li><details open=""><summary><strong>General</strong></summary><p id="ab0413e1-8e02-48b4-b05c-478c25473be3" class=""><code>&lt;router-outlet&gt;&lt;/router-outlet&gt;</code> in the app component html marks where the routing pages are set. Child routes also need an outlet on their parents component<br/>The module gets a <br/><mark class="highlight-blue"><code>RouterModule</code></mark><code>.forRoot(</code><em><mark class="highlight-yellow"><code>appRoutes</code></mark></em><code>)</code> import where <code>const </code><em><mark class="highlight-yellow"><code>appRoutes</code></mark></em><code> : Routes = []</code> contains the list of routes. (For child modules use <mark class="highlight-blue"><code>RouterModule</code></mark><code>.forChild(</code><em><mark class="highlight-yellow"><code>appRoutes</code></mark></em><code>)</code>)</p><p id="a9ca3612-70d2-47b7-9f79-f5912673797b" class="">Route example: <code>{path: ‘</code><em><mark class="highlight-yellow"><code>static/:parameter</code></mark></em><code>’, component: </code><em><mark class="highlight-yellow"><code>SampleComponent</code></mark></em><mark class="highlight-yellow"><code>, </code></mark><mark class="highlight-red"><code>children : []</code></mark><code> }</code> Route at path loads component and has child routes</p><p id="c0bfc78c-1d9a-4300-a490-0da86731faab" class="">Use route in link as <code>[routerLink]</code> instead of <code>href</code>. path is stored in an array</p><p id="6bcc9e68-08e9-4990-93e8-4a13b24b5452" class=""><code>routerLinkActive=”</code><em><mark class="highlight-yellow"><code>class</code></mark></em><code>”</code> adds class to html element if route is active (for styling), use <code>[routerLinkActiveOptions]=”{exact: true}”</code> if needed</p><p id="c4d181d4-7242-4122-b1f1-07457d90deeb" class="">Pass params and #-fragment:<code>[queryParams]=”{</code><em><mark class="highlight-yellow"><code>keyName </code></mark></em><em><code>: </code></em><em><mark class="highlight-yellow"><code>‘value’</code></mark></em><code>}”</code>, <code>[fragment]=”</code><em><mark class="highlight-yellow"><code>fragment</code></mark></em><code>”</code> </p></details></li></ul><ul id="676a4ed5-f2db-4cc6-8988-23eb332d2dc3" class="toggle"><li><details open=""><summary><strong>Route programatically</strong></summary><p id="f9424b1c-74cc-4e81-a3d9-b53a7479e62c" class="">Navigate programatically: <code>this.</code><em><mark class="highlight-yellow"><code>router</code></mark></em><code>.navigate([</code><em><mark class="highlight-yellow"><code>path</code></mark></em><code>], {relativeTo : [</code><em><mark class="highlight-yellow"><code>path2</code></mark></em><code>], queryParams: {}, queryParamsHandling : &#x27;merge&#x27;/&#x27;preserve&#x27;, fragment: </code><em><mark class="highlight-yellow"><code>fragment</code></mark></em><code>});</code> with <em><mark class="highlight-yellow"><code>router </code></mark></em><code>: </code><mark class="highlight-blue"><code>Router</code></mark><mark class="highlight-blue"> </mark></p><p id="fe3d72bb-271f-4dcc-a5b2-b40cd5db9ef4" class="">Get route with params: <code>private route : </code><mark class="highlight-blue"><code>ActivatedRoute</code></mark> Fetch route parameter from <code>this.route.params.subscribe((</code><em><mark class="highlight-yellow"><code>params</code></mark></em><code>) =&gt; {})</code> (same with queryParams &amp; fragment)</p></details></li></ul><ul id="b07613c4-35ca-4c47-a52a-84fa59727386" class="toggle"><li><details open=""><summary><strong>404, Guards, special cases</strong></summary><p id="10ec63eb-ba3e-4ff9-a01b-6a6b728ef9fb" class="">404 Redirect: <code>{path : ‘**’, redirectTo : ‘</code><em><mark class="highlight-yellow"><code>/not-found</code></mark></em><code>’, pathMatch: &#x27;full&#x27; }</code> as last route</p><p id="3e6c9f2d-70f2-4286-a5ba-3e32358e1e12" class="">Guards (route params prevents routing front/back): <code>canActivate : [</code><em><mark class="highlight-yellow"><code>GuardClass1</code></mark></em><code>]</code>, <code>canActivateChild : [</code><em><mark class="highlight-yellow"><code>GuardClass1</code></mark></em><code>]</code>, <code>canDeactivate : [</code><em><mark class="highlight-yellow"><code>GuardClass1</code></mark></em><code>]</code> </p><p id="d4cbdf23-80f9-481d-b2cf-b1767869e8e4" class="">Pass static data: property <code>data: {</code><em><mark class="highlight-yellow"><code>key : value</code></mark></em><code>}</code> in route</p><p id="0dece5d8-2aaf-4cc2-8162-4721977dd2e7" class="">Pass dynamic data with resolver property:  <code>resolve : {</code><em><mark class="highlight-yellow"><code>key</code></mark></em><em><code> : </code></em><em><mark class="highlight-yellow"><code>ResolverClass</code></mark></em><code>}</code> , load via <code>this.route.data</code></p></details></li></ul><ul id="03b7c5fe-afd4-4022-8fae-51adf8bb8359" class="toggle"><li><details open=""><summary>Routing with Standalone</summary><p id="5c54c667-5ded-482d-9a22-22389b139db1" class="">Provide routing module in <code>main.ts</code> with <code>bootstrapApplication(</code><em><mark class="highlight-yellow"><code>AppComponent</code></mark></em><code>, { providers: [ importProvidersFrom(AppRoutingModule)], });</code></p></details></li></ul><p id="0ddf8ca5-744f-4c2f-ae4f-449b3ed43d51" class="">
+</p><h3 id="600211d8-ef93-48f8-98f3-d04e8945e971" class="">👀 Async Data Handling</h3><ul id="25d86297-7162-4f9f-8230-e19e8d224d0b" class="toggle"><li><details open=""><summary><strong>RxJS: Observables</strong></summary><p id="30595331-048e-4748-bcf9-978a3a8023d5" class="">Requires RxJS library: <mark class="highlight-gray"><code>npm install rxjs@6</code></mark></p><p id="3ac29f9d-e700-458b-b510-c9cb29a98e93" class="">emit data/error-data in an interval / over time. can be subscribed &amp; unsubscribed to <code>this.</code><em><mark class="highlight-yellow"><code>subscription</code></mark></em><code>: </code><mark class="highlight-blue"><code>Subscription</code></mark><code> = this.</code><em><mark class="highlight-yellow"><code>observable</code></mark></em><code>.subscribe( data ⇒ {}, error =&gt; {}, () =&gt; {</code><em><mark class="highlight-yellow"><code>onComplete</code></mark></em><mark class="highlight-yellow"><code>...</code></mark><code>} );</code><br/><br/><code>this.</code><em><mark class="highlight-yellow"><code>subscription</code></mark></em><code>.unsubscribe();</code></p><p id="b23dde53-9ffd-47a2-8df3-326ffb0973c9" class="">Subscribe only once: <code>this.</code><em><mark class="highlight-yellow"><code>oberservable</code></mark></em><code>.pipe(take(</code><em><mark class="highlight-yellow"><code>1</code></mark></em><code>)).subscribe()</code></p><p id="86df23ef-24b0-477d-b51e-9e252d988432" class="">create observable with <mark class="highlight-blue"><code>Observable</code></mark><code>.create( </code><em><mark class="highlight-yellow"><code>observer </code></mark></em><code>⇒ { ... } ) </code>and emit data with <em><mark class="highlight-yellow"><code>observer</code></mark></em><code>.next(data);</code></p><p id="0fc7e4f0-f9f9-45e3-9507-e7ae198875be" class="">On error emit error with <em><mark class="highlight-yellow"><code>observer</code></mark></em><code>.error(new </code><mark class="highlight-blue"><code>Error</code></mark><code>(’</code><em><mark class="highlight-yellow"><code>msg</code></mark></em><code>’))</code>. The observable dies then</p><p id="67c19317-401d-4f87-953c-0a1cb2120782" class="">Complete a observable with <em><code>observer</code></em><code>.</code><mark class="highlight-yellow"><code>complete</code></mark><code>()</code></p></details></li></ul><ul id="a1da5848-4395-43ff-b119-c73830862109" class="toggle"><li><details open=""><summary><strong>Signals </strong>(RxJS Subject replacement)</summary><p id="b897a179-6b6a-4ddd-9f4b-3d55e6c70e69" class="">Create signal with <em><mark class="highlight-yellow"><code>signalName</code></mark></em><code> = signal&lt;</code><em><mark class="highlight-yellow"><code>type</code></mark></em><code>&gt;(</code><em><mark class="highlight-yellow"><code>defaultValue</code></mark></em><code>);</code> ,  read value in template from <em><mark class="highlight-yellow"><code>signalName</code></mark></em><code>()</code></p><p id="14d417df-ba07-4e6c-bd1e-d54b1b65fef1" class="">Use <code>set(</code><em><mark class="highlight-yellow"><code>value</code></mark></em><code>)</code> to set new value or <code>update((</code><em><mark class="highlight-yellow"><code>oldValue</code></mark></em><code>) ⇒ </code><em><mark class="highlight-yellow"><code>oldValue+newValue</code></mark></em><code>)</code> to replace based on old value</p><p id="4b2e3061-73b8-4e35-ab9f-655d04304f3e" class="">Do something everytime a signal changes: e.g. <em><mark class="highlight-yellow"><code>doubleCounter</code></mark></em><code> = computed(() ⇒ this.</code><em><mark class="highlight-yellow"><code>signalName</code></mark></em><code>()</code><em><mark class="highlight-yellow"><code> * 2</code></mark></em><code>)</code> or e.g. <code>effect(() ⇒ console.log(this.</code><em><mark class="highlight-yellow"><code>signalName</code></mark></em><code>())</code></p></details></li></ul><p id="38e30c81-868e-48ca-a91b-8f366948ac66" class="">
+</p><h3 id="9e090c54-68d5-480e-97de-a3925f3f7594" class="">📝 Forms</h3><ul id="ba03d6d8-9838-410c-91ee-6c38aba7196a" class="toggle"><li><details open=""><summary><strong>Reactive Forms</strong></summary><p id="f7ca6ac6-375f-45ef-bdb4-ef425dfb5a69" class="">Create Form in TS: <em><mark class="highlight-yellow"><code>formName</code></mark></em><em><code> </code></em><code>: </code><mark class="highlight-blue"><code>FormGroup</code></mark><code> = new </code><mark class="highlight-blue"><code>FormGroup</code></mark><code>({ </code><mark class="highlight-yellow"><code>‘</code></mark><em><mark class="highlight-yellow"><code>inputName</code></mark></em><mark class="highlight-yellow"><code>’ : new </code></mark><mark class="highlight-blue"><code>FormControl</code></mark><mark class="highlight-yellow"><code>(</code></mark><em><mark class="highlight-yellow"><code>defaultValue</code></mark></em><mark class="highlight-yellow"><code>, </code></mark><em><mark class="highlight-yellow"><code>validators</code></mark></em><mark class="highlight-yellow"><code>), …</code></mark><code> })</code> and then pass name to <code>&lt;form [formGroup]=”</code><em><mark class="highlight-yellow"><code>formName</code></mark></em><code>”&gt;</code> , pass <code>&lt;input formControlName=”</code><em><mark class="highlight-yellow"><code>inputName</code></mark></em><code>”&gt;</code> to each input included in the group.</p><p id="36200275-2f08-4a73-99db-62b8d8fb0863" class="">Get Form data in TS from <em><mark class="highlight-yellow"><code>formName</code></mark></em><code>.value</code> , … in HTML from <em><mark class="highlight-yellow"><code>formName</code></mark></em><code>.get(’</code><em><mark class="highlight-yellow"><code>inputName</code></mark></em><code>’)</code></p><p id="0e8d408b-18ba-4312-a301-3d2b3168dd3e" class="">Subscribe to value/status changes with <em><mark class="highlight-yellow"><code>formName</code></mark></em><code>.valueChanges.subscribe()</code> ,   <em><mark class="highlight-yellow"><code>formName</code></mark></em><code>.statusChanges.subscribe()</code> </p><p id="d33f6af3-9e8b-4dc5-af0c-f6a597573778" class="">Form touched? <em><mark class="highlight-yellow"><code>formName</code></mark></em><code>.touched</code> </p><p id="34802bb8-d3bf-4736-884c-80492611b9f7" class="">Set form value: <em><mark class="highlight-yellow"><code>formName</code></mark></em><code>.setValue({</code><mark class="highlight-yellow"><code>’</code></mark><em><mark class="highlight-yellow"><code>inputName</code></mark></em><mark class="highlight-yellow"><code>’ : ‘</code></mark><em><mark class="highlight-yellow"><code>value</code></mark></em><mark class="highlight-yellow"><code>’, …</code></mark><code> }) </code> (Set only one part of the input with <code>patchValue</code> instead. Reset form with <em><mark class="highlight-yellow"><code>formName</code></mark></em><code>.reset</code></p><p id="5f470746-7f8a-4a1f-8779-119b5e6d8ef2" class="">Validators: Add them to a FormControl to make it valid or not (make it required, make it an e-mail form etc.)</p><p id="325268a0-63e1-4667-bc62-9a6da53fa5e8" class="">ng adds css classes <code>.ng-invalid</code> and <code>.ng-touched</code> if input is invalid and touched</p></details></li></ul><p id="11f0e43b-a62b-4545-83e7-0b062774fd39" class="">
+</p><h3 id="3c9ac5f1-2c62-4fc1-8a4b-cdca635602e8" class="">⬇️ Pipes</h3><ul id="be32517f-bab5-462b-964b-57378a145ab5" class="toggle"><li><details open=""><summary><strong>General</strong></summary><p id="17b5e750-61c7-4585-a522-2015123fc841" class="">Can be used after a | in the HTML document, can also be used in *ngFor directives</p><p id="c6a3e22a-6d91-48b7-b1d6-b5f9ddff297a" class="">Pipe class: implements <code>PipeTransform</code>: <code>transform(</code><em><mark class="highlight-yellow"><code>value</code></mark></em><em><code> </code></em><code>: any, </code><em><mark class="highlight-yellow"><code>parameters</code></mark></em><code>) { </code><mark class="highlight-yellow"><code>…</code></mark><code> return </code><em><mark class="highlight-yellow"><code>value</code></mark></em><em><code> </code></em><code>}</code><br/>&amp; has parameter <br/><code>name : ‘</code><em><mark class="highlight-yellow"><code>pipeName</code></mark></em><code>’</code>, and can be used after a | as <em><mark class="highlight-yellow"><code>pipeName</code></mark></em><mark class="highlight-yellow"><code>:</code></mark><em><mark class="highlight-yellow"><code>param1</code></mark></em><mark class="highlight-yellow"><code>:</code></mark><em><mark class="highlight-yellow"><code>param2</code></mark></em></p><p id="3f3d19e3-1a32-4fa0-a440-800786d0be3d" class="">Pipe has second property <code>pure = </code><em><mark class="highlight-yellow"><code>false</code></mark></em><em> </em>which makes it update to changes</p><p id="b2c0b659-fdb8-4914-88fd-3c62b0037f10" class="">Use promises / observables in HTML document with the <code>async</code> pipe</p></details></li></ul><p id="511caad6-5590-461a-8f78-ca44600954ce" class="">
+</p><h3 id="3229214f-c8df-4acf-9031-60cff8afeefa" class="">🛌 REST-APIs</h3><ul id="84956654-a937-43f1-8dfe-3396ac121a35" class="toggle"><li><details open=""><summary><strong>Example Request, Pipes</strong></summary><p id="7c178728-e353-41fb-aec5-ea79b5e8c091" class="">Get <code>private </code><em><mark class="highlight-yellow"><code>http </code></mark></em><code>: </code><mark class="highlight-blue"><code>HttpClient</code></mark><mark class="highlight-blue"> </mark><mark class="highlight-default">in constructor. Use</mark> pipe and map to map the data, use catchError to catch error data. Define the type of the getter data after .get()</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="da9ce287-24c4-44b1-862e-2752938c530b" class="code"><code class="language-TypeScript">fetchPosts() {
+	let params = new HttpParams();	params = params.append(&#x27;key&#x27;,&#x27;value&#x27;);
+	return this.http
+		.get&lt;{ [key : string] : Post}&gt;( // request type (GET), type of data to get
+			&#x27;url&#x27;,
+			{
+				headers : new HttpHeaders({&#x27;key&#x27; : &#x27;value&#x27;}), // set headers
+				params : params, // set params
+				observe : &#x27;response&#x27;, // request full response instead of data only
+				responseType : &#x27;json&#x27;
+			}
+		)
+		.pipe(
+			tap(event =&gt; ... ) // do something with data without changing it
+			map(responseData =&gt; { ... return data }), // map response data
+			catchError(errorResponse =&gt; { return errorData }) // do something with the error data
+		);
+}</code></pre><p id="c1d93ddf-709e-44e8-94fe-62c18c3fd733" class="">Best practice: Use HTTP in a service, then <code>return this.</code><em><mark class="highlight-yellow"><code>http</code></mark></em><code>.post(</code><em><mark class="highlight-yellow"><code>url</code></mark></em><mark class="highlight-yellow"><code>, </code></mark><em><mark class="highlight-yellow"><code>body</code></mark></em><code>)</code> inside a function and subscribe to the function as <code>this.</code><em><mark class="highlight-yellow"><code>httpService</code></mark></em><code>.</code><em><mark class="highlight-yellow"><code>getSomething</code></mark></em><code>().subscribe( </code><em><mark class="highlight-yellow"><code>responseData</code></mark></em><em><code> </code></em><code>=&gt; {...}, </code><em><mark class="highlight-yellow"><code>errorData</code></mark></em><em><code> </code></em><code>=&gt; {...} )</code></p></details></li></ul><ul id="224f0aee-20d2-4c22-9339-0ac6646e2dfb" class="toggle"><li><details open=""><summary><strong>Interceptors</strong></summary><p id="610bef3e-0a24-488d-b8e6-429e24e304e0" class="">Interceptors: Manipulate any request before it leaves the server. Declare in module:providers: <code>{ provide : </code><mark class="highlight-blue"><code>HTTP_INTERCEPTORS</code></mark><code>, useClass: </code><em><mark class="highlight-yellow"><code>InterceptorService</code></mark></em><code>, multi: true }</code> . Create <code>class </code><em><mark class="highlight-yellow"><code>InceptorService</code></mark></em><em><code> </code></em><code>implements </code><mark class="highlight-blue"><code>HttpInterceptor</code></mark>. Implement <code>intercept(</code><em><mark class="highlight-yellow"><code>req</code></mark></em><code>: HttpRequest&lt;type&gt;, </code><em><mark class="highlight-yellow"><code>next</code></mark></em><code>: HttpHandler) { … return </code><em><mark class="highlight-yellow"><code>next</code></mark></em><code>.handle(</code><em><mark class="highlight-yellow"><code>req</code></mark></em><code>); }</code></p></details></li></ul><p id="200b3e97-3890-4c92-bb71-bc4b24e4e451" class="">
+</p><h3 id="a9f0af53-55a6-4b18-a4c1-b0d3c6e37a69" class="">✨ Optimization &amp; Export</h3><ul id="12e1e948-4976-485b-945b-b609f2c092f4" class="toggle"><li><details open=""><summary><strong>Lazy-Loading Modules</strong></summary><p id="eecdfcb1-fb3d-4f0e-bc9a-5a9cd2675df9" class="">Lazy-loading modules: (e.g. with parent-path <code>path : ‘</code><em><mark class="highlight-yellow"><code>childModuleRouteName</code></mark></em><code>’</code>  in <em><mark class="highlight-yellow"><code>ChildModule</code></mark></em><em> </em>) Remove the path-name as <code>path : ‘’</code> and then add it back to the parent module, e.g. <em><mark class="highlight-yellow"><code>AppModule</code></mark></em><em> </em>with <code>path: &#x27;</code><em><mark class="highlight-yellow"><code>childModuleRouteName</code></mark></em><code>&#x27;, loadChildren: () =&gt; import(&#x27;</code><em><mark class="highlight-yellow"><code>module</code></mark></em><mark class="highlight-yellow"><code>-</code></mark><em><mark class="highlight-yellow"><code>path</code></mark></em><code>&#x27;).then(x =&gt; x.</code><em><mark class="highlight-yellow"><code>ChildModule</code></mark></em><code>)</code> . Remove import of <em><mark class="highlight-yellow"><code>ChildModule</code></mark></em><em> </em>from <em><mark class="highlight-yellow"><code>AppModule</code></mark></em><em><mark class="highlight-yellow"> </mark></em><mark class="highlight-yellow">. </mark>In <code>tsconfig.json</code>: <code>“module” : “ESNext”</code></p></details></li></ul><ul id="15d697d6-5f61-4652-ba48-f8f43dad80f5" class="toggle"><li><details open=""><summary><strong>Environment variables</strong></summary><p id="46db6a53-0034-4ffd-b36d-988ee0e24cba" class="">Environment variables: exported in file <code>environments.ts</code> and <code>environment.prod.ts</code> (for production) as key-value pairs. Imported from anywhere later</p></details></li></ul><p id="654f397e-34af-4713-abbf-68d65c955fe0" class="">
+</p><h3 id="22871689-4ee0-41c0-8022-f8cecdd0cd58" class="">🧪 Testing</h3><ul id="51241f9d-906e-4edd-84eb-7a3324477da6" class="toggle"><li><details open=""><summary><strong>Example &amp; General</strong></summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f921fb49-6b58-49fc-ba5c-51607433ec39" class="code"><code class="language-TypeScript">describe(&#x27;AppComponent&#x27;, () =&gt; { 
+	beforeEach() =&gt; { // run before each test
+		TestBed.configureTestingModule({ // header for the test
+			declarations : [AppComponent], imports : [AppRouting], providers: [SomeService]
+			// declare, import and provide same as in a module
+		}
+		TestBed.compileComponents();
+	}
+	
+	it(&#x27;test name&#x27;), waitForAsync() =&gt; {
+		const fixture = TestBed.createComponent(AppComponent); // The component to test
+		const instance = fixture.debugElement.componentInstance; // The instance of the component
+		expect(instance).toBeTruthy(); // Do the test (here check if component loads)
+	}
+}</code></pre><p id="4af75bdd-fd83-4d9d-898e-3c7ed9140833" class="">Use <code>fixture.detectChanges()</code> if something changed</p><p id="9a8f073a-9fee-4c0e-a1eb-81bcb30b292c" class="">Inject services with <code>inject()</code>, look out for subscribable task with <code>spyOn()</code></p><p id="9c6b1293-d1df-4f31-b70d-f6d2a3a7eae1" class="">
+</p></details></li></ul><p id="00acc945-bb56-4542-8432-52b72b9ceb7a" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>
+<script>
+	const details = document.querySelectorAll("details");
+	details.forEach((detail) => {
+		detail.open = false;
+	});
+</script>
+</body></html>

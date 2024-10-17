@@ -58,7 +58,6 @@ function load() {
 */
 
 function setChar(state) {
-    return; // disabled
     if (state === "idle") {
         const date = new Date();
         const hour = date.getHours();
@@ -196,6 +195,20 @@ function loadProject(name) {
         return;
     }*/
 
+    const ratenowcrylater = {
+        title : "RATE NOW CRY LATER",
+        desc : "Music rating blog",
+        tags : ["web", "ts", "angular", "html/css"],
+        fullDesc : `Personal blog to keep track of all the albums I like and every new album I've listened to`,
+        links : {
+            website : "https://ratenowcrylater.netlify.app/home",
+            website_name : "ratenowcrylater.netlify.app",
+            repo : null,
+        },
+        src : "https://ratenowcrylater.netlify.app/assets/favicon.png",
+        status : "active"
+    }
+
     const releasr = {
         title : "RELEASR",
         desc : "Spotify Release Tracker",
@@ -212,7 +225,7 @@ function loadProject(name) {
             repo : "spotifyreleasetracker",
         },
         src : "https://releasr.noahschuette.de/images/favicon.png",
-        status : "active"
+        status : "paused"
     }
 
     const palettecrafter = {
@@ -230,7 +243,7 @@ function loadProject(name) {
             repo : "palettecrafter",
         },
         src : "https://palettecrafter.noahschuette.de/images/icon.png",
-        status : "active"
+        status : "finished"
     }
 
     const smashteroid = {
@@ -249,17 +262,17 @@ function loadProject(name) {
 
     if (name === "releasr") {
         buildProjectPage(releasr);
-        toggle("projectPage");
     } else if (name === "palettecrafter") {
         buildProjectPage(palettecrafter);
-        toggle("projectPage");
     } else if (name === "smashteroid") {
         buildProjectPage(smashteroid);
-        toggle("projectPage");
+    } else if (name === "ratenowcrylater") {
+        buildProjectPage(ratenowcrylater);
     } else {
         console.error("Unknown project: " + name);
+        return;
     }
-
+    toggle("projectPage");
 }
 
 function buildProjectPage(content) {
@@ -268,7 +281,7 @@ function buildProjectPage(content) {
     if (content.status === "active") {
         tags += `<p class="active">In Development</p>`;
     } else {
-        tags += `<p class="finished">Finished</p>`;
+        tags += `<p class="finished">${content.status}</p>`;
     }
     for (let i = 0; i < content.tags.length; i++) {
         tags += `<p>${content.tags[i]}</p>`;
@@ -283,7 +296,7 @@ function buildProjectPage(content) {
         </a>`;
     }
 
-    const html_ = `
+    html.projectPage.main.innerHTML = `
     <div id="project_top">
         <img id="projectImg" src="${content.src}" alt="">
         <div id="project_right">
@@ -300,8 +313,6 @@ function buildProjectPage(content) {
         <p>${content.links.website_name}</p>
     </a>
     ${repo}`;
-
-    html.projectPage.main.innerHTML = html_;
 }
 
 function toggle(type) {
@@ -392,14 +403,14 @@ function toggle(type) {
 
 function replaceIRL(dataFromSpotify, dataFromLetterboxd) {
     
-    setChar("idle");
+    //setChar("idle");
 
     html.spotify.self.style.display = "none"; 
     html.movies.self.style.display = "none";
     islistening = dataFromSpotify.islistening;
     iswatching = dataFromLetterboxd.iswatching;
     if (islistening !== false) {
-        setChar("music");
+        //setChar("music");
         let json = dataFromSpotify.json;
         html.spotify.artist.innerHTML = json.artist + "'s";
         let album = json.album.split("(")[0].split("[")[0].split("-")[0];
